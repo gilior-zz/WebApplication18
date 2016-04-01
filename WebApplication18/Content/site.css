@@ -64,9 +64,9 @@ body {
   body .calendar-data {
     padding: 0 15px 0 15px; }
   body .main-image .img-responsive {
-    margin: 0 auto;
-    /*display: inline !important;*/
-    /*width: 60%;*/ }
+    /*margin: 0 auto;*/
+    display: inline !important;
+    width: 60%; }
   body .img-thumbnail {
     border-radius: 0 !important;
     cursor: pointer; }
