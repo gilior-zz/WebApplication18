@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE7C76C3-1776-4AE9-9C60-298F1F3B0AAD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication18</RootNamespace>
+    <AssemblyName>WebApplication18</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\Biography\biography.html" />
+    <Content Include="app\Contact\contact.html" />
+    <Content Include="app\HeaderImage\header.image.html" />
+    <Content Include="app\Home\calendar.html" />
+    <Content Include="app\Home\home.html" />
+    <Content Include="app\Home\press.html" />
+    <Content Include="app\Home\updates.html" />
+    <Content Include="app\Links\links.html" />
+    <Content Include="app\Pictures\pictures.html" />
+    <Content Include="app\Programs\programs.html" />
+    <Content Include="app\Videos\videos.html" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Gallery\1.jpg" />
+    <Content Include="Content\Images\Gallery\10.jpg" />
+    <Content Include="Content\Images\Gallery\11.jpg" />
+    <Content Include="Content\Images\Gallery\12.jpg" />
+    <Content Include="Content\Images\Gallery\13.jpg" />
+    <Content Include="Content\Images\Gallery\14.jpg" />
+    <Content Include="Content\Images\Gallery\15.jpg" />
+    <Content Include="Content\Images\Gallery\16.jpg" />
+    <Content Include="Content\Images\Gallery\17.jpg" />
+    <Content Include="Content\Images\Gallery\18.jpg" />
+    <Content Include="Content\Images\Gallery\19.jpg" />
+    <Content Include="Content\Images\Gallery\2.jpg" />
+    <Content Include="Content\Images\Gallery\20.jpg" />
+    <Content Include="Content\Images\Gallery\21.jpg" />
+    <Content Include="Content\Images\Gallery\22.jpg" />
+    <Content Include="Content\Images\Gallery\23.jpg" />
+    <Content Include="Content\Images\Gallery\24.jpg" />
+    <Content Include="Content\Images\Gallery\25.jpg" />
+    <Content Include="Content\Images\Gallery\26.jpg" />
+    <Content Include="Content\Images\Gallery\27.jpg" />
+    <Content Include="Content\Images\Gallery\28.jpg" />
+    <Content Include="Content\Images\Gallery\29.jpg" />
+    <Content Include="Content\Images\Gallery\3.jpg" />
+    <Content Include="Content\Images\Gallery\30.jpg" />
+    <Content Include="Content\Images\Gallery\31.jpg" />
+    <Content Include="Content\Images\Gallery\32.jpg" />
+    <Content Include="Content\Images\Gallery\33.jpg" />
+    <Content Include="Content\Images\Gallery\34.jpg" />
+    <Content Include="Content\Images\Gallery\35.jpg" />
+    <Content Include="Content\Images\Gallery\36.jpg" />
+    <Content Include="Content\Images\Gallery\37.jpg" />
+    <Content Include="Content\Images\Gallery\38.jpg" />
+    <Content Include="Content\Images\Gallery\4.jpg" />
+    <Content Include="Content\Images\Gallery\5.jpg" />
+    <Content Include="Content\Images\Gallery\6.jpg" />
+    <Content Include="Content\Images\Gallery\7.jpg" />
+    <Content Include="Content\Images\Gallery\8.jpg" />
+    <Content Include="Content\Images\Gallery\9.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\1.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\10.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\11.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\12.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\13.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\14.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\15.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\16.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\17.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\18.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\19.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\2.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\20.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\21.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\22.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\23.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\24.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\25.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\26.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\27.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\28.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\29.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\3.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\30.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\31.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\32.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\33.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\34.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\35.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\36.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\37.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\38.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\4.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\5.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\6.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\7.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\8.jpg" />
+    <Content Include="Content\Images\Gallery_Thumbnails\9.jpg" />
+    <Content Include="Content\site.css">
+      <DependentUpon>site.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Sources\back_1.jpg" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="javascripts\bootstrap-sprockets.js" />
+    <Content Include="javascripts\bootstrap.js" />
+    <Content Include="javascripts\bootstrap.min.js" />
+    <Content Include="javascripts\bootstrap\affix.js" />
+    <Content Include="javascripts\bootstrap\alert.js" />
+    <Content Include="javascripts\bootstrap\button.js" />
+    <Content Include="javascripts\bootstrap\carousel.js" />
+    <Content Include="javascripts\bootstrap\collapse.js" />
+    <Content Include="javascripts\bootstrap\dropdown.js" />
+    <Content Include="javascripts\bootstrap\modal.js" />
+    <Content Include="javascripts\bootstrap\popover.js" />
+    <Content Include="javascripts\bootstrap\scrollspy.js" />
+    <Content Include="javascripts\bootstrap\tab.js" />
+    <Content Include="javascripts\bootstrap\tooltip.js" />
+    <Content Include="javascripts\bootstrap\transition.js" />
+    <Content Include="lib\jquery-scrollto.js" />
+    <Content Include="packages.config" />
+    <Content Include="package.json" />
+    <Content Include="Content\site.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\myScripts.js" />
+    <Content Include="youmax\jquery\jquery-1.9.1.min.js" />
+    <Content Include="youmax\js\jquery.youmax.min.js" />
+    <Content Include="youmax\js\source_unpacked\imagesloaded.pkgd.js" />
+    <Content Include="youmax\js\source_unpacked\jquery.youmax.js" />
+    <Content Include="youmax\js\source_unpacked\magnific_popup_iframe_gallery.js" />
+    <Content Include="youmax\js\source_unpacked\masonry.pkgd.js" />
+    <Content Include="youmax\js\source_unpacked\share.js" />
+    <Content Include="Content\Sources\bold.ttf" />
+    <Content Include="Content\Sources\regular.ttf" />
+    <Content Include="youmax\loader.js" />
+    <None Include="Scripts\jquery-1.9.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.0.js" />
+    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="images\.keep" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <Content Include="stylesheets\_bootstrap.scss" />
+    <Content Include="stylesheets\_bootstrap-sprockets.scss" />
+    <Content Include="stylesheets\_bootstrap-mincer.scss" />
+    <Content Include="stylesheets\_bootstrap-compass.scss" />
+    <Content Include="stylesheets\bootstrap\_wells.scss" />
+    <Content Include="stylesheets\bootstrap\_variables.scss" />
+    <Content Include="stylesheets\bootstrap\_utilities.scss" />
+    <Content Include="stylesheets\bootstrap\_type.scss" />
+    <Content Include="stylesheets\bootstrap\_tooltip.scss" />
+    <Content Include="stylesheets\bootstrap\_thumbnails.scss" />
+    <Content Include="stylesheets\bootstrap\_theme.scss" />
+    <Content Include="stylesheets\bootstrap\_tables.scss" />
+    <Content Include="stylesheets\bootstrap\_scaffolding.scss" />
+    <Content Include="stylesheets\bootstrap\_responsive-utilities.scss" />
+    <Content Include="stylesheets\bootstrap\_responsive-embed.scss" />
+    <Content Include="stylesheets\bootstrap\_progress-bars.scss" />
+    <Content Include="stylesheets\bootstrap\_print.scss" />
+    <Content Include="stylesheets\bootstrap\_popovers.scss" />
+    <Content Include="stylesheets\bootstrap\_panels.scss" />
+    <Content Include="stylesheets\bootstrap\_pagination.scss" />
+    <Content Include="stylesheets\bootstrap\_pager.scss" />
+    <Content Include="stylesheets\bootstrap\_normalize.scss" />
+    <Content Include="stylesheets\bootstrap\_navs.scss" />
+    <Content Include="stylesheets\bootstrap\_navbar.scss" />
+    <Content Include="stylesheets\bootstrap\_modals.scss" />
+    <Content Include="stylesheets\bootstrap\_mixins.scss" />
+    <Content Include="stylesheets\bootstrap\_media.scss" />
+    <Content Include="stylesheets\bootstrap\_list-group.scss" />
+    <Content Include="stylesheets\bootstrap\_labels.scss" />
+    <Content Include="stylesheets\bootstrap\_jumbotron.scss" />
+    <Content Include="stylesheets\bootstrap\_input-groups.scss" />
+    <Content Include="stylesheets\bootstrap\_grid.scss" />
+    <Content Include="stylesheets\bootstrap\_glyphicons.scss" />
+    <Content Include="stylesheets\bootstrap\_forms.scss" />
+    <Content Include="stylesheets\bootstrap\_dropdowns.scss" />
+    <Content Include="stylesheets\bootstrap\_component-animations.scss" />
+    <Content Include="stylesheets\bootstrap\_code.scss" />
+    <Content Include="stylesheets\bootstrap\_close.scss" />
+    <Content Include="stylesheets\bootstrap\_carousel.scss" />
+    <Content Include="stylesheets\bootstrap\_buttons.scss" />
+    <Content Include="stylesheets\bootstrap\_button-groups.scss" />
+    <Content Include="stylesheets\bootstrap\_breadcrumbs.scss" />
+    <Content Include="stylesheets\bootstrap\_badges.scss" />
+    <Content Include="stylesheets\bootstrap\_alerts.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_table-row.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_size.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_resize.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_panels.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_pagination.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_opacity.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_list-group.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_labels.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_image.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_grid.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_gradients.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_forms.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_center-block.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_buttons.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="stylesheets\bootstrap\mixins\_alerts.scss" />
+    <Content Include="Scripts\jquery-1.9.0.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="youmax\json\searchlist.json" />
+    <Content Include="youmax\json\translation.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.component.html" />
+    <Content Include="config.js" />
+    <Content Include="index.html" />
+    <Content Include="lib\angular2-polyfills.js" />
+    <Content Include="lib\angular2.dev.js" />
+    <Content Include="lib\http.dev.js" />
+    <Content Include="lib\router.dev.js" />
+    <Content Include="lib\Rx.js" />
+    <Content Include="lib\system.src.js" />
+    <Content Include="lib\system.text.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="apicontrolers\DataController.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Dal\Models.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\Biography\biography.ts" />
+    <TypeScriptCompile Include="app\Contact\contact.ts" />
+    <TypeScriptCompile Include="app\dal\models.ts" />
+    <TypeScriptCompile Include="app\HeaderImage\header.image.ts" />
+    <TypeScriptCompile Include="app\Home\calendar.ts" />
+    <TypeScriptCompile Include="app\Home\home.ts" />
+    <TypeScriptCompile Include="app\Home\press.ts" />
+    <TypeScriptCompile Include="app\Home\updates.ts" />
+    <TypeScriptCompile Include="app\Links\links.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\Pictures\pictures.ts" />
+    <TypeScriptCompile Include="app\Programs\programs.ts" />
+    <TypeScriptCompile Include="app\services\services.ts" />
+    <TypeScriptCompile Include="app\Videos\videos.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="typings\main.d.ts" />
+    <TypeScriptCompile Include="typings\main\ambient\es6-shim.d.ts" />
+    <TypeScriptCompile Include="typings\main\ambient\node\node.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\widgets\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="youmax\css\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>24631</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:24631/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

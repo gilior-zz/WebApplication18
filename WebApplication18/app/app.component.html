@@ -1,0 +1,27 @@
+﻿<!--<span *ngFor="#menuItem of menuItems">{{menuItem.Text_English}}</span>-->
+<header-image>loading...</header-image>
+<span *ngIf="!menuItems">loading...</span>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li *ngFor="#menuItem of menuItems">
+                    <a [routerLink]="[menuItem.Text_English]">{{menuItem.Text_English}}</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
