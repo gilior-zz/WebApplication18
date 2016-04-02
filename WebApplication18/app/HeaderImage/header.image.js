@@ -18,7 +18,7 @@ var HeaderImage = (function () {
             router.recognize(url).then(function (instruction) {
                 var currentPathName = instruction.component.componentType.name;
                 //console.log(currentPathName);
-                _this.image = '../Content/Images/' + currentPathName + '.jpg';
+                _this.image = 'Content/Images/' + currentPathName + '.jpg';
             });
         });
     }

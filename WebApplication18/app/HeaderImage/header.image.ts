@@ -13,7 +13,7 @@ export class HeaderImage {
             router.recognize(url).then((instruction) => {
                 var currentPathName = instruction.component.componentType.name;
                 //console.log(currentPathName);
-                this.image = '../Content/Images/' + currentPathName + '.jpg';
+                this.image = 'Content/Images/' + currentPathName + '.jpg';
             });
         });
     }

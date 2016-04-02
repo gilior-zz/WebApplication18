@@ -6,7 +6,7 @@
         </span>
 
         <span [hidden]="mainImagePath!=null">
-            <img class="img-responsive" src="../../Content/Sources/loading.gif" alt="" />
+            <img class="img-responsive" src="Content/Sources/loading.gif" alt="" />
         </span>
         <span [hidden]="mainImagePath==null">
             <img class="img-responsive" [src]="mainImagePath" alt="" />
@@ -18,6 +18,6 @@
     </div>
 
     <div class="tool-strip hidden-md hidden-sm hidden-xs">
-        <img class="img-thumbnail" *ngFor="#img of images" [id]="img.ID" [src]="'../Content/Images/Gallery_Thumbnails/'+img.ImageName" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
+        <img class="img-thumbnail" *ngFor="#img of images" [id]="img.ID" [src]="'Content/Images/Gallery_Thumbnails/'+img.ImageName" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
     </div>
 </div>

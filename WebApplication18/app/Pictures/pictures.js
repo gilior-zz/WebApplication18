@@ -18,17 +18,6 @@ var Pictures = (function () {
     Pictures.prototype.ngOnDestroy = function () {
     };
     Pictures.prototype.ngAfterViewInit = function () {
-        var _this = this;
-        var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
-        var req = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
-            _this.mainImagePath = '../Content/Images/Gallery/' + res.Image.ImageName;
-            _this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
-        }, function (err) { console.log(err.ErrorText); });
-        var req = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
-            _this.images = res.Images;
-        }, function (err) { console.log(err.ErrorText); });
     };
     Pictures.prototype.onLeft = function () {
         this.LoadRequestedImage(dal.NextData.Prev);
@@ -89,6 +78,18 @@ var Pictures = (function () {
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     };
     Pictures.prototype.ngOnInit = function () {
+        var _this = this;
+        var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
+        var req = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single };
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
+            _this.mainImagePath = 'Content/Images/Gallery/' + res.Image.ImageName;
+            console.log(_this.mainImagePath);
+            _this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
+        }, function (err) { console.log(err.ErrorText); });
+        var req = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All };
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
+            _this.images = res.Images;
+        }, function (err) { console.log(err.ErrorText); });
     };
     Pictures = __decorate([
         core_1.Component({

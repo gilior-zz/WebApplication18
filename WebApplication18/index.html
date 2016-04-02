@@ -1,10 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <base href="/" />
+    <base href="/WebApplication18/" />
+    <!--<base href="/" />-->
     <title></title>
 
     <meta charset="utf-8" />
+
+    <!--<script src="lib/system.text.js"></script>-->
     <!-- angular -->
     <script src="lib/system.src.js"></script>
     <script src="lib/Rx.js"></script>
@@ -12,8 +15,7 @@
     <script src="lib/angular2.dev.js"></script>
     <script src="lib/router.dev.js"></script>
     <script src="lib/http.dev.js"></script>
-    <script src="config.js"></script>
-
+    <!--  <script src="config.js"></script>-->
     <!-- style -->
     <link href="Content/site.css" rel="stylesheet" />
 
@@ -32,6 +34,19 @@
     <!-- scroll to -->
     <script src="lib/jquery-scrollto.js"></script>
     <script>
+        System.config({
+
+            packages: {
+                app: {
+
+                    defaultExtension: 'js'
+                }
+            },
+            map: {
+                text: "lib/system.text.js",
+            }
+        });
+
         System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
