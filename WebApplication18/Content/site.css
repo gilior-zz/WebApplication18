@@ -72,7 +72,7 @@ body {
   body .main-image .img-responsive {
     /*margin: 0 auto;*/
     display: inline !important;
-    width: 60%; }
+    /*width: 60%;*/ }
   body .img-thumbnail {
     border-radius: 0 !important;
     cursor: pointer; }

@@ -1,8 +1,5 @@
 ﻿<div id="kjh" (keyup)="onKeyUp($event)">
-    <!--<div class="main-image text-center row">-->
-    <!--<div class="col-xs-1">-->
-    <!--<span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>-->
-    <!--</div>-->
+
     <div class="col-xs-12 text-center main-image row">
         <span [hidden]="mainImagePath==null">
             <span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>
@@ -19,10 +16,7 @@
         </span>
 
     </div>
-    <!--<div class="col-xs-1">-->
-    <!--<span class="glyphicon  glyphicon-hand-right switch-image-glyphicon" aria-hidden="true" (click)="onRight()"></span>-->
-    <!--</div>-->
-    <!--</div>-->
+
     <div class="tool-strip hidden-md hidden-sm hidden-xs">
         <img class="img-thumbnail" *ngFor="#img of images" [id]="img.ID" [src]="'../Content/Images/Gallery_Thumbnails/'+img.ImageName" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
     </div>
