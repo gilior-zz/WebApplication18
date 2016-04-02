@@ -185,7 +185,6 @@
     <Content Include="Content\Sources\back_1.jpg" />
     <Content Include="Content\Sources\footer_background.jpg" />
     <Content Include="Content\Sources\loading.gif" />
-    <Content Include="Content\Sources\loading.jpg" />
     <Content Include="Content\Sources\loading_original.gif" />
     <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
