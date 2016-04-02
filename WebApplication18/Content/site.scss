@@ -8,9 +8,13 @@
     src: url(Sources/Sources/bold.ttf);
 }
 
-
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
+    margin: 0 0 150px !important; /* bottom = footer height */
     background-image: url('Sources/back_1.jpg') !important;
 
     .glyphicon {
@@ -101,7 +105,7 @@ body {
     }
 
     .main-image {
-      
+
 
         .img-responsive {
             /*margin: 0 auto;*/
@@ -199,14 +203,16 @@ body {
 }
 
 footer {
-    height: 120px;
-    /*margin-top: 20px;*/
-    /*position: absolute;*/
+    position: absolute;
     left: 0;
     bottom: 0;
+    height: 100px;
     width: 100%;
-    margin-top: 50px;
-    background-color: #CCCCCC;
+    background-image: url(Sources/footer_background.jpg);
+}
+
+.footer-row {
+    margin-top: 40px;
 }
 
 .no-padding {

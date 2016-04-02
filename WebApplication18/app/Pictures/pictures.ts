@@ -1,4 +1,4 @@
-﻿import {Component, OnInit} from 'angular2/core'
+﻿import {Component, OnInit, AfterViewInit, OnDestroy} from 'angular2/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 
@@ -8,10 +8,41 @@ import * as services from '../services/services'
 
 })
 
-export class Pictures implements OnInit {
+export class Pictures implements OnInit, AfterViewInit, OnDestroy {
+    
     mainImagePath: string;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
+
+
+    ngOnDestroy() {
+       
+    }
+
+    ngAfterViewInit() {
+
+        var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
+
+        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
+            (res: dal.ImageGalleryResponse) => {
+                this.mainImagePath = '../Content/Images/Gallery/' + res.Image.ImageName;
+                this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
+               
+            },
+            (err: dal.DataError) => { console.log(err.ErrorText); }
+        );
+
+
+        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All }
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
+            (res: dal.ImageGalleryResponse) => {
+                this.images = res.Images;
+            },
+            (err: dal.DataError) => { console.log(err.ErrorText); }
+        );
+
+    }
 
 
     onLeft() {
@@ -40,6 +71,7 @@ export class Pictures implements OnInit {
             }
         }
         switch (nextData) {
+
             case dal.NextData.Next:
 
                 if (isLastImage) {
@@ -93,22 +125,6 @@ export class Pictures implements OnInit {
 
     }
     ngOnInit() {
-        var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
-        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
-            (res: dal.ImageGalleryResponse) => {
-                this.mainImagePath = '../Content/Images/Gallery/' + res.Image.ImageName;
-                this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
-            },
-            (err: dal.DataError) => { console.log(err.ErrorText); }
-        );
-        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All }
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
-            (res: dal.ImageGalleryResponse) => {
-                this.images = res.Images;
-            },
-            (err: dal.DataError) => { console.log(err.ErrorText); }
-        );
-     
+
     }
 }

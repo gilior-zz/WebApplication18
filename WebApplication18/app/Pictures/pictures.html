@@ -4,10 +4,20 @@
     <!--<span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>-->
     <!--</div>-->
     <div class="col-xs-12 text-center main-image row">
-        <span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>
+        <span [hidden]="mainImagePath==null">
+            <span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>
+        </span>
 
-        <img class="img-responsive" [src]="mainImagePath" alt=""  />
-        <span class="glyphicon  glyphicon-hand-right switch-image-glyphicon" aria-hidden="true" (click)="onRight()"></span>
+        <span [hidden]="mainImagePath!=null">
+            <img class="img-responsive" src="../../Content/Sources/loading.gif" alt="" />
+        </span>
+        <span [hidden]="mainImagePath==null">
+            <img class="img-responsive" [src]="mainImagePath" alt="" />
+        </span>
+        <span [hidden]="mainImagePath==null">
+            <span class="glyphicon  glyphicon-hand-right switch-image-glyphicon" aria-hidden="true" (click)="onRight()"></span>
+        </span>
+
     </div>
     <!--<div class="col-xs-1">-->
     <!--<span class="glyphicon  glyphicon-hand-right switch-image-glyphicon" aria-hidden="true" (click)="onRight()"></span>-->
