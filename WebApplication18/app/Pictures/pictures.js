@@ -14,6 +14,8 @@ var Pictures = (function () {
     function Pictures(dataService, cacheManager) {
         this.dataService = dataService;
         this.cacheManager = cacheManager;
+        this.bbb = 'lime';
+        this.mainImagePath = 'Content/Sources/loading.gif';
     }
     Pictures.prototype.ngOnDestroy = function () {
     };
@@ -42,26 +44,26 @@ var Pictures = (function () {
         switch (nextData) {
             case dal.NextData.Next:
                 if (isLastImage) {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[0].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[0].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[0].ID);
                 }
                 else {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[nextIndex].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[nextIndex].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
                 }
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[this.images.length - 1].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[this.images.length - 1].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[prevIndex].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[prevIndex].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[prevIndex].ID);
                 }
                 break;
             case dal.NextData.Currnet:
-                this.mainImagePath = '../Content/Images/Gallery/' + this.images[currentIndex].ImageName;
+                this.mainImagePath = 'Content/Images/Gallery/' + this.images[currentIndex].ImageName;
                 this.cacheManager.StoreInCache('currentImageID', this.images[currentIndex].ID);
                 break;
         }

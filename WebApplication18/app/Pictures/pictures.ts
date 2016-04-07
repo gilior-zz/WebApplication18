@@ -13,6 +13,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     mainImagePath: string;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
+    bbb ='lime';
 
 
     ngOnDestroy() {
@@ -56,12 +57,12 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
             case dal.NextData.Next:
 
                 if (isLastImage) {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[0].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[0].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[0].ID);
 
                 }
                 else {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[nextIndex].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[nextIndex].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
 
                 }
@@ -70,17 +71,17 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[this.images.length - 1].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[this.images.length - 1].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
-                    this.mainImagePath = '../Content/Images/Gallery/' + this.images[prevIndex].ImageName;
+                    this.mainImagePath = 'Content/Images/Gallery/' + this.images[prevIndex].ImageName;
                     this.cacheManager.StoreInCache('currentImageID', this.images[prevIndex].ID);
                 }
 
                 break;
             case dal.NextData.Currnet:
-                this.mainImagePath = '../Content/Images/Gallery/' + this.images[currentIndex].ImageName;
+                this.mainImagePath = 'Content/Images/Gallery/' + this.images[currentIndex].ImageName;
                 this.cacheManager.StoreInCache('currentImageID', this.images[currentIndex].ID);
                 break;
         }
@@ -102,7 +103,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
     constructor(private dataService: services.DataService, private cacheManager: services.CacheManager) {
-
+        this.mainImagePath = 'Content/Sources/loading.gif';
 
     }
     ngOnInit() {

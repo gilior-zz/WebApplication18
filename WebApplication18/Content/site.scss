@@ -114,7 +114,13 @@ body {
         }
     }
 
+    .router-link-active{
+        background-color:lavender !important;
+        color:black !important;
+    }
+
     .img-thumbnail {
+        
         border-radius: 0 !important;
         cursor: pointer;
     }

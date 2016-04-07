@@ -24,7 +24,12 @@ var header_image_1 = require("./HeaderImage/header.image");
 var AppComponent = (function () {
     function AppComponent(dataService) {
         this.dataService = dataService;
+        this.log = '';
     }
+    AppComponent.prototype.routerCanDeactivate = function (next, prev) {
+        this.log = "Finished navigating from \"" + (prev ? prev.urlPath : 'null') + "\" to \"" + next.urlPath + "\"";
+        console.log(this.log);
+    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         var req = { Language: dal.Language.Hebrew };
@@ -39,7 +44,7 @@ var AppComponent = (function () {
             template: require("./app.component.html!text"),
             //template: '<h1>My First Angular 2 App</h1><div class="grid" [ngGrid]><div class="grid-item" [ngGridItem]></div></div>',
             directives: [router_1.ROUTER_DIRECTIVES, header_image_1.HeaderImage],
-            providers: [router_1.ROUTER_PROVIDERS, services.DataService, http_1.HTTP_PROVIDERS, services.CacheManager]
+            providers: [router_1.ROUTER_PROVIDERS, services.DataService, http_1.HTTP_PROVIDERS, services.CacheManager, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })]
         }),
         router_1.RouteConfig([
             { path: "/home", component: home_1.Home, name: "Home", useAsDefault: true },

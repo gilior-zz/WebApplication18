@@ -73,6 +73,9 @@ body {
     /*margin: 0 auto;*/
     display: inline !important;
     /*width: 60%;*/ }
+  body .router-link-active {
+    background-color: lavender !important;
+    color: black !important; }
   body .img-thumbnail {
     border-radius: 0 !important;
     cursor: pointer; }

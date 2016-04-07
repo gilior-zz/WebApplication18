@@ -28,8 +28,10 @@ function name() {
     });
 }
 
+foofoo = function bb() { };
+
 function blabla(id) {
-    $('#'+id).scrollTo;
+    $('#' + id).scrollTo;
 }
 
 $("#kjh").keyup(function (e) {

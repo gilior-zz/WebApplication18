@@ -1,8 +1,8 @@
 ﻿<!--<span *ngFor="#menuItem of menuItems">{{menuItem.Text_English}}</span>-->
-<header-image>loading...</header-image>
+<!--<header-image>loading...</header-image>-->
 <span *ngIf="!menuItems">loading...</span>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -13,12 +13,16 @@
 
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li *ngFor="#menuItem of menuItems">
-                    <a [routerLink]="[menuItem.Text_English]">{{menuItem.Text_English}}</a>
-                </li>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li *ngFor="#menuItem of menuItems">
+                        <a [routerLink]="[menuItem.Text_English]">{{menuItem.Text_English}}</a>
+                    </li>
 
-            </ul>
+                </ul>
+            </div>
+
+            <div>next right to nav</div>
         </div>
     </div>
 </nav>

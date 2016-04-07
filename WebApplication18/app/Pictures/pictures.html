@@ -4,11 +4,8 @@
         <span [hidden]="mainImagePath==null">
             <span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>
         </span>
-
-        <span [hidden]="mainImagePath!=null">
-            <img class="img-responsive" src="Content/Sources/loading.gif" alt="" />
-        </span>
-        <span [hidden]="mainImagePath==null">
+        <!--<span  style="background-image:url({{mainImagePath}})"></span>-->
+        <span>
             <img class="img-responsive" [src]="mainImagePath" alt="" />
         </span>
         <span [hidden]="mainImagePath==null">

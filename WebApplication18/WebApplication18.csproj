@@ -212,6 +212,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\myScripts.js" />
+    <Content Include="youmax\css\youmax_block.min.css" />
+    <Content Include="youmax\css\youmax_blue.min.css" />
+    <Content Include="youmax\css\youmax_clean.min.css" />
+    <Content Include="youmax\css\youmax_grey.min.css" />
+    <Content Include="youmax\css\youmax_list.min.css" />
+    <Content Include="youmax\css\youmax_trend.min.css" />
+    <Content Include="youmax\css\youmax_white.min.css" />
     <Content Include="youmax\jquery\jquery-1.9.1.min.js" />
     <Content Include="youmax\js\jquery.youmax.min.js" />
     <Content Include="youmax\js\source_unpacked\imagesloaded.pkgd.js" />
@@ -372,7 +379,6 @@
   <ItemGroup>
     <Folder Include="app\widgets\" />
     <Folder Include="App_Data\" />
-    <Folder Include="youmax\css\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -388,7 +394,7 @@
     <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
     <TypeScriptOutFile />
     <TypeScriptOutDir />
-    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptGeneratesDeclarations>True</TypeScriptGeneratesDeclarations>
     <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
     <TypeScriptSourceMap>True</TypeScriptSourceMap>
     <TypeScriptMapRoot />
