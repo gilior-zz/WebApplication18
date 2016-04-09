@@ -1,4 +1,6 @@
-﻿@font-face {
+﻿
+
+@font-face {
     font-family: Regular;
     src: url(Sources/Sources/regular.ttf);
 }
@@ -114,13 +116,12 @@ body {
         }
     }
 
-    .router-link-active{
-        background-color:lavender !important;
-        color:black !important;
+    .router-link-active {
+        background-color: lavender !important;
+        color: black !important;
     }
 
     .img-thumbnail {
-        
         border-radius: 0 !important;
         cursor: pointer;
     }
@@ -240,4 +241,9 @@ footer {
     align-items: center !important;
 }
 
-/*#endregion */
+.menu-font {
+  font-family: 'Londrina Solid', cursive !important;
+}
+
+
+/*#endregion dal*/

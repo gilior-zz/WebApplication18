@@ -169,5 +169,8 @@ footer {
   display: flex !important;
   align-items: center !important; }
 
-/*#endregion */
+.menu-font {
+  font-family: 'Londrina Solid', cursive !important; }
+
+/*#endregion dal*/
 

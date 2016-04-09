@@ -44,11 +44,18 @@ export class AppComponent implements OnInit, CanDeactivate {
             // Current URL
             router.recognize(url).then((instruction) => {
                 this.currentPathName = instruction.component.componentType.name;
-
-
+                $('.btn-navbar').click(); //bootstrap 2.x
+                $('.navbar-toggle').click() //bootstrap 3.x by Richard
             });
+
         });
+
+        //$('.nav a').on('click', function () {
+        //    //$('.btn-navbar').click(); //bootstrap 2.x
+        //    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+        //});
     }
+
     log: string = '';
     routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
         this.log = `Finished navigating from "${prev ? prev.urlPath : 'null'}" to "${next.urlPath}"`;

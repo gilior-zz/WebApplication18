@@ -31,8 +31,14 @@ var AppComponent = (function () {
             // Current URL
             router.recognize(url).then(function (instruction) {
                 _this.currentPathName = instruction.component.componentType.name;
+                $('.btn-navbar').click(); //bootstrap 2.x
+                $('.navbar-toggle').click(); //bootstrap 3.x by Richard
             });
         });
+        //$('.nav a').on('click', function () {
+        //    //$('.btn-navbar').click(); //bootstrap 2.x
+        //    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+        //});
     }
     AppComponent.prototype.routerCanDeactivate = function (next, prev) {
         this.log = "Finished navigating from \"" + (prev ? prev.urlPath : 'null') + "\" to \"" + next.urlPath + "\"";

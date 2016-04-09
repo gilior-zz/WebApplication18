@@ -7,19 +7,19 @@
 
     <meta charset="utf-8" />
 
-    <!--<script src="lib/system.text.js"></script>-->
-    <!-- angular -->
+
+    <!-- #region  angular-->
     <script src="lib/system.src.js"></script>
     <script src="lib/Rx.js"></script>
     <script src="lib/angular2-polyfills.js"></script>
     <script src="lib/angular2.dev.js"></script>
     <script src="lib/router.dev.js"></script>
     <script src="lib/http.dev.js"></script>
-
-    <!-- style -->
+    <!-- #endregion angular-->
+    <!-- #region  style-->
     <link href="Content/site.css" rel="stylesheet" />
-
-    <!-- youmax -->
+    <!-- #endregion style-->
+    <!-- #region  youmax-->
     <script src="Scripts/jquery-1.9.0.min.js"></script>
     <script src="youmax/js/source_unpacked/imagesloaded.pkgd.js"></script>
     <script src="youmax/js/source_unpacked/magnific_popup_iframe_gallery.js"></script>
@@ -27,17 +27,17 @@
     <script src="youmax/js/source_unpacked/share.js"></script>
     <script src="youmax/js/source_unpacked/jquery.youmax.js"></script>
     <link href="youmax/css/youmax_trend.min.css" rel="stylesheet" />
-    <!--<link href="youmax/css/youmax_block.min.css" rel="stylesheet" />-->
-    <!--<link href="youmax/css/youmax_clean.min.css" rel="stylesheet" />-->
-    <!--<link href="youmax/css/youmax_list.min.css" rel="stylesheet" />-->
-    <!-- bootstrap -->
+    <!-- #endregion youmax-->
+    <!-- #region  bootstrap-->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.min.js"></script>
-
-    <!-- custom -->
-    <script src="Scripts/myScripts.js"></script>
-    <!-- scroll to -->
+    <!-- #endregion bootstrap-->
+    <!-- #region  GoogleFonts-->
+    <link href='https://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>    <!-- #endregion GoogleFonts-->
+    <!-- #region  scroll to-->
     <script src="lib/jquery-scrollto.js"></script>
+    <!-- #endregion scroll to-->
+    <!-- #region  config-->
     <script>
         System.config({
 
@@ -55,6 +55,7 @@
         System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
+    <!-- #endregion config-->
 
 
 </head>
