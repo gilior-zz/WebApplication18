@@ -22,9 +22,17 @@ var videos_1 = require("./Videos/videos");
 var header_image_1 = require("./HeaderImage/header.image");
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js'
 var AppComponent = (function () {
-    function AppComponent(dataService) {
+    function AppComponent(dataService, router) {
+        var _this = this;
         this.dataService = dataService;
+        this.router = router;
         this.log = '';
+        router.subscribe(function (url) {
+            // Current URL
+            router.recognize(url).then(function (instruction) {
+                _this.currentPathName = instruction.component.componentType.name;
+            });
+        });
     }
     AppComponent.prototype.routerCanDeactivate = function (next, prev) {
         this.log = "Finished navigating from \"" + (prev ? prev.urlPath : 'null') + "\" to \"" + next.urlPath + "\"";
@@ -55,7 +63,7 @@ var AppComponent = (function () {
             { path: "/links", component: links_1.Links, name: "Links" },
             { path: "/contact", component: contact_1.Contact, name: "Contact" },
         ]), 
-        __metadata('design:paramtypes', [services.DataService])
+        __metadata('design:paramtypes', [services.DataService, router_1.Router])
     ], AppComponent);
     return AppComponent;
 })();

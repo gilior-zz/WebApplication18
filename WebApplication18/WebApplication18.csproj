@@ -211,7 +211,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\myScripts.js" />
     <Content Include="youmax\css\youmax_block.min.css" />
     <Content Include="youmax\css\youmax_blue.min.css" />
     <Content Include="youmax\css\youmax_clean.min.css" />
