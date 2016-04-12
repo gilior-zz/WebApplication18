@@ -195,6 +195,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\daddy.pubxml" />
+    <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
@@ -207,6 +209,11 @@
     <Content Include="youmax\css\youmax_white.min.css" />
     <Content Include="youmax\jquery\jquery-1.9.1.min.js" />
     <Content Include="youmax\js\jquery.youmax.min.js" />
+    <Content Include="youmax\js\minified\imagesloaded.pkgd.min.js" />
+    <Content Include="youmax\js\minified\jquery.youmax.min.js" />
+    <Content Include="youmax\js\minified\magnific_popup_iframe_gallery.min.js" />
+    <Content Include="youmax\js\minified\masonry.pkgd.min.js" />
+    <Content Include="youmax\js\minified\share.min.js" />
     <Content Include="youmax\js\source_unpacked\imagesloaded.pkgd.js" />
     <Content Include="youmax\js\source_unpacked\jquery.youmax.js" />
     <Content Include="youmax\js\source_unpacked\magnific_popup_iframe_gallery.js" />

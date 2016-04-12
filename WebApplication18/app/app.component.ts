@@ -44,8 +44,12 @@ export class AppComponent implements OnInit, CanDeactivate {
             // Current URL
             router.recognize(url).then((instruction) => {
                 this.currentPathName = instruction.component.componentType.name;
-                $('.btn-navbar').click(); //bootstrap 2.x
-                $('.navbar-toggle').click() //bootstrap 3.x by Richard
+                var collapseNav = window.innerWidth < 768;
+                if (collapseNav) {
+                    $('.btn-navbar').click(); //bootstrap 2.x
+                    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+                }
+
             });
 
         });
