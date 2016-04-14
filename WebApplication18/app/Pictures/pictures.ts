@@ -13,7 +13,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     mainImagePath: string;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
-    bbb ='lime';
+    bbb = 'lime';
 
 
     ngOnDestroy() {
@@ -21,9 +21,10 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-
-
-
+        $("#kjh").on("swipeleft",
+            () => { this.LoadRequestedImage(dal.NextData.Next) })
+        $("#kjh").on("swiperight",
+            () => { this.LoadRequestedImage(dal.NextData.Prev) })
     }
 
 
