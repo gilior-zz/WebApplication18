@@ -16,6 +16,7 @@ html {
 }
 
 body {
+    font-family: 'Open Sans', sans-serif !important;
     margin: 0 0 150px !important; /* bottom = footer height */
     background-image: url('Sources/back_1.jpg') !important;
 
@@ -93,12 +94,12 @@ body {
     }
 
     .noya-calendar {
-        height: 300px;
+        height: 500px;
         overflow-y: scroll;
     }
 
     .noya-updates {
-        height: 300px;
+        height: 500px;
         overflow-y: scroll;
     }
 
@@ -247,3 +248,5 @@ footer {
 
 
 /*#endregion dal*/
+
+
