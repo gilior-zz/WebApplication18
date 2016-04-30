@@ -442,6 +442,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="lib\jquery-scrollto.js" />
+    <Content Include="lib\shims_for_IE.js" />
     <Content Include="packages.config" />
     <Content Include="Content\site.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
