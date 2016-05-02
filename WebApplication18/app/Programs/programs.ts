@@ -11,10 +11,7 @@ export class Programs implements OnInit {
     }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetPrograms').subscribe(
-            (res: dal.ProgramResponse) => { this.programs = res.Programs },
-            (err: dal.DataError) => { console.error('error in Programs in ngOnInit: ' + err.ErrorText); },
-            () => { }
-        )
+        this.dataService.ConnectToApiData(req, 'api/Data/GetPrograms').then((res: dal.ProgramResponse) => { this.programs = res.Programs; });
+
     }
 }

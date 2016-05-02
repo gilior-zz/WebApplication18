@@ -19,15 +19,13 @@ export class Calendar implements OnInit {
 
         var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
 
-        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
-            subscribe((res: dal.CalendarResponse) => {
-                this.dataDate = new Date(res.CalendarItem.DataDate.toString());
-                this.text = res.CalendarItem.Text;
-                this.cacheService.StoreInCache('currentDataDate', this.dataDate);
-            },
-            (err: dal.DataError) =>
-            { }
-            );
+        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').then((res: dal.CalendarResponse) => {
+            this.dataDate = new Date(res.CalendarItem.DataDate.toString());
+            this.text = res.CalendarItem.Text;
+            this.cacheService.StoreInCache('currentDataDate', this.dataDate);
+        });
+
+
     }
     onRight(): void {
         var nextData = dal.NextData.Next
@@ -35,15 +33,13 @@ export class Calendar implements OnInit {
 
         var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
 
-        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
-            subscribe((res: dal.CalendarResponse) => {
-                this.dataDate = new Date(res.CalendarItem.DataDate.toString());
-                this.text = res.CalendarItem.Text;
-                this.cacheService.StoreInCache('currentDataDate', this.dataDate);
-            },
-            (err: dal.DataError) =>
-            { }
-            );
+        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').then((res: dal.CalendarResponse) => {
+            this.dataDate = new Date(res.CalendarItem.DataDate.toString());
+            this.text = res.CalendarItem.Text;
+            this.cacheService.StoreInCache('currentDataDate', this.dataDate);
+        });
+
+
     }
     ngOnInit() {
         var nextData = dal.NextData.Currnet
@@ -51,14 +47,13 @@ export class Calendar implements OnInit {
 
         var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
 
-        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
-            subscribe((res: dal.CalendarResponse) => {
-                this.dataDate = new Date(res.CalendarItem.DataDate.toString());
-                this.text = res.CalendarItem.Text;
-                this.cacheService.StoreInCache('currentDataDate', this.dataDate);
-            },
-            (err: dal.DataError) =>
-            { }
-            );
+        this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').then((res: dal.CalendarResponse) => {
+            this.dataDate = new Date(res.CalendarItem.DataDate.toString());
+            this.text = res.CalendarItem.Text;
+            this.cacheService.StoreInCache('currentDataDate', this.dataDate);
+        });
+
+
+
     }
 }

@@ -34,13 +34,23 @@ export class CacheManager {
 export class DataService {
 
     constructor(private http: Http) { }
-    public ConnectToApiData(request: model.DataRequest, url: string): Observable<model.DataResponse> {
+    public ConnectToApiData(request: model.DataRequest, url: string): Promise<model.DataResponse> {
         let body = JSON.stringify({ request });
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(url, body, options).map((res) => <model.DataResponse>res.json())
-            //.do(data => console.log(data)) // eyeball results in the console
-            .catch(this.handleError)
+        return this.http.post(url, body, options)
+            .toPromise()
+        .then(this.extractData)
+            .catch(this.handleError);
+    }
+
+
+    private extractData(res: Response): model.DataResponse {
+        if (res.status < 200 || res.status >= 300) {
+            throw new Error('Bad response status: ' + res.status);
+        }
+        let body = res.json();
+        return body;
     }
 
 

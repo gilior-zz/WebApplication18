@@ -46,19 +46,11 @@ export class Contact implements OnDestroy, CanDeactivate {
     onSubmit() {
         this.isSubmitting = true;
         var req: dal.MessageRequest = { Message: this.message, Language: dal.Language.Hebrew };
-        this.dataservice.ConnectToApiData
-            (req, 'api/Data/SendMessage')
-            .subscribe
-            (
-            (res: dal.MessageResponse) => {
-                this.submitted = true;
-                this.isSubmitting = false;
-            },
-            (err: dal.DataError) => {
-                this.displaySubmitError = true;
-                this.isSubmitting = false;
-            }
-            )
+        var SendMessageRes: dal.MessageResponse = <dal.MessageResponse>this.dataservice.ConnectToApiData
+            (req, 'api/Data/SendMessage');
+        this.submitted = true;
+        this.isSubmitting = false;
+        this.displaySubmitError = true;
+        this.isSubmitting = false;
     }
-
 }

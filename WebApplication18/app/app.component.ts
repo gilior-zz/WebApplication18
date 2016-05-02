@@ -12,6 +12,7 @@ import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
 import {HeaderImage} from "./HeaderImage/header.image"
+
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js'
 
 @Component({
@@ -71,13 +72,13 @@ export class AppComponent implements OnInit, CanDeactivate {
 
 
         var req: dal.DataRequest = { Language: dal.Language.Hebrew };
-        this.dataService.ConnectToApiData(req, "api/Data/GetMenuItems").
-            subscribe(
-            (dataresponse: dal.MenuResponse) => {
+        this.dataService.ConnectToApiData(req, "api/Data/GetMenuItems").then((res: dal.MenuResponse) => {
+            this.menuItems = res.MenuItems;
+        });
 
-                this.menuItems = dataresponse.MenuItems
-            },
-            (error: dal.DataError) => console.error(error));
+
+
+
     }
 
 

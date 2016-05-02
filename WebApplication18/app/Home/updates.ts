@@ -11,9 +11,9 @@ export class Updates implements OnInit {
     constructor(private dataService: services.DataService) { }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.English }
-        this.dataService.ConnectToApiData(req, 'api/Data/GetUpdates').subscribe(
-            (res: dal.UpdatesRsponse) => this.updates = res.Updates,
-            (err: dal.DataError) => console.log(err.ErrorText)
-        )
+        this.dataService.ConnectToApiData(req, 'api/Data/GetUpdates').then((res: dal.UpdatesRsponse) => { this.updates = res.Updates; });
+
+
+
     }
 }

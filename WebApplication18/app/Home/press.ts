@@ -11,9 +11,9 @@ export class Press implements OnInit {
     constructor(private dataService: services.DataService) { }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.English }
-        this.dataService.ConnectToApiData(req, 'api/Data/GetPress').subscribe(
-            (res: dal.PressResponse) => this.pressItems = res.PressItems,
-            (err: dal.DataError) => console.log(err.ErrorText)
-        )
+        this.dataService.ConnectToApiData(req, 'api/Data/GetPress').then((res: dal.PressResponse) => { this.pressItems = res.PressItems; });
+
+
+
     }
 }

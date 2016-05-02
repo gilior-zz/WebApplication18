@@ -441,8 +441,10 @@
     <Content Include="Content\Sources\loading_original.gif" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="lib\es6-shim.min.js" />
     <Content Include="lib\jquery-scrollto.js" />
     <Content Include="lib\shims_for_IE.js" />
+    <Content Include="lib\system-polyfills.js" />
     <Content Include="packages.config" />
     <Content Include="Content\site.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
