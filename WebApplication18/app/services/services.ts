@@ -40,7 +40,7 @@ export class DataService {
         let options = new RequestOptions({ headers: headers });
         return this.http.post(url, body, options)
             .toPromise()
-        .then(this.extractData)
+            .then(this.extractData)
             .catch(this.handleError);
     }
 
@@ -54,11 +54,11 @@ export class DataService {
     }
 
 
-    private handleError(error: Response) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+    private handleError(error: any) {
+        // In a real world app, we might send the error to remote logging infrastructure
+        let errMsg = error.message || 'Server error';
+        console.error(errMsg); // log to console instead
+        return Promise.reject(errMsg);
     }
 }
 
