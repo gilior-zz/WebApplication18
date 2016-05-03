@@ -10,8 +10,6 @@ export class Links implements OnInit {
     constructor(private dataService: services.DataService) { }
     ngOnInit() {
         var request: dal.DataRequest = { Language: dal.Language.Hebrew };
-        this.dataService.ConnectToApiData(request, 'api/Data/GetLinks').then((res: dal.LinksResponse) => {  this.links = res.Links;  });
-       
-
+        this.dataService.ConnectToApiData(request, 'api/Data/GetLinks').subscribe((res: dal.LinksResponse) => { this.links = res.Links }, (error: dal.DataError) => { console.error('error in Links in ngOnInit: ' + error.ErrorText); });
     }
 }

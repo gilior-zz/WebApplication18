@@ -11,7 +11,11 @@ export class Biography implements OnInit {
     }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetCV').then((res: dal.CVResponse) => { this.cvs = res.CVs; });
+        this.dataService.ConnectToApiData(req, 'api/Data/GetCV').subscribe(
+            (res: dal.CVResponse) => { this.cvs = res.CVs },
+            (err: dal.DataError) => { console.error('error in Biography in ngOnInit: ' + err.ErrorText); },
+            () => { }
+        )
 
     }
 }
