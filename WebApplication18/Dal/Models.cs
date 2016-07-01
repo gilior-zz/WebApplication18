@@ -48,14 +48,17 @@ namespace WebApplication18.Dal
     public class ImageGalleryItem
     {
         public int ID { get; set; }
-        public string ImageName { get; set; }
+        public string ImagePath { get; set; }
+        public string ImageURL { get; set; }
+        public string ImageID { get; set; }
         public double Order { get; set; }
         public bool Visible { get; set; }
         public DateTime TimeStamp { get; set; }
       
+
     }
 
-   
+
 
     public class ImageGalleryResponse : DataRespone
     {
@@ -211,15 +214,17 @@ namespace WebApplication18.Dal
         public int ID;
         public double Order;
         public string Text_English;
+        public string Name;
         public string Text_Hebrew;
         public bool isDefault;
-        public MenuItem(int id, double order, string text_English, string text_Hebrew, bool isDefault)
+        public MenuItem(int id, double order, string text_English, string text_Hebrew, bool isDefault, string name)
         {
             this.ID = id;
             this.Order = order;
             this.Text_English = text_English;
             this.Text_Hebrew = text_Hebrew;
             this.isDefault = isDefault;
+            this.Name = name;
         }
 
     }

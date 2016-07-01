@@ -27,11 +27,13 @@ export enum DataAmount {
 
 export interface ImageGalleryItem {
     ID: number;
-    ImageName: string
+    ImagePath: string
+    ImageURL: string
+    ImageID: string
     Visible: boolean
     Order: number;
-    TimeStamp: Date;
 }
+
 
 export interface ImageGalleryResponse extends DataResponse {
     Images: ImageGalleryItem[];
@@ -152,6 +154,7 @@ export interface MenuItem {
     Order: number;
     Text_English: string;
     Text_Hebrew: string;
+    Name: string;
 }
 
 export interface DataError {

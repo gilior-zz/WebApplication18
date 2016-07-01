@@ -18,7 +18,14 @@ html {
 body {
     font-family: 'Open Sans', sans-serif !important;
     margin: 0 0 150px !important; /* bottom = footer height */
-    background-image: url('Sources/back_1.jpg') !important;
+    /*background-image: url('Sources/back_1.jpg') !important;*/
+    background-color: rgba(132, 200, 248, 0.40) !important;
+
+    .header {
+        background-size: cover;
+        background-size: 100% 100%;
+        height: 300px;
+    }
 
     .glyphicon {
         cursor: pointer;
@@ -52,7 +59,7 @@ body {
     .tool-strip {
         -ms-writing-mode: vertical-lr;
         writing-mode: vertical-lr;
-        height: 150px;
+        height: 140px;
         overflow-x: scroll;
         width: 100%;
         padding-top: 20px;
@@ -108,13 +115,10 @@ body {
     }
 
     .main-image {
-
-
-        .img-responsive {
-            /*margin: 0 auto;*/
-            display: inline !important;
-            /*width: 60%;*/
-        }
+        height: 600px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
     }
 
     .router-link-active {
@@ -125,6 +129,7 @@ body {
     .img-thumbnail {
         border-radius: 0 !important;
         cursor: pointer;
+        height: 100px;
     }
 
     .thumbnail-selected {
@@ -198,7 +203,15 @@ body {
     .switch-image-glyphicon {
         zoom: 200%;
     }
+
+    .left-arrow {
+    }
+
+    .right-arrow {
+    }
 }
+
+
 
 /*#region dal */
 
@@ -243,7 +256,12 @@ footer {
 }
 
 .menu-font {
-  font-family: 'Londrina Solid', cursive !important;
+    font-family: 'Londrina Solid', cursive !important;
+}
+
+.thumbnail {
+    /*width: 100px;*/
+    /*height:100px;*/
 }
 
 

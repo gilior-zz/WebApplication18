@@ -58,12 +58,12 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
             case dal.NextData.Next:
 
                 if (isLastImage) {
-                    this.mainImagePath = 'Content/Images/Gallery_Compressed/' + this.images[0].ImageName;
+                    this.mainImagePath = this.images[0].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[0].ID);
 
                 }
                 else {
-                    this.mainImagePath = 'Content/Images/Gallery_Compressed/' + this.images[nextIndex].ImageName;
+                    this.mainImagePath =  this.images[nextIndex].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
 
                 }
@@ -72,17 +72,17 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath = 'Content/Images/Gallery_Compressed/' + this.images[this.images.length - 1].ImageName;
+                    this.mainImagePath =this.images[this.images.length - 1].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
-                    this.mainImagePath = 'Content/Images/Gallery_Compressed/' + this.images[prevIndex].ImageName;
+                    this.mainImagePath = this.images[prevIndex].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[prevIndex].ID);
                 }
 
                 break;
             case dal.NextData.Currnet:
-                this.mainImagePath = 'Content/Images/Gallery_Compressed/' + this.images[currentIndex].ImageName;
+                this.mainImagePath = this.images[currentIndex].ImageURL;
                 this.cacheManager.StoreInCache('currentImageID', this.images[currentIndex].ID);
                 break;
         }
@@ -113,7 +113,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
             (res: dal.ImageGalleryResponse) => {
-                this.mainImagePath = 'Content/Images/Gallery_Compressed/' + res.Image.ImageName;
+                this.mainImagePath = res.Image.ImageURL;
                 console.log(this.mainImagePath);
                 this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
 

@@ -1,20 +1,20 @@
-﻿<div id="kjh" (keyup)="onKeyUp($event)">
+﻿<div (keyup)="onKeyUp($event)">
+    <div class="col-xs-12 text-center main-image row text-center" style="background-image:url({{mainImagePath}})">
 
-    <div class="col-xs-12 text-center main-image row">
-        <span [hidden]="mainImagePath==null">
-            <span class="glyphicon glyphicon-hand-left switch-image-glyphicon " aria-hidden="true" (click)="onLeft()"></span>
-        </span>
-        <!--<span  style="background-image:url({{mainImagePath}})"></span>-->
-        <span id="main-image">
-            <img class="img-responsive" [src]="mainImagePath" alt="" />
-        </span>
-        <span [hidden]="mainImagePath==null">
-            <span class="glyphicon  glyphicon-hand-right switch-image-glyphicon" aria-hidden="true" (click)="onRight()"></span>
-        </span>
+
+        <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
+
+
+
+
+        <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
+
+
+
 
     </div>
 
     <div class="tool-strip hidden-md hidden-sm hidden-xs">
-        <img class="img-thumbnail" *ngFor="#img of images" [id]="img.ID" [src]="'Content/Images/Gallery_Thumbnails/'+img.ImageName" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
+        <img class="img-thumbnail" *ngFor="#img of images" height="100" [id]="img.ID" [src]="img.ImageURL" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
     </div>
 </div>

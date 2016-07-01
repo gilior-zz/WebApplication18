@@ -1,8 +1,9 @@
-﻿import {Component, OnInit} from 'angular2/core'
+﻿import {Component, OnInit, ViewEncapsulation} from 'angular2/core'
 import {Router} from 'angular2/router'
 @Component({
     selector: 'header-image',
-    template: require('./header.image.html!text')
+    template: require('./header.image.html!text'),
+    encapsulation: ViewEncapsulation.Emulated
 })
 
 export class HeaderImage {

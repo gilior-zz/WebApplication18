@@ -37,7 +37,8 @@ namespace WebApplication18.apicontrolers
                         string text_English = reader["Text_English"].ToString();
                         string Text_Hebrew = reader["Text_Hebrew"].ToString();
                         bool isDefault = bool.Parse(reader["IsDefault"].ToString());
-                        var item = new MenuItem(id, order, text_English, Text_Hebrew, isDefault);
+                        string name = reader["Name"].ToString();
+                        var item = new MenuItem(id, order, text_English, Text_Hebrew, isDefault, name);
                         menuItemsList.Add(item);
                     }
                 }
@@ -238,7 +239,7 @@ namespace WebApplication18.apicontrolers
 
         private static SqlConnection initializeConnection()
         {
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["noyaDB"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["testDB"].ConnectionString);
 
             return connection;
         }
@@ -350,7 +351,9 @@ namespace WebApplication18.apicontrolers
                         ImageGalleryItem imageGalleryItem = new ImageGalleryItem()
                         {
                             ID = Convert.ToInt32(reader["ID"]),
-                            ImageName = Convert.ToString(reader["ImageName"]),
+                            ImageID = Convert.ToString(reader["ImageID"]),
+                          
+                            ImageURL = Convert.ToString(reader["ImageURL"]),
                             Order = Convert.ToDouble(reader["Order"]),
                             TimeStamp = Convert.ToDateTime(reader["TimeStamp"]),
                             Visible = Convert.ToBoolean(reader["Visible"])
