@@ -48,7 +48,7 @@ export class Contact implements OnDestroy, CanDeactivate {
         this.displaySubmitError = false;
         this.isSubmitting = false;
         //this.message = { Content: 'sds', Date: new Date(), IP: '', Sender: { Email: 'sdsd@sdsd', Name: 'sdsd' } };
-        this.message = { Content: this.isOrderConcert ? 'Hey Noya, I would like to get some details about your concerts. Please contact me' : '', Date: new Date(), IP: '', Sender: { Email: '', Name: '' } };
+        this.message = { Content: '', Date: new Date(), IP: '', Sender: { Email: '', Name: '' } };
 
     }
 
