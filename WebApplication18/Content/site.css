@@ -19,6 +19,12 @@ body {
   /* Let's get this party started */
   /* Track */
   /* Handle */ }
+  body .outer-image-div {
+    height: 600px; }
+  body .left-filler {
+    height: 600px; }
+  body .right-filler {
+    height: 600px; }
   body .router-link-active {
     background-color: rgba(132, 200, 248, 0.4) !important;
     /*color: black !important;*/ }
@@ -197,6 +203,12 @@ body {
     width: 100%; }
   body .switch-image-glyphicon {
     zoom: 200%; }
+  body .left-arrow {
+    top: 50%;
+    display: flex; }
+  body .right-arrow {
+    top: 50%;
+    display: flex; }
 
 .form-group textarea {
   resize: none; }

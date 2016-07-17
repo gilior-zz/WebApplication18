@@ -1,19 +1,16 @@
 ﻿
 <div class="white-panel" (keyup)="onKeyUp($event)">
-    <div class="col-xs-12 text-center main-image row text-center" style="background-image:url({{mainImagePath}})">
-
-
-        <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
-
-
-
-
-        <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
-
-
-
-
+    <div class="outer-image-div">
+        <div class="left-filler col-lg-1  hidden-md hidden-sm hidden-xs">
+            <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
+        </div>
+        <div class="col-xs-12 col-lg-10 text-center main-image row text-center" style="background-image:url({{mainImagePath}})">
+        </div>
+        <div class="right-filler col-lg-1  hidden-md hidden-sm hidden-xs">
+            <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
+        </div>
     </div>
+
 
     <div class="tool-strip hidden-md hidden-sm hidden-xs">
         <img class="img-thumbnail" *ngFor="#img of images" height="100" [id]="img.ID" [src]="img.ImageURL" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
