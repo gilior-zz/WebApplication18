@@ -4,6 +4,7 @@ import * as dal from "./dal/models"
 import {HTTP_PROVIDERS} from "angular2/http"
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router, RouterLink, CanDeactivate, ComponentInstruction, LocationStrategy,
 HashLocationStrategy } from "angular2/router";
+
 import {Home} from "./Home/home"
 import {Biography} from "./Biography/biography"
 import {Links} from "./Links/links"
@@ -12,8 +13,9 @@ import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
 import {HeaderImage} from "./HeaderImage/header.image"
+import * as pipes from './pipes/pipes'
 
-//import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js'
+//import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js' 
 
 @Component({
     selector: "app",
@@ -22,7 +24,9 @@ import {HeaderImage} from "./HeaderImage/header.image"
 
     directives: [ROUTER_DIRECTIVES, HeaderImage],
     providers: [ROUTER_PROVIDERS, services.DataService, HTTP_PROVIDERS, services.CacheManager, provide(LocationStrategy,
-        { useClass: HashLocationStrategy })]
+        { useClass: HashLocationStrategy })],
+    pipes: [pipes.TranslatePipe]
+
 })
 
 @RouteConfig([
@@ -40,7 +44,8 @@ export class AppComponent implements OnInit, CanDeactivate {
     currentPathName: string;
     menuItems: dal.MenuItem[];
     currentView: string;
-    constructor(private dataService: services.DataService, private router: Router) {
+
+    constructor(private dataService: services.DataService, private router: Router, private CacheManager: services.CacheManager) {
         router.subscribe((url) => {          
             // Current URL
             router.recognize(url).then((instruction) => {
@@ -52,13 +57,26 @@ export class AppComponent implements OnInit, CanDeactivate {
                 }
 
             });
-
         });
+    }
 
-        //$('.nav a').on('click', function () {
-        //    //$('.btn-navbar').click(); //bootstrap 2.x
-        //    $('.navbar-toggle').click() //bootstrap 3.x by Richard
-        //});
+    goToContact() {
+        this.router.navigate(['Contact', { OrderConcert: true }]);
+    }
+
+    changeToEnglish() {
+        this.CacheManager.StoreInCache("lang", dal.Language.English);
+        document.location.reload();
+    }
+    changeToHebrew() {
+        this.CacheManager.StoreInCache("lang", dal.Language.Hebrew);
+        document.location.reload();
+    }
+
+
+    ImageURL: string;
+    setImage(menuItem: dal.MenuItem) {
+        this.ImageURL = menuItem.ImageURL;
     }
 
     log: string = '';

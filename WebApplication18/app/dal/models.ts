@@ -149,12 +149,25 @@ export interface Link {
     TimeStamp: Date;
 }
 
+export interface MenuImageResponse extends DataResponse {
+    ImageURL: string;
+
+}
+
+export interface MenuImageRequest extends DataRequest {
+    PathName: string;
+}
+
 export interface MenuItem {
     ID: number;
     Order: number;
     Text_English: string;
     Text_Hebrew: string;
+    isDefault: boolean;
     Name: string;
+    ImageID: number;
+    ImageURL: string;
+
 }
 
 export interface DataError {

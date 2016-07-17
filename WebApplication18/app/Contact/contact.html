@@ -1,25 +1,26 @@
 ﻿
-<div>
+<div class="white-panel">
     <div [hidden]="submitted">
         <form (ngSubmit)="onSubmit()" #noyaForm="ngForm">
             <div class="form-group">
                 <!--  <label for="name">Name</label>-->
-                <input [disabled]="isSubmitting" type="text" class="form-control input-lg" required
+                <input [disabled]="isSubmitting" type="text" class="form-control form-field input-lg" required
                        [(ngModel)]="message.Sender.Name"
-                       ngControl="name" #spy #name="ngForm" placeholder="Name">
+                       ngControl="name" #spy #name="ngForm" placeholder="{{'Name'|translate}}">
+
                 <!--<div>{{spy.className}}</div>-->
             </div>
             <div class="form-group">
                 <!--<label for="email">Email</label>-->
-                <input [disabled]="isSubmitting" type="email" class="form-control input-lg" required
-                       [(ngModel)]="message.Sender.Email" placeholder="Email"
+                <input [disabled]="isSubmitting" type="email" class="form-control form-field input-lg" required
+                       [(ngModel)]="message.Sender.Email" placeholder="{{'Email'|translate}}"
                        ngControl="email">
             </div>
             <div class="form-group">
                 <!--<label for="content">Content</label>-->
-                <textarea [disabled]="isSubmitting" class="form-control input-lg" required
+                <textarea rows="8" [disabled]="isSubmitting" class="form-control input-lg" required
                           [(ngModel)]="message.Content"
-                          ngControl="content" #content="ngForm" placeholder="Content"></textarea>
+                          ngControl="content" #content="ngForm" placeholder="{{'Content'|translate}}"></textarea>
             </div>
             <button type="submit" class="btn btn-default" [disabled]="!noyaForm.form.valid ||isSubmitting">Submit</button>
             <span class="alert alert-danger" [hidden]="!displaySubmitError || isSubmitting">message not sent - plz try again later</span>

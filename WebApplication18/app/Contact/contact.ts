@@ -1,12 +1,16 @@
 ﻿import {Component, OnDestroy, OnInit} from 'angular2/core'
-import {CanDeactivate, ComponentInstruction} from 'angular2/router';
+import {CanDeactivate, ComponentInstruction, RouteParams} from 'angular2/router';
 import {NgForm} from 'angular2/common'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
+import {HeaderImage} from '../HeaderImage/header.image'
+import * as pipes from '../pipes/pipes'
 
 @Component({
     template: require("./contact.html!text"),
-    providers: [services.DialogService]
+    providers: [services.DialogService],
+    directives: [HeaderImage],
+    pipes: [pipes.TranslatePipe]
 })
 
 export class Contact implements OnDestroy, CanDeactivate {
@@ -14,8 +18,12 @@ export class Contact implements OnDestroy, CanDeactivate {
     isSubmitting: boolean;
     submitted: boolean;
     message: dal.Message;
-    constructor(private dataservice: services.DataService, private dialogeService: services.DialogService) {
+    isOrderConcert;
+    ImageURL: string;
+    constructor(private dataservice: services.DataService, private dialogeService: services.DialogService, private routeParams: RouteParams) {
 
+        this.ImageURL = this.routeParams.get('ImageURL');
+        this.isOrderConcert = this.routeParams.get('OrderConcert');
     }
 
     routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
@@ -40,7 +48,8 @@ export class Contact implements OnDestroy, CanDeactivate {
         this.displaySubmitError = false;
         this.isSubmitting = false;
         //this.message = { Content: 'sds', Date: new Date(), IP: '', Sender: { Email: 'sdsd@sdsd', Name: 'sdsd' } };
-        this.message = { Content: '', Date: new Date(), IP: '', Sender: { Email: '', Name: '' } };
+        this.message = { Content: this.isOrderConcert ? 'Hey Noya, I would like to get some details about your concerts. Please contact me' : '', Date: new Date(), IP: '', Sender: { Email: '', Name: '' } };
+
     }
 
     onSubmit() {

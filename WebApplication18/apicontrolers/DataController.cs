@@ -19,7 +19,7 @@ namespace WebApplication18.apicontrolers
         [AcceptVerbs("Post")]
         public MenuResponse GetMenuItems(dynamic request)
         {
-            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request);
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
             SqlConnection connection = initializeConnection();
             var res = new MenuResponse();
             var menuItemsList = new List<MenuItem>();
@@ -28,17 +28,20 @@ namespace WebApplication18.apicontrolers
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("MenuItemsSelect", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                var txt = dataRequest.Language == Language.English ? "Text_English" : "Text_Hebrew";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        double order = Convert.ToDouble(reader["Order"]);
-                        int id = Convert.ToInt32(reader["ID"]);
-                        string text_English = reader["Text_English"].ToString();
-                        string Text_Hebrew = reader["Text_Hebrew"].ToString();
-                        bool isDefault = bool.Parse(reader["IsDefault"].ToString());
+                        double order = reader.IsNUll("Order", -1);
+                        int id = reader.IsNUll("ID", -1);
+                        int imageID = reader.IsNUll("ImageID", -1);
+                        string imageURL = reader.IsNUll("imageURL", "");
+                        string text = reader.IsNUll("Text", "");
+                        bool isDefault = reader.IsNUll("isDefault", false);
                         string name = reader["Name"].ToString();
-                        var item = new MenuItem(id, order, text_English, Text_Hebrew, isDefault, name);
+                        var item = new MenuItem(id, order, text, isDefault, name, imageID, imageURL);
                         menuItemsList.Add(item);
                     }
                 }
@@ -56,15 +59,17 @@ namespace WebApplication18.apicontrolers
         [AcceptVerbs("Post")]
         public LinksResponse GetLinks(dynamic request)
         {
-            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request);
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
             LinksResponse res = new LinksResponse();
             SqlConnection connection = initializeConnection();
             try
             {
                 connection.Open();
+                var txt = dataRequest.Language == Language.English ? "Text_Eng" : "Text_Heb";
+                var add = dataRequest.Language == Language.English ? "Address_Eng" : "Address_Heb";
                 SqlCommand cmd = new SqlCommand("LinksSelect", connection);
-                cmd.Parameters.AddWithValue("@txt_lang", "Text_Eng");
-                cmd.Parameters.AddWithValue("@add_lang", "Address_Eng");
+                cmd.Parameters.AddWithValue("@txt_lang", txt);
+                cmd.Parameters.AddWithValue("@add_lang", add);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 List<Link> linksList = new List<Link>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -99,14 +104,15 @@ namespace WebApplication18.apicontrolers
         public UpdateRsponse GetUpdates(object request)
         {
 
-            var calendarRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request);
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
             SqlConnection con = initializeConnection();
             try
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("HotUpdatesSelect", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@lang", "Data_Eng");
+                var txt = dataRequest.Language == Language.English ? "Data_Eng" : "Data_Heb";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 List<Update> updates = new List<Update>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -135,14 +141,15 @@ namespace WebApplication18.apicontrolers
         public PressResponse GetPress(object request)
         {
 
-            var calendarRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request);
+            var calendarRequest = this.ConvertStupidArgumentToNormalRequset<CalendarRequset>(request) as CalendarRequset;
             SqlConnection con = initializeConnection();
             try
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("PressSelect", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@lang", "Eng");
+                var txt = calendarRequest.Language == Language.English ? "Eng" : "Heb";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 List<PressItem> presses = new List<PressItem>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -170,13 +177,14 @@ namespace WebApplication18.apicontrolers
         [AcceptVerbs("Post")]
         public CalendarResponse GetCalendar(object request)
         {
-            var calendarRequest = this.ConvertStupidArgumentToNormalRequset<CalendarRequset>(request);
+            var calendarRequest = this.ConvertStupidArgumentToNormalRequset<CalendarRequset>(request) as CalendarRequset;
             SqlConnection con = initializeConnection();
             try
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("CalendarItemSelect_New", con);
-                cmd.Parameters.AddWithValue("@lang", "Text_Eng");
+                var txt = calendarRequest.Language == Language.English ? "Text_Eng" : "Text_Heb ";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 List<CalendarItem> list = new List<CalendarItem>();
                 CalendarItem resultItem = null;
@@ -264,8 +272,9 @@ namespace WebApplication18.apicontrolers
         }
 
         [AcceptVerbs("Post")]
-        public ProgramsResponse GetPrograms(DataRequest request)
+        public ProgramsResponse GetPrograms(dynamic request)
         {
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
 
             SqlConnection connection = initializeConnection();
             try
@@ -273,7 +282,8 @@ namespace WebApplication18.apicontrolers
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("ProgramsSelect", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@lang", "Eng");
+                var txt = dataRequest.Language == Language.English ? "Eng" : "Heb";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 List<Program> prgs = new List<Program>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -300,16 +310,17 @@ namespace WebApplication18.apicontrolers
         }
 
         [AcceptVerbs("Post")]
-        public CVResponse GetCV(DataRequest request)
+        public CVResponse GetCV(dynamic request)
         {
-
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
             SqlConnection connection = initializeConnection();
             try
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("CVSelect", connection);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@lang", "Eng");
+                var txt = dataRequest.Language == Language.English ? "Eng" : "Heb";
+                cmd.Parameters.AddWithValue("@lang", txt);
                 List<CV> cvs = new List<CV>();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -327,6 +338,29 @@ namespace WebApplication18.apicontrolers
             finally
             {
                 connection.Close();
+            }
+
+        }
+
+        [AcceptVerbs("Post")]
+        public MenuImageResponse GetImageForMenuItem(object request)
+        {
+            MenuImageRequest menuImageRequest = this.ConvertStupidArgumentToNormalRequset<MenuImageRequest>(request);
+
+            SqlConnection con = initializeConnection();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("MenuImageSelect", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@PathName", menuImageRequest.PathName);
+                var imageURL = cmd.ExecuteScalar();
+                return new MenuImageResponse() { ImageURL = imageURL.ToString() };
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
 
         }
@@ -352,7 +386,7 @@ namespace WebApplication18.apicontrolers
                         {
                             ID = Convert.ToInt32(reader["ID"]),
                             ImageID = Convert.ToString(reader["ImageID"]),
-                          
+
                             ImageURL = Convert.ToString(reader["ImageURL"]),
                             Order = Convert.ToDouble(reader["Order"]),
                             TimeStamp = Convert.ToDateTime(reader["TimeStamp"]),

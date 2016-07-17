@@ -1,15 +1,17 @@
 ﻿import {Component, OnInit, AfterViewInit, OnDestroy} from 'angular2/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
-
+import {HeaderImage} from '../HeaderImage/header.image'
+import {RouteParams} from 'angular2/router'
 
 @Component({
     template: require("./pictures.html!text"),
+    directives: [HeaderImage]
 
 })
 
 export class Pictures implements OnInit, AfterViewInit, OnDestroy {
-
+    ImageURL: string;
     mainImagePath: string;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
@@ -63,7 +65,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
 
                 }
                 else {
-                    this.mainImagePath =  this.images[nextIndex].ImageURL;
+                    this.mainImagePath = this.images[nextIndex].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
 
                 }
@@ -72,7 +74,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath =this.images[this.images.length - 1].ImageURL;
+                    this.mainImagePath = this.images[this.images.length - 1].ImageURL;
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
@@ -103,14 +105,15 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     isSelected(img: dal.ImageGalleryItem): boolean {
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager) {
-        this.mainImagePath = 'Content/Sources/loading.gif';
 
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private routeParams: RouteParams) {
+        this.mainImagePath = 'Content/Sources/loading.gif';
+        this.ImageURL = this.routeParams.get('ImageURL');
     }
     ngOnInit() {
         var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
 
-        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
+        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
             (res: dal.ImageGalleryResponse) => {
                 this.mainImagePath = res.Image.ImageURL;
@@ -122,7 +125,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         );
 
 
-        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.English, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All }
+        var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All }
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
             (res: dal.ImageGalleryResponse) => {
                 this.images = res.Images;

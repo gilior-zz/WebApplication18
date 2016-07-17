@@ -15,15 +15,7 @@
 </head>
 <body>
     <app></app>
-    <footer>
-        <div class="container">
-            <div class="row footer-row text-center">
-                <div class="col-xs-12 col-md-3 text-muted">Developed by Future Web-Sites</div>
-                <div class="col-xs-12 col-md-offset-7 col-xs col-md-2 text-muted">Noya Schleien@2013</div>
-            </div>
 
-        </div>
-    </footer>
 
 
     <!-- #region  angular-->
@@ -59,6 +51,14 @@
     <!-- #region  bootstrap-->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/bootstrap.min.js"></script>
+
+    <link href="Content/css/bootstrap-rtl.css" rel="stylesheet" />
+    <script>
+        var lang = sessionStorage.getItem('lang');
+        if (lang && lang == '1')
+            $('link[rel=stylesheet][href~="Content/css/bootstrap-rtl.css"]').remove();
+    </script>
+
     <!-- #endregion bootstrap-->
     <!-- #region  GoogleFonts-->
     <link href='https://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>
@@ -66,6 +66,8 @@
     <!-- #region  scroll to-->
     <script src="lib/jquery-scrollto.js"></script>
     <!-- #endregion scroll to-->
+    <!-- #region translate -->
+    <!-- #endregion translate-->
     <!-- #region  config-->
     <script>
         System.config({
@@ -77,6 +79,8 @@
                 }
             },
             map: {
+
+
                 text: "lib/system.text.js",
             }
         });

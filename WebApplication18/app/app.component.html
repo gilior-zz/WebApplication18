@@ -1,33 +1,66 @@
-﻿<!--<span *ngFor="#menuItem of menuItems">{{menuItem.Text_English}}</span>-->
-<header-image>loading...</header-image>
-<!--<span *ngIf="!menuItems">loading...</span>-->
-<nav class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-header">
-            <p class="navbar-text h2 hidden-md hidden-lg hidden-sm menu-font">{{currentPathName}}</p>
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+﻿
 
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div>
-                <ul class="nav navbar-nav">
-                    <li *ngFor="#menuItem of menuItems">
-                        <a class="menu-font h3" [routerLink]="[menuItem.Name]">{{menuItem.Text_English}}</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <!--<div>next right to nav</div>-->
-        </div>
-    </div>
-</nav>
 <div class="container">
-    <router-outlet></router-outlet>
+    <header-image [ImageURL]="ImageURL">loading...</header-image>
+    <div dir="ltr" class="btn-group-sm">
+        <a (click)="changeToEnglish()" class="langLinks">Eng</a>
+        <a (click)="changeToHebrew()" class="langLinks">עבר</a>
+    </div>
+    <div class="navbar navbar-default my-navbar" style="">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span style="font-weight: 900; color: white">Menu</span>
+            </button>
+            <h4 class="navMenu hidden-lg hidden-md hidden-sm mobliePath">
+                <span>{{'Noya Schleien'|translate}}</span>
+                <span>|</span>
+                <span>{{currentPathName|translate}}</span>
+
+            </h4>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="menu-ul nav nav-pills nav-justified ">
+                <li *ngFor="#menuItem of menuItems">
+                    <a class="menu-font  menu-anchor" [routerLink]="[menuItem.Name]">{{menuItem.Text}}</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
 </div>
 
+<div class="container">
+    <router-outlet></router-outlet>
+
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row footer-row text-center">
+            <div class="col-xs-12 col-md-3">
+                <a class="h5" href="mailto:noyaschleien@gmail.com">noyaschleien@gmail.com</a>
+            </div>
+            <div class="col-md-7"></div>
+            <div class="col-xs-12 col-md-2">
+                <button (click)="goToContact()" class="btn btn-primary">Order Concert</button>
+            </div>
+            <hr class="dl-horizontal" />
+            <div>
+                <span>Noya Schleien@2013</span>
+                <span>|</span>
+                <span>Developed by</span>
+                <a>Future WebSites</a>
+            </div>
+        </div>
+
+
+
+    </div>
+</footer>

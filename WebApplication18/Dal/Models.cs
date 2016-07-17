@@ -54,7 +54,7 @@ namespace WebApplication18.Dal
         public double Order { get; set; }
         public bool Visible { get; set; }
         public DateTime TimeStamp { get; set; }
-      
+
 
     }
 
@@ -65,6 +65,11 @@ namespace WebApplication18.Dal
         public ImageGalleryItem[] Images { get; set; }
         public ImageGalleryItem Image { get; set; }
     }
+    public class MenuImageResponse : DataRespone
+    {
+        public string ImageURL { get; set; }
+
+    }
 
     public class ImageGalleryRequest : DataRequest
     {
@@ -72,6 +77,13 @@ namespace WebApplication18.Dal
         public NextData NextData { get; set; }
         public DataAmount DataAmount { get; set; }
     }
+
+    public class MenuImageRequest : DataRequest
+    {
+        public string PathName { get; set; }
+    }
+
+
 
     public class PressItem
     {
@@ -213,18 +225,21 @@ namespace WebApplication18.Dal
     {
         public int ID;
         public double Order;
-        public string Text_English;
+
         public string Name;
-        public string Text_Hebrew;
+        public string Text;
         public bool isDefault;
-        public MenuItem(int id, double order, string text_English, string text_Hebrew, bool isDefault, string name)
+        public int ImageID { get; set; }
+        public string ImageURL { get; set; }
+        public MenuItem(int id, double order, string text, bool isDefault, string name, int imageID, string imageURL)
         {
             this.ID = id;
             this.Order = order;
-            this.Text_English = text_English;
-            this.Text_Hebrew = text_Hebrew;
+            this.Text = text;
             this.isDefault = isDefault;
             this.Name = name;
+            this.ImageID = imageID;
+            this.ImageURL = imageURL;
         }
 
     }

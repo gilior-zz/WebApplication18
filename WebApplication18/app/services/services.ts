@@ -2,6 +2,7 @@
 import {Http, Response, Headers, RequestOptions} from 'angular2/http';
 import * as model from '../dal/models'
 import {Observable}     from 'rxjs/Observable';
+
 @Injectable()
 export class CacheManager {
     constructor() { }
@@ -33,7 +34,7 @@ export class CacheManager {
 
 export class DataService {
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private CacheManager: CacheManager) { }
     //public ConnectToApiData(request: model.DataRequest, url: string): Promise<model.DataResponse> {
     //    let body = JSON.stringify({ request });
     //    let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -53,7 +54,15 @@ export class DataService {
     //    return body;
     //}
 
+    public GetFileContent(filePath: string) {
+        return this.http.get(filePath).map(res => res.json())
+            .do(data => console.log(data)) // eyeball results in the console
+            .catch(this.handleError)
+    }
+
     public ConnectToApiData(request: model.DataRequest, url: string): Observable<model.DataResponse> {
+        var lang = this.CacheManager.GetFromCache('lang', model.Language.Hebrew);
+        request.Language = lang;
         let body = JSON.stringify({ request });
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

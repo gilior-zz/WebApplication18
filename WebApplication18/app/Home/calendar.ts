@@ -14,10 +14,16 @@ export class Calendar implements OnInit {
     }
 
     onLeft(): void {
-        var nextData = dal.NextData.Prev
-        this.dataDate = new Date((this.cacheService.GetFromCache('currentDataDate', new Date()).toString()));
-
-        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
+        var lang: dal.Language = this.cacheService.GetFromCache('lang', dal.Language.Hebrew);
+        switch (lang) {
+            case dal.Language.Hebrew:
+                var requiredData = dal.NextData.Next;
+                break;
+            case dal.Language.English:
+                var requiredData = dal.NextData.Prev;
+                break;
+        }
+        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.Hebrew, NextData: requiredData };
 
         this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
             subscribe((res: dal.CalendarResponse) => {
@@ -30,10 +36,20 @@ export class Calendar implements OnInit {
             );
     }
     onRight(): void {
-        var nextData = dal.NextData.Next
+
+        var lang: dal.Language = this.cacheService.GetFromCache('lang', dal.Language.Hebrew);
+        switch (lang) {
+            case dal.Language.Hebrew:
+                var requiredData = dal.NextData.Prev;
+                break;
+            case dal.Language.English:
+                var requiredData = dal.NextData.Next;
+                break;
+        }
+
         this.dataDate = new Date((this.cacheService.GetFromCache('currentDataDate', new Date()).toString()));
 
-        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
+        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.Hebrew, NextData: requiredData };
 
         this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
             subscribe((res: dal.CalendarResponse) => {
@@ -49,7 +65,7 @@ export class Calendar implements OnInit {
         var nextData = dal.NextData.Currnet
         this.dataDate = new Date((this.cacheService.GetFromCache('currentDataDate', new Date()).toString()));
 
-        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.English, NextData: nextData };
+        var req: dal.CalendarRequest = { CurrentCalendarDate: this.dataDate, Language: dal.Language.Hebrew, NextData: nextData };
 
         this.dataService.ConnectToApiData(req, 'api/Data/GetCalendar').
             subscribe((res: dal.CalendarResponse) => {

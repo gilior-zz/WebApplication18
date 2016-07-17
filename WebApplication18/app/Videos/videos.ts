@@ -1,14 +1,17 @@
 ﻿import {Component, OnInit, AfterViewInit} from 'angular2/core'
-
+import {HeaderImage} from '../HeaderImage/header.image'
+import {RouteParams} from 'angular2/router'
 declare var youmax: any;
 @Component({
-    template: require("./videos.html!text")
+    template: require("./videos.html!text"),
+    directives: [HeaderImage]
 })
 
 export class Videos implements OnInit, AfterViewInit {
     youmaxObj: any;
-    constructor() {
-
+    ImageURL: string;
+    constructor(private routeParams: RouteParams) {
+        this.ImageURL = this.routeParams.get('ImageURL');
     }
 
     ngAfterViewInit() {
