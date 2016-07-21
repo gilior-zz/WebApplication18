@@ -101,6 +101,9 @@ body {
   body .black-border {
     border: 1px solid black;
     border-radius: 5px; }
+  body .red-border {
+    border: 1px solid red;
+    /*border-radius: 5px;*/ }
   body .left-button {
     width: 40px;
     height: 20px; }
@@ -238,6 +241,10 @@ footer {
 .white-panel {
   padding: 10px;
   background-color: white; }
+
+.black-panel {
+  padding: 10px;
+  background-color: #808080; }
 
 .float-left {
   float: left; }

@@ -1,12 +1,13 @@
 ﻿
-<div class="white-panel" (keyup)="onKeyUp($event)">
-    <div class="outer-image-div">
-        <div class="left-filler col-lg-1  hidden-md hidden-sm hidden-xs">
+<div class="black-panel" (keyup)="onKeyUp($event)">
+    <div class="outer-image-div row">
+        <div class="left-filler col-xs-1">
             <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
         </div>
-        <div class="col-xs-12 col-lg-10 text-center main-image row text-center" style="background-image:url({{mainImagePath}})">
+        <div class="col-xs-10  text-center main-image  text-center">
+            <img src="{{mainImagePath}}" alt="" class="img-responsive" />
         </div>
-        <div class="right-filler col-lg-1  hidden-md hidden-sm hidden-xs">
+        <div class="right-filler col-xs-1">
             <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
         </div>
     </div>

@@ -143,6 +143,12 @@ body {
         border-radius: 5px;
     }
 
+    .red-border {
+        border: 1px solid red;
+        /*border-radius: 5px;*/
+    }
+
+
 
 
 
@@ -214,6 +220,9 @@ body {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
+        img{
+           
+        }
     }
 
 
@@ -347,6 +356,13 @@ footer {
     padding: 10px;
     background-color: white;
 }
+
+
+.black-panel {
+    padding: 10px;
+    background-color: #808080;
+}
+
 
 .float-left {
     float: left;

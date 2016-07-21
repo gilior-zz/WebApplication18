@@ -445,6 +445,7 @@
     <Content Include="Global.asax" />
     <Content Include="lib\es6-shim.min.js" />
     <Content Include="lib\jquery-scrollto.js" />
+    <Content Include="lib\jquery.flexslider.js" />
     <Content Include="lib\ng2-translate\bundles\ng2-translate.js" />
     <Content Include="lib\ng2-translate\karma-test-shim.js" />
     <Content Include="lib\ng2-translate\karma.conf.js" />
@@ -470,6 +471,7 @@
     <Content Include="lib\ng2-translate\README.md" />
     <Content Include="lib\ng2-translate\tsconfig.json" />
     <Content Include="he.json" />
+    <Content Include="Content\flexslider.less" />
     <None Include="Properties\PublishProfiles\daddy.pubxml" />
     <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
@@ -634,7 +636,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>24631</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
