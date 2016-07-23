@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, provide} from "angular2/core"
+﻿import {Component, OnInit, provide, AfterViewInit} from "angular2/core"
 import * as services from "./services/services"
 import * as dal from "./dal/models"
 import {HTTP_PROVIDERS} from "angular2/http"
@@ -40,7 +40,7 @@ import * as pipes from './pipes/pipes'
 
 
 ])
-export class AppComponent implements OnInit, CanDeactivate {
+export class AppComponent implements OnInit, CanDeactivate, AfterViewInit {
     currentPathName: string;
     menuItems: dal.MenuItem[];
     currentView: string;
@@ -71,6 +71,10 @@ export class AppComponent implements OnInit, CanDeactivate {
     changeToHebrew() {
         this.CacheManager.StoreInCache("lang", dal.Language.Hebrew);
         document.location.reload();
+    }
+
+    ngAfterViewInit() {
+    
     }
 
 

@@ -15,7 +15,8 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     mainImagePath: string;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
-    bbb = 'lime';
+    isHebrew: boolean = false;
+    isEnglish: boolean = false;
 
 
     ngOnDestroy() {
@@ -23,10 +24,14 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        $("#kjh").on("swipeleft",
-            () => { this.LoadRequestedImage(dal.NextData.Next) })
-        $("#kjh").on("swiperight",
-            () => { this.LoadRequestedImage(dal.NextData.Prev) })
+        $("#test").swipe({
+            //Generic swipe handler for all directions
+            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                $(this).text("You swiped " + direction);
+            },
+            //Default is 75px, set to 0 for demo so any distance triggers swipe
+            threshold: 0
+        });
     }
 
 
@@ -111,6 +116,9 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         this.ImageURL = this.routeParams.get('ImageURL');
     }
     ngOnInit() {
+        var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
+        this.isEnglish = lang == dal.Language.English;
+        this.isHebrew = lang == dal.Language.Hebrew;
         var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
 
         var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }

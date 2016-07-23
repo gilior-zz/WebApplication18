@@ -19,6 +19,23 @@ html {
 }
 
 body {
+    .swipe {
+        overflow: hidden;
+        visibility: hidden;
+        position: relative;
+    }
+
+    .swipe-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .swipe-wrap > div {
+        float: left;
+        width: 100%;
+        position: relative;
+    }
+
     .outer-image-div {
         height: 600px;
     }
@@ -220,8 +237,8 @@ body {
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        img{
-           
+
+        img {
         }
     }
 
@@ -413,6 +430,9 @@ footer {
 
 .white-font {
     color: white;
+}
+
+.invisible {
 }
 
 .left-to-right {

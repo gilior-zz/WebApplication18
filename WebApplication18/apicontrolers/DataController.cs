@@ -247,7 +247,7 @@ namespace WebApplication18.apicontrolers
 
         private static SqlConnection initializeConnection()
         {
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["testDB"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["noyaDB"].ConnectionString);
 
             return connection;
         }
