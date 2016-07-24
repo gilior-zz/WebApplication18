@@ -1,25 +1,26 @@
 ﻿
-<div class="black-panel" (keyup)="onKeyUp($event)">
-    <div class="outer-image-div row">
-        <div *ngIf="isEnglish" class="left-filler col-xs-1">
+<div id="" class="black-panel">
+    <div class ="outer-image-div row">
+        <div *ngIf="isEnglish" class="left-filler hidden-xs col-sm-1">
             <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
         </div>
-        <div *ngIf="isHebrew" class="right-filler col-xs-1">
+        <div *ngIf="isHebrew" class="right-filler hidden-xs col-sm-1">
             <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
         </div>
-        <div class="col-xs-10  text-center main-image  text-center" style="background-image:url({{mainImagePath}})">
-
+        <div class="col-xs-12 col-sm-10  text-center main-image" style="background-image:url({{mainImagePath}})">
         </div>
-        <div *ngIf="isEnglish" class="right-filler col-xs-1">
+        <div *ngIf="isEnglish" class="right-filler hidden-xs col-sm-1">
             <span class="glyphicon glyphicon-hand-right switch-image-glyphicon right-arrow" aria-hidden="true" (click)="onRight()"></span>
         </div>
-        <div *ngIf="isHebrew" class="left-filler col-xs-1">
+        <div *ngIf="isHebrew" class="left-filler hidden-xs col-sm-1">
             <span [hidden]="mainImagePath==null" class="glyphicon glyphicon-hand-left switch-image-glyphicon left-arrow" aria-hidden="true" (click)="onLeft()"></span>
         </div>
     </div>
-
-
-    <div class="tool-strip hidden-md hidden-sm hidden-xs">
+    <div class="tool-strip hidden-xs">
         <img class="img-thumbnail" *ngFor="#img of images" height="100" [id]="img.ID" [src]="img.ImageURL" (click)="onSelectedImage(img)" [class.thumbnail-selected]="isSelected(img)" />
     </div>
+
 </div>
+
+
+

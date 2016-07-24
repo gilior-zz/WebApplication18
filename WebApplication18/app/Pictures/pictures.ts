@@ -17,21 +17,29 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     imagesToolBarPathes: string[];
     isHebrew: boolean = false;
     isEnglish: boolean = false;
-
+    mySwipe: Swipe;
 
     ngOnDestroy() {
 
     }
 
     ngAfterViewInit() {
-        $("#test").swipe({
-            //Generic swipe handler for all directions
-            swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                $(this).text("You swiped " + direction);
-            },
-            //Default is 75px, set to 0 for demo so any distance triggers swipe
-            threshold: 0
-        });
+        
+        //$(".main-image").on("swipe", function () {
+        //    console.log('swipe wipe');
+        //});
+        //this.mySwipe = new Swipe(document.getElementById('slider'), {
+        //    startSlide: 2,
+        //    speed: 400,
+        //    auto: 3000,
+        //    continuous: true,
+        //    disableScroll: false,
+        //    stopPropagation: false,
+        //    callback: function (index, elem) { },
+        //    transitionEnd: function (index, elem) { }                       
+        //});
+    
+       
     }
 
 

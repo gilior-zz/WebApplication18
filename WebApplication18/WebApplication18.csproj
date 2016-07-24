@@ -459,6 +459,7 @@
     <Content Include="lib\jquery.flexslider-min.js" />
     <Content Include="lib\jquery.flexslider.js" />
     <Content Include="lib\shims_for_IE.js" />
+    <Content Include="lib\swipe.js" />
     <Content Include="lib\system-polyfills.js" />
     <Content Include="packages.config" />
     <Content Include="Content\site.scss" />
