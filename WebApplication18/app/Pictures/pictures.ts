@@ -4,7 +4,10 @@ import * as services from '../services/services'
 import {HeaderImage} from '../HeaderImage/header.image'
 import {RouteParams} from 'angular2/router'
 
+
+declare var Swiper: any;
 @Component({
+
     template: require("./pictures.html!text"),
     directives: [HeaderImage]
 
@@ -17,29 +20,18 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     imagesToolBarPathes: string[];
     isHebrew: boolean = false;
     isEnglish: boolean = false;
-    mySwipe: Swipe;
 
+    example1SwipeOptions: any;
     ngOnDestroy() {
 
     }
 
     ngAfterViewInit() {
-        
-        //$(".main-image").on("swipe", function () {
-        //    console.log('swipe wipe');
-        //});
-        //this.mySwipe = new Swipe(document.getElementById('slider'), {
-        //    startSlide: 2,
-        //    speed: 400,
-        //    auto: 3000,
-        //    continuous: true,
-        //    disableScroll: false,
-        //    stopPropagation: false,
-        //    callback: function (index, elem) { },
-        //    transitionEnd: function (index, elem) { }                       
-        //});
-    
-       
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+        })
     }
 
 
@@ -122,6 +114,11 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private routeParams: RouteParams) {
         this.mainImagePath = 'Content/Sources/loading.gif';
         this.ImageURL = this.routeParams.get('ImageURL');
+        this.example1SwipeOptions = {
+            slidesPerView: 4,
+            loop: false,
+            spaceBetween: 5
+        };
     }
     ngOnInit() {
         var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);

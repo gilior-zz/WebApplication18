@@ -19,17 +19,6 @@ body {
   /* Let's get this party started */
   /* Track */
   /* Handle */ }
-  body .swipe {
-    overflow: hidden;
-    visibility: hidden;
-    position: relative; }
-  body .swipe-wrap {
-    overflow: hidden;
-    position: relative; }
-  body .swipe-wrap > div {
-    float: left;
-    width: 100%;
-    position: relative; }
   body .outer-image-div {
     height: 600px; }
   body .left-filler {

@@ -3,7 +3,7 @@ import * as services from "./services/services"
 import * as dal from "./dal/models"
 import {HTTP_PROVIDERS} from "angular2/http"
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router, RouterLink, CanDeactivate, ComponentInstruction, LocationStrategy,
-HashLocationStrategy } from "angular2/router";
+    HashLocationStrategy } from "angular2/router";
 
 import {Home} from "./Home/home"
 import {Biography} from "./Biography/biography"
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, CanDeactivate, AfterViewInit {
     currentView: string;
 
     constructor(private dataService: services.DataService, private router: Router, private CacheManager: services.CacheManager) {
-        router.subscribe((url) => {          
+        router.subscribe((url) => {
             // Current URL
             router.recognize(url).then((instruction) => {
                 this.currentPathName = instruction.component.componentType.name;
@@ -74,7 +74,7 @@ export class AppComponent implements OnInit, CanDeactivate, AfterViewInit {
     }
 
     ngAfterViewInit() {
-    
+
     }
 
 
