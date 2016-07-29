@@ -19,6 +19,9 @@ html {
 }
 
 body {
+    .swiper-wrapper {
+        height: 600px !important;
+    }
 
     .outer-image-div {
         height: 600px;

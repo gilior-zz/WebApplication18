@@ -19,6 +19,8 @@ body {
   /* Let's get this party started */
   /* Track */
   /* Handle */ }
+  body .swiper-wrapper {
+    height: 600px !important; }
   body .outer-image-div {
     height: 600px; }
   body .left-filler {

@@ -28,9 +28,14 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         var mySwiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            //pagination: '.swiper-pagination',
+            //paginationClickable: true,
+            // Disable preloading of all images
+            preloadImages: false,
+            // Enable lazy loading
+            lazyLoading: true
         })
     }
 
