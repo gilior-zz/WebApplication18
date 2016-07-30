@@ -66,7 +66,12 @@
     <!-- #endregion scroll to-->
     <!-- #region swipe -->
     <link href="Content/Swiper/swiper.min.css" rel="stylesheet" />
-    <script src="lib/swiper.js"></script>
+    <script>
+        System.import('lib/swiper.js')
+            .then(null, console.error.bind(console));
+    </script>
+
+    <!-- <script src="lib/swiper.js"></script>-->
     <!-- #endregion swipe-->
     <!-- #region  config-->
     <script>
