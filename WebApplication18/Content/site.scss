@@ -25,6 +25,7 @@ body {
 
     .outer-image-div {
         height: 600px;
+        text-align: center;
     }
 
     .left-filler {
@@ -37,6 +38,7 @@ body {
 
     .router-link-active {
         background-color: rgba(132, 200, 248, 0.4) !important;
+        font-size: larger;
         /*color: black !important;*/
     }
 
@@ -241,12 +243,14 @@ body {
         border: 3px solid black;
     }
 
-    .ng-valid[required] {
+    .ng-dirty.ng-valid[required] {
         border-left: 5px solid #42A948; /* green */
+        border-right: 5px solid #42A948; /* green */
     }
 
-    .ng-invalid {
+    .ng-dirty.ng-invalid {
         border-left: 5px solid #a94442; /* red */
+        border-right: 5px solid #a94442; /* red */
     }
 
 
@@ -424,6 +428,10 @@ footer {
 
 .left-to-right {
     direction: ltr;
+}
+
+.none-out-line {
+    outline: none;
 }
 /*#endregion dal*/
 

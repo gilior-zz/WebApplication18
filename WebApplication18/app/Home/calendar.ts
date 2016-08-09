@@ -14,7 +14,7 @@ export class Calendar implements OnInit {
     }
 
     onLeft(): void {
-        var lang: dal.Language = this.cacheService.GetFromCache('lang', dal.Language.Hebrew);
+        var lang: dal.Language = +this.cacheService.GetFromCache('lang', "0");
         switch (lang) {
             case dal.Language.Hebrew:
                 var requiredData = dal.NextData.Next;
@@ -37,7 +37,7 @@ export class Calendar implements OnInit {
     }
     onRight(): void {
 
-        var lang: dal.Language = this.cacheService.GetFromCache('lang', dal.Language.Hebrew);
+        var lang: dal.Language = +this.cacheService.GetFromCache('lang', "0");
         switch (lang) {
             case dal.Language.Hebrew:
                 var requiredData = dal.NextData.Prev;

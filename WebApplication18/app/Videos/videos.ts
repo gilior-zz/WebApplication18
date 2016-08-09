@@ -31,6 +31,7 @@ export class Videos implements OnInit, AfterViewInit {
             displayFirstVideoOnLoad: true,
             autoLoadComments: true,
             hideNavigation: true,
+            hideLoadMore: true
         };
 
         this.youmaxObj = new youmax(options);
