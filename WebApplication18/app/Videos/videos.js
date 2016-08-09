@@ -32,7 +32,8 @@ var Videos = (function () {
             displayFirstVideoOnLoad: true,
             autoLoadComments: true,
             hideNavigation: true,
-            hideLoadMore: true
+            hideLoadMore: true,
+            hideHeader: true
         };
         this.youmaxObj = new youmax(options);
     };
