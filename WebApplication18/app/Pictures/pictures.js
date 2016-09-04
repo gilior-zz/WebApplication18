@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,20 +13,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
+var core_1 = require('@angular/core');
 var dal = require('../dal/models');
 var services = require('../services/services');
-var header_image_1 = require('../HeaderImage/header.image');
-var router_1 = require('angular2/router');
-var Pictures = (function () {
-    function Pictures(dataService, cacheManager, routeParams) {
+var platform_browser_1 = require('@angular/platform-browser');
+var base_component_1 = require('../common/base.component');
+var router_1 = require('@angular/router');
+var Pictures = (function (_super) {
+    __extends(Pictures, _super);
+    function Pictures(dataService, cacheManager, sanitizer, router) {
+        _super.call(this, router);
         this.dataService = dataService;
         this.cacheManager = cacheManager;
-        this.routeParams = routeParams;
+        this.sanitizer = sanitizer;
+        this.router = router;
         this.isHebrew = false;
         this.isEnglish = false;
-        this.mainImagePath = 'Content/Sources/loading.gif';
-        this.ImageURL = this.routeParams.get('ImageURL');
+        this.headImageUpdate = new core_1.EventEmitter();
+        this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("Content/Sources/loading.gif");
+        ;
         this.example1SwipeOptions = {
             slidesPerView: 4,
             loop: false,
@@ -46,7 +56,7 @@ var Pictures = (function () {
         this.LoadRequestedImage(dal.NextData.Prev);
     };
     Pictures.prototype.onKeyUp = function (event) {
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
         var nextData = event.keyCode == 39 ? dal.NextData.Next : dal.NextData.Prev;
         this.LoadRequestedImage(nextData);
     };
@@ -65,26 +75,26 @@ var Pictures = (function () {
         switch (nextData) {
             case dal.NextData.Next:
                 if (isLastImage) {
-                    this.mainImagePath = this.images[0].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("url('" + this.images[0].ImageURL + "')");
                     this.cacheManager.StoreInCache('currentImageID', this.images[0].ID);
                 }
                 else {
-                    this.mainImagePath = this.images[nextIndex].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("url('" + this.images[nextIndex].ImageURL + "')");
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
                 }
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath = this.images[this.images.length - 1].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("url('" + this.images[this.images.length - 1].ImageURL + "')");
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
-                    this.mainImagePath = this.images[prevIndex].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("url('" + this.images[prevIndex].ImageURL + "')");
                     this.cacheManager.StoreInCache('currentImageID', this.images[prevIndex].ID);
                 }
                 break;
             case dal.NextData.Currnet:
-                this.mainImagePath = this.images[currentIndex].ImageURL;
+                this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("url('" + this.images[currentIndex].ImageURL + "')");
                 this.cacheManager.StoreInCache('currentImageID', this.images[currentIndex].ID);
                 break;
         }
@@ -102,29 +112,34 @@ var Pictures = (function () {
     };
     Pictures.prototype.ngOnInit = function () {
         var _this = this;
+        this.headImageUpdate.emit('aaaaa');
         var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
         this.isEnglish = lang == dal.Language.English;
         this.isHebrew = lang == dal.Language.Hebrew;
         var currentImageID = this.cacheManager.GetFromCache('currentImageID', 1);
         var req = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single };
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
-            _this.mainImagePath = res.Image.ImageURL;
-            console.log(_this.mainImagePath);
+            _this.mainImagePath = _this.sanitizer.bypassSecurityTrustStyle("url('" + res.Image.ImageURL + "')");
+            //console.log(this.mainImagePath);
             _this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
-        }, function (err) { console.log(err.ErrorText); });
+        }, function (err) { });
         var req = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.All };
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(function (res) {
             _this.images = res.Images;
-        }, function (err) { console.log(err.ErrorText); });
+        }, function (err) { });
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], Pictures.prototype, "headImageUpdate", void 0);
     Pictures = __decorate([
         core_1.Component({
-            template: require("./pictures.html!text"),
-            directives: [header_image_1.HeaderImage]
+            templateUrl: "./pictures.html",
+            moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, router_1.RouteParams])
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizationService, router_1.Router])
     ], Pictures);
     return Pictures;
-}());
+}(base_component_1.BaseComponent));
 exports.Pictures = Pictures;
 //# sourceMappingURL=pictures.js.map

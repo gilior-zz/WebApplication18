@@ -1,23 +1,20 @@
-﻿import {Component, OnInit} from 'angular2/core'
-import {RouteParams} from 'angular2/router'
-import {Calendar} from './calendar'
-import {Updates} from './updates'
-import {Press} from './press'
-import {HeaderImage} from '../HeaderImage/header.image'
-
-
+﻿import {Component, OnInit} from '@angular/core'
+import {BaseComponent} from '../common/base.component'
+import {Router} from '@angular/router'
 @Component({
-    template: require("./home.html!text"),
-    directives: [Calendar, Updates, Press, HeaderImage],
-   
+    templateUrl: "./home.html",
+    moduleId: module.id,
+
 })
 
-export class Home implements OnInit {
-    ImageURL: string;
-    constructor(private routeParams: RouteParams) {
-        this.ImageURL = this.routeParams.get('ImageURL');
-    }
-    ngOnInit() {
+export class Home extends BaseComponent implements OnInit {
+
+    constructor(public router: Router) {
+        super(router);
 
     }
+    //public pageName
+    //ngOnInit() {
+    //    this.pageName
+    //}
 }

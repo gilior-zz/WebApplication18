@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,13 +13,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var header_image_1 = require('../HeaderImage/header.image');
-var router_1 = require('angular2/router');
-var Videos = (function () {
-    function Videos(routeParams) {
-        this.routeParams = routeParams;
-        this.ImageURL = this.routeParams.get('ImageURL');
+var core_1 = require('@angular/core');
+var base_component_1 = require('../common/base.component');
+var router_1 = require('@angular/router');
+var Videos = (function (_super) {
+    __extends(Videos, _super);
+    function Videos(router) {
+        _super.call(this, router);
+        this.router = router;
     }
     Videos.prototype.ngAfterViewInit = function () {
         var options = {
@@ -41,12 +47,12 @@ var Videos = (function () {
     };
     Videos = __decorate([
         core_1.Component({
-            template: require("./videos.html!text"),
-            directives: [header_image_1.HeaderImage]
+            templateUrl: "./videos.html",
+            moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [router_1.RouteParams])
+        __metadata('design:paramtypes', [router_1.Router])
     ], Videos);
     return Videos;
-}());
+}(base_component_1.BaseComponent));
 exports.Videos = Videos;
 //# sourceMappingURL=videos.js.map

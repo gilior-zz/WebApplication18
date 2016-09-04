@@ -1,18 +1,20 @@
-﻿import {Component, OnInit} from 'angular2/core'
-import {RouteParams} from 'angular2/router'
+﻿import {Component, OnInit} from '@angular/core'
+
+import {BaseComponent} from '../common/base.component'
+import {Router} from '@angular/router'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
-import {HeaderImage} from '../HeaderImage/header.image'
+
 @Component({
-    template: require("./programs.html!text"),
-    directives: [HeaderImage]
+    templateUrl: "./programs.html",
+    moduleId: module.id,
 })
 
-export class Programs implements OnInit {
+export class Programs extends BaseComponent implements OnInit {
     programs: dal.Program[];
-    ImageURL: string;
-    constructor(private dataService: services.DataService, private routeParams: RouteParams) {
-        this.ImageURL = this.routeParams.get('ImageURL');
+
+    constructor(private dataService: services.DataService, public router: Router) {
+        super(router);
     }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew };

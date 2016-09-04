@@ -1,40 +1,31 @@
-﻿import {Component, OnDestroy, OnInit} from 'angular2/core'
-import {CanDeactivate, ComponentInstruction, RouteParams} from 'angular2/router';
+﻿import {Component, OnDestroy, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
+import {BaseComponent} from '../common/base.component'
 import {NgForm} from 'angular2/common'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
-import {HeaderImage} from '../HeaderImage/header.image'
+
 import * as pipes from '../pipes/pipes'
 
 @Component({
-    template: require("./contact.html!text"),
-    providers: [services.DialogService],
-    directives: [HeaderImage],
-    pipes: [pipes.TranslatePipe]
+    templateUrl: "./contact.html",   
+    moduleId: module.id,
 })
 
-export class Contact implements OnDestroy, CanDeactivate {
+export class Contact extends BaseComponent implements OnDestroy {
     displaySubmitError: boolean;
     isSubmitting: boolean;
     submitted: boolean;
     message: dal.Message;
-    isOrderConcert;
-    ImageURL: string;
-    constructor(private dataservice: services.DataService, private dialogeService: services.DialogService, private routeParams: RouteParams) {
 
-        this.ImageURL = this.routeParams.get('ImageURL');
-        this.isOrderConcert = this.routeParams.get('OrderConcert');
+
+    constructor(private dataservice: services.DataService, private dialogeService: services.DialogService, public router: Router) {
+        super(router);
+
+
     }
 
-    routerCanDeactivate(next: ComponentInstruction, prev: ComponentInstruction): any {
-        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged.
-        if (!this.isSubmitting) {
-            return true;
-        }
-        // Otherwise ask the user with the dialog service and return its
-        // promise which resolves to true or false when the user decides
-        return this.dialogeService.confirm('Cancel submission?');
-    }
+
 
     ngOnDestroy(): void {
 

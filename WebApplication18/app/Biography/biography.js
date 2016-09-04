@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,16 +13,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
+var core_1 = require('@angular/core');
+var base_component_1 = require('../common/base.component');
+var router_1 = require('@angular/router');
 var services = require('../services/services');
 var dal = require('../dal/models');
-var header_image_1 = require('../HeaderImage/header.image');
-var Biography = (function () {
-    function Biography(dataService, routeParams) {
+var Biography = (function (_super) {
+    __extends(Biography, _super);
+    function Biography(dataService, router) {
+        _super.call(this, router);
         this.dataService = dataService;
-        this.routeParams = routeParams;
-        this.ImageURL = this.routeParams.get('ImageURL');
+        this.router = router;
     }
     Biography.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,12 +32,12 @@ var Biography = (function () {
     };
     Biography = __decorate([
         core_1.Component({
-            template: require("./biography.html!text"),
-            directives: [header_image_1.HeaderImage]
+            templateUrl: "./biography.html",
+            moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, router_1.RouteParams])
+        __metadata('design:paramtypes', [services.DataService, router_1.Router])
     ], Biography);
     return Biography;
-}());
+}(base_component_1.BaseComponent));
 exports.Biography = Biography;
 //# sourceMappingURL=biography.js.map

@@ -1040,16 +1040,8 @@
     <Content Include="Content\Swiper\swiper.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="lib\es6-shim.min.js" />
-    <Content Include="lib\jquery-scrollto.js" />
-    <Content Include="lib\jquery.flexslider-min.js" />
-    <Content Include="lib\jquery.flexslider.js" />
-    <Content Include="lib\jquery.touchSwipe.min.js" />
-    <Content Include="lib\shims_for_IE.js" />
     <Content Include="lib\swipe.js" />
     <Content Include="lib\swiper.js" />
-    <Content Include="lib\system-polyfills.js" />
-    <Content Include="node_modules\angular2-swiper\dist\ks-swiper.js" />
     <Content Include="packages.config" />
     <Content Include="Content\site.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1060,6 +1052,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="he.json" />
     <Content Include="Content\flexslider.less" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\daddy.pubxml" />
     <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
@@ -1078,6 +1071,7 @@
     <Content Include="Scripts\tab.js" />
     <Content Include="Scripts\tooltip.js" />
     <Content Include="Scripts\transition.js" />
+    <Content Include="systemjs.config.js" />
     <Content Include="woothemes-FlexSlider-622f7fd\bower_components\jquery\dist\jquery.js" />
     <Content Include="woothemes-FlexSlider-622f7fd\bower_components\jquery\dist\jquery.min.js" />
     <Content Include="woothemes-FlexSlider-622f7fd\bower_components\jquery\MIT-LICENSE.txt" />
@@ -1322,6 +1316,8 @@
     </None>
     <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Scripts\jquery-2.0.0.min.map" />
+    <Content Include="tsconfig.json" />
+    <Content Include="typings.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1371,15 +1367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.component.html" />
-    <Content Include="config.js" />
     <Content Include="index.html" />
-    <Content Include="lib\angular2-polyfills.js" />
-    <Content Include="lib\angular2.dev.js" />
-    <Content Include="lib\http.dev.js" />
-    <Content Include="lib\router.dev.js" />
-    <Content Include="lib\Rx.js" />
-    <Content Include="lib\system.src.js" />
-    <Content Include="lib\system.text.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1396,7 +1384,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\Biography\biography.ts" />
+    <TypeScriptCompile Include="app\common\base.component.ts" />
     <TypeScriptCompile Include="app\Contact\contact.ts" />
     <TypeScriptCompile Include="app\dal\models.ts" />
     <TypeScriptCompile Include="app\HeaderImage\header.image.ts" />
@@ -1411,17 +1402,13 @@
     <TypeScriptCompile Include="app\Programs\programs.ts" />
     <TypeScriptCompile Include="app\services\services.ts" />
     <TypeScriptCompile Include="app\Videos\videos.ts" />
-    <TypeScriptCompile Include="app\widgets\plugins.ts" />
-    <TypeScriptCompile Include="Scripts\typings\flexSlider\flexSlider.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
-    <TypeScriptCompile Include="typings\main.d.ts" />
-    <TypeScriptCompile Include="typings\main\ambient\es6-shim.d.ts" />
-    <TypeScriptCompile Include="typings\main\ambient\node\node.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\widgets\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>

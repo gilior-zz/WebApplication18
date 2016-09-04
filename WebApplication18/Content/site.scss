@@ -97,8 +97,9 @@ body {
         min-height: 0;
 
         li :hover {
-            color: $primary-back-color !important;
-            background-color: #eee !important;
+            /*color: $primary-back-color !important;
+            background-color: #eee !important;*/
+            background-color: rgba(132, 200, 248, 0.4) !important;
         }
 
         li :focus {
@@ -124,6 +125,7 @@ body {
         background-size: cover;
         background-size: 100% 100%;
         height: 300px;
+        
     }
 
     .glyphicon {
@@ -386,6 +388,17 @@ footer {
 
 .margin-row {
     margin-bottom: 15px;
+}
+
+.ugly-align {
+    margin: 0 auto;
+}
+
+.active-menu-item {
+    font-weight: 900 !important;
+    background-color: rgba(132, 200, 248, 0.4) !important;
+    color: blue !important;
+    font-size: larger !important;
 }
 
 

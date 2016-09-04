@@ -1,34 +1,49 @@
-﻿import {Component, OnInit, ViewEncapsulation} from 'angular2/core'
-import {Router} from 'angular2/router'
+﻿import {Component, OnInit, ViewEncapsulation, Input } from '@angular/core'
+import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
+import {Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
 import * as pipes from '../pipes/pipes'
 
 @Component({
     selector: 'header-image',
-    template: require('./header.image.html!text'),
+    templateUrl: './header.image.html',
+    moduleId: module.id,
 
-    inputs: ['ImageURL'],
     pipes: [pipes.TranslatePipe]
 })
 
 export class HeaderImage implements OnInit {
 
-    ImageURL: string;
-    constructor(private router: Router, private dataService: services.DataService) {
-        router.subscribe((url) => {          
-            // Current URL
-            router.recognize(url).then((instruction) => {
-                var currentPathName = instruction.component.componentType.name;
+    //ImageURL: string;
+    //ImageURL: SafeUrl;
+    constructor(private dataService: services.DataService, private logService: services.LogService, public sanitizer: DomSanitizationService, public router: Router) {
 
-                var req: dal.MenuImageRequest = { Language: dal.Language.Hebrew, PathName: currentPathName };
-                this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(
-                    (res: dal.MenuImageResponse) => { this.ImageURL = res.ImageURL }
-                )
-            });
-        });
+    }
+    active: boolean = true;
+    ImageURL: string;
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        this.active = false;
+        setTimeout(this.active = true, 0);
+        return true;
     }
 
-    ngOnInit() { }
+
+
+    @Input() pageName: string;
+    safeImage: SafeStyle;
+    ngOnInit() {
+        this.logService.writeToLog('in ngOnInit');
+
+        var req: dal.MenuImageRequest = { Language: dal.Language.Hebrew, PathName: this.pageName };
+
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(
+            (res: dal.MenuImageResponse) => {
+                this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
+                this.safeImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.ImageURL}')`);
+
+            })
+    }
+
 
 }

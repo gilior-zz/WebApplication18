@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var http_1 = require('angular2/http');
+var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var model = require('../dal/models');
 var Observable_1 = require('rxjs/Observable');
 var CacheManager = (function () {
@@ -60,9 +60,9 @@ var DataService = (function () {
     //    return body;
     //}
     DataService.prototype.GetFileContent = function (filePath) {
-        return this.http.get(filePath).map(function (res) { return res.json(); })
-            .do(function (data) { return console.log(data); }) // eyeball results in the console
-            .catch(this.handleError);
+        return this.http.get(filePath).map(function (res) { return res.json(); });
+        //.do(data => //console.log(data)) // eyeball results in the console
+        //.catch(this.handleError)
     };
     DataService.prototype.ConnectToApiData = function (request, url) {
         var lang = this.CacheManager.GetFromCache('lang', model.Language.Hebrew);
@@ -70,14 +70,17 @@ var DataService = (function () {
         var body = JSON.stringify({ request: request });
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(url, body, options).map(function (res) { return res.json(); })
+        return this.http.post(url, body, options)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     DataService.prototype.handleError = function (error) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable_1.Observable.throw(error.json().error || 'Server error');
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable_1.Observable.throw(errMsg);
     };
     DataService = __decorate([
         core_1.Injectable(), 
@@ -104,11 +107,16 @@ var DialogService = (function () {
         });
     };
     ;
-    DialogService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], DialogService);
     return DialogService;
 }());
 exports.DialogService = DialogService;
+var LogService = (function () {
+    function LogService() {
+    }
+    LogService.prototype.writeToLog = function (msg) {
+        //log.debug(msg, ['a','b','c']);
+    };
+    return LogService;
+}());
+exports.LogService = LogService;
 //# sourceMappingURL=services.js.map

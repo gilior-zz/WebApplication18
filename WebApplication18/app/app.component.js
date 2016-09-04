@@ -8,40 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("angular2/core");
+var core_1 = require("@angular/core");
 var services = require("./services/services");
 var dal = require("./dal/models");
-var http_1 = require("angular2/http");
-var router_1 = require("angular2/router");
-var home_1 = require("./Home/home");
-var biography_1 = require("./Biography/biography");
-var links_1 = require("./Links/links");
-var contact_1 = require("./Contact/contact");
-var programs_1 = require("./Programs/programs");
-var pictures_1 = require("./Pictures/pictures");
-var videos_1 = require("./Videos/videos");
-var header_image_1 = require("./HeaderImage/header.image");
-var pipes = require('./pipes/pipes');
+var router_1 = require('@angular/router');
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js' 
 var AppComponent = (function () {
-    function AppComponent(dataService, router, CacheManager) {
-        var _this = this;
+    function AppComponent(dataService, CacheManager, router) {
         this.dataService = dataService;
-        this.router = router;
         this.CacheManager = CacheManager;
-        this.log = '';
-        router.subscribe(function (url) {
-            // Current URL
-            router.recognize(url).then(function (instruction) {
-                _this.currentPathName = instruction.component.componentType.name;
-                var collapseNav = window.innerWidth < 768;
-                if (collapseNav) {
-                    $('.btn-navbar').click(); //bootstrap 2.x
-                    $('.navbar-toggle').click(); //bootstrap 3.x by Richard
-                }
-            });
-        });
+        this.router = router;
     }
+    AppComponent.prototype.UpdateImage = function (imageUrl) {
+        //console.log(imageUrl);
+    };
     AppComponent.prototype.goToContact = function () {
         this.router.navigate(['Contact', { OrderConcert: true }]);
     };
@@ -55,13 +35,6 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngAfterViewInit = function () {
     };
-    AppComponent.prototype.setImage = function (menuItem) {
-        this.ImageURL = menuItem.ImageURL;
-    };
-    AppComponent.prototype.routerCanDeactivate = function (next, prev) {
-        this.log = "Finished navigating from \"" + (prev ? prev.urlPath : 'null') + "\" to \"" + next.urlPath + "\"";
-        console.log(this.log);
-    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         var req = { Language: dal.Language.Hebrew };
@@ -72,23 +45,11 @@ var AppComponent = (function () {
     };
     AppComponent = __decorate([
         core_1.Component({
-            selector: "app",
-            template: require("./app.component.html!text"),
-            //template: '<h1>My First Angular 2 App</h1><div class="grid" [ngGrid]><div class="grid-item" [ngGridItem]></div></div>',
-            directives: [router_1.ROUTER_DIRECTIVES, header_image_1.HeaderImage],
-            providers: [router_1.ROUTER_PROVIDERS, services.DataService, http_1.HTTP_PROVIDERS, services.CacheManager, core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })],
-            pipes: [pipes.TranslatePipe]
-        }),
-        router_1.RouteConfig([
-            { path: "/home", component: home_1.Home, name: "Home", useAsDefault: true },
-            { path: "/biography", component: biography_1.Biography, name: "Biography" },
-            { path: "/pictures", component: pictures_1.Pictures, name: "Pictures" },
-            { path: "/videos", component: videos_1.Videos, name: "Videos" },
-            { path: "/programs", component: programs_1.Programs, name: "Programs" },
-            { path: "/links", component: links_1.Links, name: "Links" },
-            { path: "/contact", component: contact_1.Contact, name: "Contact" },
-        ]), 
-        __metadata('design:paramtypes', [services.DataService, router_1.Router, services.CacheManager])
+            selector: "my-app",
+            templateUrl: "./app.component.html",
+            moduleId: module.id
+        }), 
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, router_1.Router])
     ], AppComponent);
     return AppComponent;
 }());

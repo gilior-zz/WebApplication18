@@ -8,34 +8,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
-var router_1 = require('angular2/router');
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var router_1 = require('@angular/router');
 var services = require('../services/services');
 var dal = require('../dal/models');
 var pipes = require('../pipes/pipes');
 var HeaderImage = (function () {
-    function HeaderImage(router, dataService) {
-        var _this = this;
-        this.router = router;
+    //ImageURL: string;
+    //ImageURL: SafeUrl;
+    function HeaderImage(dataService, logService, sanitizer, router) {
         this.dataService = dataService;
-        router.subscribe(function (url) {
-            // Current URL
-            router.recognize(url).then(function (instruction) {
-                var currentPathName = instruction.component.componentType.name;
-                var req = { Language: dal.Language.Hebrew, PathName: currentPathName };
-                _this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(function (res) { _this.ImageURL = res.ImageURL; });
-            });
-        });
+        this.logService = logService;
+        this.sanitizer = sanitizer;
+        this.router = router;
+        this.active = true;
     }
-    HeaderImage.prototype.ngOnInit = function () { };
+    HeaderImage.prototype.canActivate = function (route, state) {
+        this.active = false;
+        setTimeout(this.active = true, 0);
+        return true;
+    };
+    HeaderImage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.logService.writeToLog('in ngOnInit');
+        var req = { Language: dal.Language.Hebrew, PathName: this.pageName };
+        this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(function (res) {
+            _this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
+            _this.safeImage = _this.sanitizer.bypassSecurityTrustStyle("url('" + _this.ImageURL + "')");
+        });
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], HeaderImage.prototype, "pageName", void 0);
     HeaderImage = __decorate([
         core_1.Component({
             selector: 'header-image',
-            template: require('./header.image.html!text'),
-            inputs: ['ImageURL'],
+            templateUrl: './header.image.html',
+            moduleId: module.id,
             pipes: [pipes.TranslatePipe]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, services.DataService])
+        __metadata('design:paramtypes', [services.DataService, services.LogService, platform_browser_1.DomSanitizationService, router_1.Router])
     ], HeaderImage);
     return HeaderImage;
 }());

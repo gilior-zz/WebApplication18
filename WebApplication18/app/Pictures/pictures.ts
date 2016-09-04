@@ -1,21 +1,22 @@
-﻿import {Component, OnInit, AfterViewInit, OnDestroy} from 'angular2/core'
+﻿import {Component, OnInit, AfterViewInit, Output, EventEmitter, OnDestroy} from '@angular/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
-import {HeaderImage} from '../HeaderImage/header.image'
-import {RouteParams} from 'angular2/router'
 
+import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
+import {BaseComponent} from '../common/base.component'
+import {Router} from '@angular/router'
 
 declare var Swiper: any;
 @Component({
 
-    template: require("./pictures.html!text"),
-    directives: [HeaderImage]
+    templateUrl: "./pictures.html",
+    moduleId: module.id,
 
 })
 
-export class Pictures implements OnInit, AfterViewInit, OnDestroy {
-    ImageURL: string;
-    mainImagePath: string;
+export class Pictures extends BaseComponent implements OnInit, AfterViewInit, OnDestroy {
+   
+    mainImagePath: SafeStyle;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
     isHebrew: boolean = false;
@@ -46,7 +47,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onKeyUp(event: KeyboardEvent) {
-        console.log(event.keyCode);
+        //console.log(event.keyCode);
         var nextData: dal.NextData = event.keyCode == 39 ? dal.NextData.Next : dal.NextData.Prev;
         this.LoadRequestedImage(nextData);
     }
@@ -70,12 +71,13 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
             case dal.NextData.Next:
 
                 if (isLastImage) {
-                    this.mainImagePath = this.images[0].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${this.images[0].ImageURL}')`);
                     this.cacheManager.StoreInCache('currentImageID', this.images[0].ID);
 
                 }
                 else {
-                    this.mainImagePath = this.images[nextIndex].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${this.images[nextIndex].ImageURL}')`);
+
                     this.cacheManager.StoreInCache('currentImageID', this.images[nextIndex].ID);
 
                 }
@@ -84,17 +86,20 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
                 break;
             case dal.NextData.Prev:
                 if (isFirstImage) {
-                    this.mainImagePath = this.images[this.images.length - 1].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${this.images[this.images.length - 1].ImageURL}')`);
+
                     this.cacheManager.StoreInCache('currentImageID', this.images[this.images.length - 1].ID);
                 }
                 else {
-                    this.mainImagePath = this.images[prevIndex].ImageURL;
+                    this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${this.images[prevIndex].ImageURL}')`);
+
                     this.cacheManager.StoreInCache('currentImageID', this.images[prevIndex].ID);
                 }
 
                 break;
             case dal.NextData.Currnet:
-                this.mainImagePath = this.images[currentIndex].ImageURL;
+                this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${this.images[currentIndex].ImageURL}')`);
+
                 this.cacheManager.StoreInCache('currentImageID', this.images[currentIndex].ID);
                 break;
         }
@@ -116,16 +121,19 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private routeParams: RouteParams) {
-        this.mainImagePath = 'Content/Sources/loading.gif';
-        this.ImageURL = this.routeParams.get('ImageURL');
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService, public router: Router) {
+          super(router);
+        this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`Content/Sources/loading.gif`);;
+
         this.example1SwipeOptions = {
             slidesPerView: 4,
             loop: false,
             spaceBetween: 5
         };
     }
+    @Output() headImageUpdate = new EventEmitter<string>();
     ngOnInit() {
+        this.headImageUpdate.emit('aaaaa');
         var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
         this.isEnglish = lang == dal.Language.English;
         this.isHebrew = lang == dal.Language.Hebrew;
@@ -134,12 +142,13 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
         var req: dal.ImageGalleryRequest = { CurrentImageID: currentImageID, Language: dal.Language.Hebrew, NextData: dal.NextData.Currnet, DataAmount: dal.DataAmount.Single }
         this.dataService.ConnectToApiData(req, 'api/Data/GetImages').subscribe(
             (res: dal.ImageGalleryResponse) => {
-                this.mainImagePath = res.Image.ImageURL;
-                console.log(this.mainImagePath);
+                this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${res.Image.ImageURL
+                    }')`);
+                //console.log(this.mainImagePath);
                 this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
 
             },
-            (err: dal.DataError) => { console.log(err.ErrorText); }
+            (err: dal.DataError) => {  }
         );
 
 
@@ -148,7 +157,7 @@ export class Pictures implements OnInit, AfterViewInit, OnDestroy {
             (res: dal.ImageGalleryResponse) => {
                 this.images = res.Images;
             },
-            (err: dal.DataError) => { console.log(err.ErrorText); }
+            (err: dal.DataError) => {  }
         );
     }
 }

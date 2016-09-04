@@ -80,8 +80,9 @@ body {
     border: 0;
     min-height: 0; }
     body .my-navbar li :hover {
-      color: rgba(21, 88, 135, 0.760784) !important;
-      background-color: #eee !important; }
+      /*color: $primary-back-color !important;
+            background-color: #eee !important;*/
+      background-color: rgba(132, 200, 248, 0.4) !important; }
     body .my-navbar li :focus {
       font-size: larger !important;
       /*color: $primary-back-color !important;*/ }
@@ -265,6 +266,15 @@ footer {
 
 .margin-row {
   margin-bottom: 15px; }
+
+.ugly-align {
+  margin: 0 auto; }
+
+.active-menu-item {
+  font-weight: 900 !important;
+  background-color: rgba(132, 200, 248, 0.4) !important;
+  color: blue !important;
+  font-size: larger !important; }
 
 .padding-top-15 {
   padding-top: 15px; }

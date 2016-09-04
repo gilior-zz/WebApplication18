@@ -1,9 +1,10 @@
-﻿import {Component, OnInit} from 'angular2/core'
+﻿import {Component, OnInit} from '@angular/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 @Component({
     selector: 'noya-updates',
-    template: require('./updates.html!text')
+    templateUrl: './updates.html',
+    moduleId: module.id
 })
 
 export class Updates implements OnInit {
@@ -12,8 +13,8 @@ export class Updates implements OnInit {
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew }
         this.dataService.ConnectToApiData(req, 'api/Data/GetUpdates').subscribe(
-            (res: dal.UpdatesRsponse) => this.updates = res.Updates,
-            (err: dal.DataError) => console.log(err.ErrorText)
+            (res: dal.UpdatesRsponse) => this.updates = res.Updates
+         
         )
     }
 }

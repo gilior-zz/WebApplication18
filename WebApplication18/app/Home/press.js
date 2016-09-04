@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
+var core_1 = require('@angular/core');
 var dal = require('../dal/models');
 var services = require('../services/services');
 var Press = (function () {
@@ -18,12 +18,13 @@ var Press = (function () {
     Press.prototype.ngOnInit = function () {
         var _this = this;
         var req = { Language: dal.Language.Hebrew };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetPress').subscribe(function (res) { return _this.pressItems = res.PressItems; }, function (err) { return console.log(err.ErrorText); });
+        this.dataService.ConnectToApiData(req, 'api/Data/GetPress').subscribe(function (res) { return _this.pressItems = res.PressItems; });
     };
     Press = __decorate([
         core_1.Component({
             selector: 'noya-press',
-            template: require('./press.html!text')
+            templateUrl: './press.html',
+            moduleId: module.id
         }), 
         __metadata('design:paramtypes', [services.DataService])
     ], Press);

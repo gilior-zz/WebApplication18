@@ -1,5 +1,5 @@
-﻿import {Pipe, PipeTransform, OnInit} from 'angular2/core'
-
+﻿import {Pipe, PipeTransform, OnInit} from '@angular/core'
+import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle, SafeHtml} from '@angular/platform-browser';
 import * as services from '../services/services'
 import * as dal from '../dal/models'
 @Pipe({
@@ -30,7 +30,7 @@ export class TranslatePipe implements PipeTransform {
 
     }
     transform(value: string): string {
-        console.log(value);
+        //console.log(value);
         var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
         if (lang == 0) {
             return this.translationFile[value];
@@ -42,3 +42,27 @@ export class TranslatePipe implements PipeTransform {
         }
     }
 }
+
+
+@Pipe({
+    name: 'safeResource',
+
+})
+
+export class SafeResourcePipe implements PipeTransform {
+
+
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService) {
+
+    }
+    transform(value: string): SafeHtml {
+        //console.log(value);
+
+        return this.sanitizer.bypassSecurityTrustHtml(value);
+
+
+
+    }
+}
+
+

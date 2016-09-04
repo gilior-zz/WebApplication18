@@ -1,9 +1,10 @@
-﻿import {Component, OnInit} from 'angular2/core'
+﻿import {Component, OnInit} from '@angular/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 @Component({
     selector: 'noya-press',
-    template: require('./press.html!text')
+    templateUrl: './press.html',
+    moduleId: module.id
 })
 
 export class Press implements OnInit {
@@ -12,8 +13,8 @@ export class Press implements OnInit {
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew }
         this.dataService.ConnectToApiData(req, 'api/Data/GetPress').subscribe(
-            (res: dal.PressResponse) => this.pressItems = res.PressItems,
-            (err: dal.DataError) => console.log(err.ErrorText)
+            (res: dal.PressResponse) => this.pressItems = res.PressItems
+            
         )
     }
 }

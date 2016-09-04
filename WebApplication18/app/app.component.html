@@ -1,7 +1,5 @@
-﻿
-
-<div class="container">
-    <header-image [ImageURL]="ImageURL">loading...</header-image>
+﻿<div class="container">
+    <header-image [pageName]="'contact'">loading...</header-image>
     <div dir="ltr" class="btn-group-sm">
         <a (click)="changeToEnglish()" class="langLinks">Eng</a>
         <a (click)="changeToHebrew()" class="langLinks">עבר</a>
@@ -22,8 +20,8 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="menu-ul nav nav-pills nav-justified ">
-                <li *ngFor="#menuItem of menuItems">
-                    <a class="menu-font  menu-anchor" [routerLink]="[menuItem.Name]">{{menuItem.Text}}</a>
+                <li *ngFor="let menuItem of menuItems">
+                    <a routerLinkActive="active-menu-item" class="menu-font  menu-anchor" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
                 </li>
             </ul>
         </div>

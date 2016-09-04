@@ -1,5 +1,5 @@
-﻿import {Injectable} from 'angular2/core'
-import {Http, Response, Headers, RequestOptions} from 'angular2/http';
+﻿import {Injectable} from '@angular/core'
+import { Headers, RequestOptions, Http, Response} from '@angular/http';
 import * as model from '../dal/models'
 import {Observable}     from 'rxjs/Observable';
 
@@ -29,8 +29,8 @@ export class CacheManager {
 
 
 
-@Injectable()
 
+@Injectable()
 
 export class DataService {
 
@@ -56,8 +56,8 @@ export class DataService {
 
     public GetFileContent(filePath: string) {
         return this.http.get(filePath).map(res => res.json())
-            .do(data => console.log(data)) // eyeball results in the console
-            .catch(this.handleError)
+        //.do(data => //console.log(data)) // eyeball results in the console
+        //.catch(this.handleError)
     }
 
     public ConnectToApiData(request: model.DataRequest, url: string): Observable<model.DataResponse> {
@@ -66,26 +66,23 @@ export class DataService {
         let body = JSON.stringify({ request });
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(url, body, options).map((res) => <model.DataResponse>res.json())
-            //.do(data => console.log(data)) // eyeball results in the console
+        return this.http.post(url, body, options)
+            .map((res) => <model.DataResponse>res.json())
             .catch(this.handleError)
     }
 
 
-    private handleError(error: Response) {
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+    private handleError(error: any) {
+        // In a real world app, we might use a remote logging infrastructure
+        // We'd also dig deeper into the error to get a better message
+        let errMsg = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
     }
 
 
-    //private handleError(error: any) {
-    //    // In a real world app, we might send the error to remote logging infrastructure
-    //    let errMsg = error.message || 'Server error';
-    //    console.error(errMsg); // log to console instead
-    //    return Promise.reject(errMsg);
-    //}
+
 }
 
 
@@ -94,7 +91,7 @@ export class DataService {
  * DialogService makes this app easier to test by faking this service.
  * TODO: better modal implemenation that doesn't use window.confirm
  */
-@Injectable()
+
 export class DialogService {
     /**
      * Ask user to confirm an action. `message` explains the action and choices.
@@ -104,4 +101,10 @@ export class DialogService {
         return new Promise<boolean>((resolve, reject) =>
             resolve(window.confirm(message || 'Is it OK?')));
     };
+}
+
+export class LogService{
+    public writeToLog(msg: string) {
+        //log.debug(msg, ['a','b','c']);
+    }
 }

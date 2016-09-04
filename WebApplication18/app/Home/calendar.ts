@@ -1,9 +1,10 @@
-﻿import {Component, OnInit} from 'angular2/core'
+﻿import {Component, OnInit} from '@angular/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 @Component({
     selector: 'noya-calendar',
-    template: require('./calendar.html!text')
+    templateUrl: './calendar.html',
+     moduleId: module.id
 })
 export class Calendar implements OnInit {
     dataDate: Date;

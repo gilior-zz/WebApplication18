@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('angular2/core');
+var core_1 = require('@angular/core');
 var dal = require('../dal/models');
 var services = require('../services/services');
 var Calendar = (function () {
@@ -70,7 +70,8 @@ var Calendar = (function () {
     Calendar = __decorate([
         core_1.Component({
             selector: 'noya-calendar',
-            template: require('./calendar.html!text')
+            templateUrl: './calendar.html',
+            moduleId: module.id
         }), 
         __metadata('design:paramtypes', [services.DataService, services.CacheManager])
     ], Calendar);

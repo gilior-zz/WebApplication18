@@ -1,38 +1,22 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
     <base href="/" />
-    <!--<base href="/" />-->
-    <title></title>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=devic e-width, initial-scale=1">
-
-
-
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="Content/glyphicons/png/glyphicons-19-music-alt.png" />
-
-</head>
-<body>
-    <app></app>
     <!-- #region  angular-->
-    <script src="lib/es6-shim.min.js"></script>
-    <script src="lib/system-polyfills.js"></script>
-    <script src="lib/shims_for_IE.js"></script>
-    <script src="lib/angular2-polyfills.js"></script>
-    <script src="lib/system.src.js"></script>
-    <script src="lib/Rx.js"></script>
-    <script src="lib/angular2.dev.js"></script>
-    <script src="lib/router.dev.js"></script>
-    <script src="lib/http.dev.js"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
     <!-- #endregion angular-->
     <!-- #region  style-->
     <link href="Content/site.css" rel="stylesheet" />
-    <!-- #endregion style-->
-    <!-- #region jquery -->
+    <!-- #endregion style-->  <!-- #region jquery -->
     <script src="Scripts/jquery-2.0.0.min.js"></script>
-    <!--<script src="Scripts/jquery.mobile-1.4.5.min.js"></script>-->
     <!-- #endregion jquery-->
     <!-- #region  bootstrap-->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
@@ -60,10 +44,8 @@
     <!-- #endregion youmax-->
     <!-- #region  GoogleFonts-->
     <link href='https://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'><!-- #endregion GoogleFonts-->
-    <!-- #region  scroll to-->
-    <!--<script src="lib/jquery-scrollto.js"></script>-->
-    <!-- #endregion scroll to-->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- #endregion GoogleFonts-->
     <!-- #region swipe -->
     <link href="Content/Swiper/swiper.min.css" rel="stylesheet" />
     <script>
@@ -73,30 +55,11 @@
 
     <!-- <script src="lib/swiper.js"></script>-->
     <!-- #endregion swipe-->
-    <!-- #region  config-->
     <script>
-        System.config({
-
-            packages: {
-                app: {
-
-                    defaultExtension: 'js'
-                }
-            },
-            map: {
-
-
-                text: "lib/system.text.js",
-            }
-        });
-
-        System.import('app/main')
-            .then(null, console.error.bind(console));
+        System.import('app').catch(function (err) { console.error(err); });
     </script>
-    <!-- #endregion config-->
-
+</head>
+<body>
+    <my-app>Loading...</my-app>
 </body>
-
-
-
 </html>
