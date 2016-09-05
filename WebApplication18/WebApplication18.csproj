@@ -1388,6 +1388,7 @@
     <TypeScriptCompile Include="app\app.routes.ts" />
     <TypeScriptCompile Include="app\Biography\biography.ts" />
     <TypeScriptCompile Include="app\common\base.component.ts" />
+    <TypeScriptCompile Include="app\common\can-deactivate-guard.service.ts" />
     <TypeScriptCompile Include="app\Contact\contact.ts" />
     <TypeScriptCompile Include="app\dal\models.ts" />
     <TypeScriptCompile Include="app\HeaderImage\header.image.ts" />

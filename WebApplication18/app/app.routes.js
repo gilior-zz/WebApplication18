@@ -7,6 +7,7 @@ var contact_1 = require("./Contact/contact");
 var programs_1 = require("./Programs/programs");
 var pictures_1 = require("./Pictures/pictures");
 var videos_1 = require("./Videos/videos");
+var can_deactivate_guard_service_1 = require('./common/can-deactivate-guard.service');
 var appRoutes = [
     {
         path: "home",
@@ -17,13 +18,15 @@ var appRoutes = [
     { path: "videos", component: videos_1.Videos },
     { path: "programs", component: programs_1.Programs },
     { path: "links", component: links_1.Links },
-    { path: "contact", component: contact_1.Contact },
+    { path: "contact", component: contact_1.Contact, canDeactivate: [can_deactivate_guard_service_1.CanDeactivateGuard], },
     {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
     }
 ];
-exports.appRoutingProviders = [];
+exports.appRoutingProviders = [
+    can_deactivate_guard_service_1.CanDeactivateGuard
+];
 exports.routing = router_1.RouterModule.forRoot(appRoutes, { useHash: true });
 //# sourceMappingURL=app.routes.js.map

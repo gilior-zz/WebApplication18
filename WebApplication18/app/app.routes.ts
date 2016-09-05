@@ -7,6 +7,7 @@ import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
 import {HeaderImage} from "./HeaderImage/header.image"
+import {CanDeactivateGuard} from  './common/can-deactivate-guard.service';
 
 
 const appRoutes: Routes = [
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
     { path: "videos", component: Videos },
     { path: "programs", component: Programs },
     { path: "links", component: Links },
-    { path: "contact", component: Contact },
+    { path: "contact", component: Contact, canDeactivate: [CanDeactivateGuard], },
     {
         path: '',
         redirectTo: 'home',
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
-
+    CanDeactivateGuard
 ];
 
 export const routing = RouterModule.forRoot(appRoutes, { useHash: true })

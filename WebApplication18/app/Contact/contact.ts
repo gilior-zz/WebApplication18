@@ -4,11 +4,12 @@ import {BaseComponent} from '../common/base.component'
 import {NgForm} from 'angular2/common'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
-
+import { Observable }     from 'rxjs/Observable';
 import * as pipes from '../pipes/pipes'
 
+
 @Component({
-    templateUrl: "./contact.html",   
+    templateUrl: "./contact.html",
     moduleId: module.id,
 })
 
@@ -19,10 +20,20 @@ export class Contact extends BaseComponent implements OnDestroy {
     message: dal.Message;
 
 
-    constructor(private dataservice: services.DataService, private dialogeService: services.DialogService, public router: Router) {
+    constructor(private dataservice: services.DataService, private dialogService: services.DialogService, private dialogeService: services.DialogService, public router: Router) {
         super(router);
 
 
+    }
+
+    canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+        if (!this.isSubmitting)
+            return true;
+
+        // Otherwise ask the user with the dialog service and return its
+        // promise which resolves to true or false when the user decides
+        return this.dialogService.confirm('Cancel submitting?');
     }
 
 

@@ -20,12 +20,21 @@ var services = require('../services/services');
 var dal = require('../dal/models');
 var Contact = (function (_super) {
     __extends(Contact, _super);
-    function Contact(dataservice, dialogeService, router) {
+    function Contact(dataservice, dialogService, dialogeService, router) {
         _super.call(this, router);
         this.dataservice = dataservice;
+        this.dialogService = dialogService;
         this.dialogeService = dialogeService;
         this.router = router;
     }
+    Contact.prototype.canDeactivate = function () {
+        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+        if (!this.isSubmitting)
+            return true;
+        // Otherwise ask the user with the dialog service and return its
+        // promise which resolves to true or false when the user decides
+        return this.dialogService.confirm('Cancel submitting?');
+    };
     Contact.prototype.ngOnDestroy = function () {
         this.submitted = false;
         this.displaySubmitError = false;
@@ -56,7 +65,7 @@ var Contact = (function (_super) {
             templateUrl: "./contact.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.DialogService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, services.DialogService, services.DialogService, router_1.Router])
     ], Contact);
     return Contact;
 }(base_component_1.BaseComponent));
