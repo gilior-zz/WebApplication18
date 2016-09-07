@@ -43,6 +43,7 @@ var Videos = (function (_super) {
             hideHeader: true
         };
         this.youmaxObj = new youmax(options);
+        $(".gc-bubbleDefault").parent().css("color", "red");
     };
     Videos.prototype.ngOnInit = function () {
     };

@@ -38,6 +38,7 @@ export class Videos extends BaseComponent implements OnInit, AfterViewInit {
         };
 
         this.youmaxObj = new youmax(options);
+        $(".gc-bubbleDefault").parent().css("color", "red");
     }
     ngOnInit() {
 
