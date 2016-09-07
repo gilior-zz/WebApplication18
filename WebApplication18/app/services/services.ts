@@ -103,8 +103,45 @@ export class DialogService {
     };
 }
 
-export class LogService{
+export class LogService {
     public writeToLog(msg: string) {
         //log.debug(msg, ['a','b','c']);
+    }
+}
+
+
+@Injectable()
+export class TranslationService {
+    translationFile = {
+        "noya schleien": "נויה שליין",
+        "marimba & percussion": "מרימבה וכלי הקשה",
+        "home": "בית",
+        "biography": "ביוגרפיה",
+        "pictures": "תמונות",
+        "videos": "וידאו",
+        "programs": "תכניות",
+        "links": "קישורים",
+        "contact": "יצירת קשר",
+        "hey noya, i would like to get some details about your concerts. please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
+        "name": "שם",
+        "email": "אי-מייל",
+        "content": "תוכן",
+        "order concert": "הזמנת קונצרט",
+        "": ""
+
+    };
+    constructor(private cacheManager: CacheManager) {
+    }
+    public TranlateItem(value: string): string {
+        if (!value) return;
+        var lang = this.cacheManager.GetFromCache('lang', model.Language.Hebrew);
+        if (lang == 0) {
+            return this.translationFile[value.toLowerCase()];
+
+
+        }
+        if (lang == 1) {
+            return value;
+        }
     }
 }

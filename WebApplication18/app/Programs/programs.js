@@ -20,10 +20,11 @@ var services = require('../services/services');
 var dal = require('../dal/models');
 var Programs = (function (_super) {
     __extends(Programs, _super);
-    function Programs(dataService, router) {
-        _super.call(this, router);
+    function Programs(dataService, router, injector) {
+        _super.call(this, injector);
         this.dataService = dataService;
         this.router = router;
+        this.injector = injector;
     }
     Programs.prototype.ngOnInit = function () {
         var _this = this;
@@ -35,7 +36,7 @@ var Programs = (function (_super) {
             templateUrl: "./programs.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, router_1.Router, core_1.Injector])
     ], Programs);
     return Programs;
 }(base_component_1.BaseComponent));

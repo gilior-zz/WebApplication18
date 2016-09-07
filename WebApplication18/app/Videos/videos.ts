@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, AfterViewInit} from '@angular/core'
+﻿import {Component, OnInit, AfterViewInit, Injector} from '@angular/core'
 import {BaseComponent} from '../common/base.component'
 import {Router} from '@angular/router'
 
@@ -12,8 +12,8 @@ declare var youmax: any;
 export class Videos extends BaseComponent implements OnInit, AfterViewInit {
     youmaxObj: any;
     ImageURL: string;
-    constructor(public router: Router) {
-        super(router);
+    constructor(public router: Router, private injector: Injector) {
+        super(injector);
     }
 
     ngAfterViewInit() {

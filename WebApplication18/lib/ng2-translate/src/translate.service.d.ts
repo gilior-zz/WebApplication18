@@ -1,5 +1,5 @@
-import { EventEmitter } from 'angular2/core';
-import { Http } from 'angular2/http';
+import { EventEmitter } from '@angular/core';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';

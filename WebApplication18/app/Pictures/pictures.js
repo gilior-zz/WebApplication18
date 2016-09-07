@@ -21,12 +21,13 @@ var base_component_1 = require('../common/base.component');
 var router_1 = require('@angular/router');
 var Pictures = (function (_super) {
     __extends(Pictures, _super);
-    function Pictures(dataService, cacheManager, sanitizer, router) {
-        _super.call(this, router);
+    function Pictures(dataService, cacheManager, sanitizer, router, injector) {
+        _super.call(this, injector);
         this.dataService = dataService;
         this.cacheManager = cacheManager;
         this.sanitizer = sanitizer;
         this.router = router;
+        this.injector = injector;
         this.isHebrew = false;
         this.isEnglish = false;
         this.headImageUpdate = new core_1.EventEmitter();
@@ -137,7 +138,7 @@ var Pictures = (function (_super) {
             templateUrl: "./pictures.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizationService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizationService, router_1.Router, core_1.Injector])
     ], Pictures);
     return Pictures;
 }(base_component_1.BaseComponent));

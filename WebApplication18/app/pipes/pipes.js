@@ -11,10 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var services = require('../services/services');
-var dal = require('../dal/models');
 var TranslatePipe = (function () {
-    function TranslatePipe(dataService, cacheManager) {
-        this.dataService = dataService;
+    function TranslatePipe(translationService, cacheManager) {
+        this.translationService = translationService;
         this.cacheManager = cacheManager;
         this.translationFile = {
             "Noya Schleien": "נויה שליין",
@@ -29,24 +28,27 @@ var TranslatePipe = (function () {
             "Hey Noya, I would like to get some details about your concerts. Please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
             "Name": "שם",
             "Email": "אי-מייל",
-            "Content": "תוכן"
+            "Content": "תוכן",
+            "Order Concert": "הזמנת קונצרט"
         };
     }
     TranslatePipe.prototype.transform = function (value) {
         //console.log(value);
-        var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
-        if (lang == 0) {
-            return this.translationFile[value];
-        }
-        if (lang == 1) {
-            return value;
-        }
+        var res = this.translationService.TranlateItem(value);
+        return res;
+        //var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
+        //if (lang == 0) {
+        //    return this.translationFile[value];
+        //}
+        //if (lang == 1) {
+        //    return value;
+        //}
     };
     TranslatePipe = __decorate([
         core_1.Pipe({
             name: 'translate',
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager])
+        __metadata('design:paramtypes', [services.TranslationService, services.CacheManager])
     ], TranslatePipe);
     return TranslatePipe;
 }());

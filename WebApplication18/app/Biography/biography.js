@@ -20,10 +20,11 @@ var services = require('../services/services');
 var dal = require('../dal/models');
 var Biography = (function (_super) {
     __extends(Biography, _super);
-    function Biography(dataService, router) {
-        _super.call(this, router);
+    function Biography(dataService, router, injector) {
+        _super.call(this, injector);
         this.dataService = dataService;
         this.router = router;
+        this.injector = injector;
     }
     Biography.prototype.ngOnInit = function () {
         var _this = this;
@@ -35,7 +36,7 @@ var Biography = (function (_super) {
             templateUrl: "./biography.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, router_1.Router, core_1.Injector])
     ], Biography);
     return Biography;
 }(base_component_1.BaseComponent));

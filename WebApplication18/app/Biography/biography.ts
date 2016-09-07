@@ -1,4 +1,4 @@
-﻿import {Component, OnInit} from '@angular/core'
+﻿import {Component, OnInit, Injector} from '@angular/core'
 import {BaseComponent} from '../common/base.component'
 import {Router} from '@angular/router'
 import * as services from '../services/services'
@@ -15,8 +15,8 @@ export class Biography extends BaseComponent implements OnInit {
     cvs: dal.CV[];
 
 
-    constructor(private dataService: services.DataService, public router: Router) {
-        super(router);
+    constructor(private dataService: services.DataService, public router: Router, private injector: Injector) {
+        super(injector);
     }
     ngOnInit() {
 

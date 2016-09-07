@@ -1,7 +1,7 @@
-﻿import {Component, OnDestroy, OnInit} from '@angular/core'
+﻿import {Component, OnDestroy, OnInit, Injector} from '@angular/core'
 import {Router} from '@angular/router'
 import {BaseComponent} from '../common/base.component'
-import {NgForm} from 'angular2/common'
+
 import * as services from '../services/services'
 import * as dal from '../dal/models'
 import { Observable }     from 'rxjs/Observable';
@@ -20,8 +20,8 @@ export class Contact extends BaseComponent implements OnDestroy {
     message: dal.Message;
 
 
-    constructor(private dataservice: services.DataService, private dialogService: services.DialogService, private dialogeService: services.DialogService, public router: Router) {
-        super(router);
+    constructor(private dataservice: services.DataService, private dialogService: services.DialogService, private dialogeService: services.DialogService, public router: Router, private injector: Injector) {
+        super(injector);
 
 
     }

@@ -21,25 +21,28 @@ export class TranslatePipe implements PipeTransform {
         "Hey Noya, I would like to get some details about your concerts. Please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
         "Name": "שם",
         "Email": "אי-מייל",
-        "Content": "תוכן"
+        "Content": "תוכן",
+        "Order Concert": "הזמנת קונצרט"
 
 
     };
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager) {
+    constructor(private translationService: services.TranslationService, private cacheManager: services.CacheManager) {
 
     }
     transform(value: string): string {
         //console.log(value);
-        var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
-        if (lang == 0) {
-            return this.translationFile[value];
+        let res = this.translationService.TranlateItem(value);
+        return res;
+        //var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
+        //if (lang == 0) {
+        //    return this.translationFile[value];
 
 
-        }
-        if (lang == 1) {
-            return value;
-        }
+        //}
+        //if (lang == 1) {
+        //    return value;
+        //}
     }
 }
 

@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         //console.log(imageUrl);
     }
     goToContact() {
-        this.router.navigate(['Contact', { OrderConcert: true }]);
+        this.router.navigate(['/contact']);
     }
 
     changeToEnglish() {

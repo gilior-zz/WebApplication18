@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="container-fluid">
     <header-image [pageName]="'home'">loading...</header-image>
     <div dir="ltr" class="btn-group-sm">
         <a (click)="changeToEnglish()" class="langLinks">Eng</a>
@@ -33,7 +33,7 @@
 
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <router-outlet></router-outlet>
 
 </div>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-7"></div>
             <div class="col-xs-12 col-md-2">
-                <button (click)="goToContact()" class="btn btn-primary">Order Concert</button>
+                <button (click)="goToContact()" class="btn btn-primary">{{'Order Concert'|translate}}</button>
             </div>
             <hr class="dl-horizontal" />
             <div>

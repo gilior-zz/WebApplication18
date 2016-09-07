@@ -1,4 +1,4 @@
-import { PipeTransform, EventEmitter, OnDestroy, ChangeDetectorRef } from 'angular2/core';
+import { PipeTransform, EventEmitter, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { TranslateService, LangChangeEvent } from './translate.service';
 export declare class TranslatePipe implements PipeTransform, OnDestroy {
     private translate;

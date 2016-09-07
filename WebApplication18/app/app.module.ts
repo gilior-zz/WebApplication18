@@ -1,7 +1,7 @@
 ﻿import {NgModule} from '@angular/core'
 import { HttpModule } from '@angular/http';
 import {FormsModule} from '@angular/forms'
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { routing,
     appRoutingProviders } from './app.routes';
@@ -29,7 +29,7 @@ import {BaseComponent} from './common/base.component'
         routing
     ],
 
-    providers: [appRoutingProviders, services.CacheManager, services.DataService, services.DialogService, services.LogService],
+    providers: [appRoutingProviders, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

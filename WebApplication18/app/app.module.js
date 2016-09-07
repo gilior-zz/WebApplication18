@@ -38,7 +38,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 app_routes_1.routing
             ],
-            providers: [app_routes_1.appRoutingProviders, services.CacheManager, services.DataService, services.DialogService, services.LogService],
+            providers: [app_routes_1.appRoutingProviders, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, platform_browser_1.Title],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

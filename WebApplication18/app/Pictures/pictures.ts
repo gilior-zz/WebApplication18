@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, AfterViewInit, Output, EventEmitter, OnDestroy} from '@angular/core'
+﻿import {Component, OnInit, AfterViewInit, Output, EventEmitter, OnDestroy, Injector} from '@angular/core'
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 
@@ -121,8 +121,8 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService, public router: Router) {
-          super(router);
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService, public router: Router, private injector: Injector) {
+          super(injector);
         this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`Content/Sources/loading.gif`);;
 
         this.example1SwipeOptions = {

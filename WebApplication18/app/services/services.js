@@ -119,4 +119,43 @@ var LogService = (function () {
     return LogService;
 }());
 exports.LogService = LogService;
+var TranslationService = (function () {
+    function TranslationService(cacheManager) {
+        this.cacheManager = cacheManager;
+        this.translationFile = {
+            "noya schleien": "נויה שליין",
+            "marimba & percussion": "מרימבה וכלי הקשה",
+            "home": "בית",
+            "biography": "ביוגרפיה",
+            "pictures": "תמונות",
+            "videos": "וידאו",
+            "programs": "תכניות",
+            "links": "קישורים",
+            "contact": "יצירת קשר",
+            "hey noya, i would like to get some details about your concerts. please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
+            "name": "שם",
+            "email": "אי-מייל",
+            "content": "תוכן",
+            "order concert": "הזמנת קונצרט",
+            "": ""
+        };
+    }
+    TranslationService.prototype.TranlateItem = function (value) {
+        if (!value)
+            return;
+        var lang = this.cacheManager.GetFromCache('lang', model.Language.Hebrew);
+        if (lang == 0) {
+            return this.translationFile[value.toLowerCase()];
+        }
+        if (lang == 1) {
+            return value;
+        }
+    };
+    TranslationService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [CacheManager])
+    ], TranslationService);
+    return TranslationService;
+}());
+exports.TranslationService = TranslationService;
 //# sourceMappingURL=services.js.map

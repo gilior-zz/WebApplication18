@@ -23,7 +23,7 @@ var AppComponent = (function () {
         //console.log(imageUrl);
     };
     AppComponent.prototype.goToContact = function () {
-        this.router.navigate(['Contact', { OrderConcert: true }]);
+        this.router.navigate(['/contact']);
     };
     AppComponent.prototype.changeToEnglish = function () {
         this.CacheManager.StoreInCache("lang", dal.Language.English);

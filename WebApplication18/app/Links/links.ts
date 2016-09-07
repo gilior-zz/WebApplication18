@@ -1,5 +1,5 @@
 ﻿import {Router} from '@angular/router'
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Injector} from '@angular/core'
 import {BaseComponent} from '../common/base.component'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
@@ -12,8 +12,8 @@ import * as dal from '../dal/models'
 export class Links extends BaseComponent implements OnInit {
     links: dal.Link[];
     ImageURL: string;
-    constructor(private dataService: services.DataService, public router: Router) {
-        super(router);
+    constructor(private dataService: services.DataService, public router: Router, private injector: Injector) {
+        super(injector);
     }
     ngOnInit() {
         var request: dal.DataRequest = { Language: dal.Language.Hebrew };

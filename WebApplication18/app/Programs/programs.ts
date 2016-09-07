@@ -1,4 +1,4 @@
-﻿import {Component, OnInit} from '@angular/core'
+﻿import {Component, OnInit, Injector} from '@angular/core'
 
 import {BaseComponent} from '../common/base.component'
 import {Router} from '@angular/router'
@@ -13,8 +13,8 @@ import * as dal from '../dal/models'
 export class Programs extends BaseComponent implements OnInit {
     programs: dal.Program[];
 
-    constructor(private dataService: services.DataService, public router: Router) {
-        super(router);
+    constructor(private dataService: services.DataService, public router: Router, private injector: Injector) {
+        super(injector);
     }
     ngOnInit() {
         var req: dal.DataRequest = { Language: dal.Language.Hebrew };

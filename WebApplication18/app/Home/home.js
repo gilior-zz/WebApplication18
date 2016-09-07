@@ -18,16 +18,17 @@ var base_component_1 = require('../common/base.component');
 var router_1 = require('@angular/router');
 var Home = (function (_super) {
     __extends(Home, _super);
-    function Home(router) {
-        _super.call(this, router);
+    function Home(router, injector) {
+        _super.call(this, injector);
         this.router = router;
+        this.injector = injector;
     }
     Home = __decorate([
         core_1.Component({
             templateUrl: "./home.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, core_1.Injector])
     ], Home);
     return Home;
 }(base_component_1.BaseComponent));

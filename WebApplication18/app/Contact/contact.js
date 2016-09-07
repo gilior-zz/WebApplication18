@@ -20,12 +20,13 @@ var services = require('../services/services');
 var dal = require('../dal/models');
 var Contact = (function (_super) {
     __extends(Contact, _super);
-    function Contact(dataservice, dialogService, dialogeService, router) {
-        _super.call(this, router);
+    function Contact(dataservice, dialogService, dialogeService, router, injector) {
+        _super.call(this, injector);
         this.dataservice = dataservice;
         this.dialogService = dialogService;
         this.dialogeService = dialogeService;
         this.router = router;
+        this.injector = injector;
     }
     Contact.prototype.canDeactivate = function () {
         // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
@@ -65,7 +66,7 @@ var Contact = (function (_super) {
             templateUrl: "./contact.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.DialogService, services.DialogService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, services.DialogService, services.DialogService, router_1.Router, core_1.Injector])
     ], Contact);
     return Contact;
 }(base_component_1.BaseComponent));

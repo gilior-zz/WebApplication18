@@ -18,9 +18,10 @@ var base_component_1 = require('../common/base.component');
 var router_1 = require('@angular/router');
 var Videos = (function (_super) {
     __extends(Videos, _super);
-    function Videos(router) {
-        _super.call(this, router);
+    function Videos(router, injector) {
+        _super.call(this, injector);
         this.router = router;
+        this.injector = injector;
     }
     Videos.prototype.ngAfterViewInit = function () {
         var options = {
@@ -50,7 +51,7 @@ var Videos = (function (_super) {
             templateUrl: "./videos.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router, core_1.Injector])
     ], Videos);
     return Videos;
 }(base_component_1.BaseComponent));
