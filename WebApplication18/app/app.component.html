@@ -1,5 +1,5 @@
 ﻿<div class="container-fluid">
-    <header-image [pageName]="'home'">loading...</header-image>
+    <header-image [pageName]="'home'"></header-image>
     <div dir="ltr" class="btn-group-sm">
         <a (click)="changeToEnglish()" class="langLinks">Eng</a>
         <a (click)="changeToHebrew()" class="langLinks">עבר</a>
@@ -21,7 +21,7 @@
         <div class="navbar-collapse collapse">
             <ul class="menu-ul nav nav-pills nav-justified ">
                 <li *ngFor="let menuItem of menuItems">
-                    <a routerLinkActive="active-menu-item" class="menu-font  menu-anchor" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
+                    <a data-toggle="collapse" data-target=".navbar-collapse" routerLinkActive="active-menu-item" class="menu-font  menu-anchor" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
                 </li>
             </ul>
         </div>

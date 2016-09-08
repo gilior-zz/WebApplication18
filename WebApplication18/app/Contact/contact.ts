@@ -24,7 +24,7 @@ export class Contact extends BaseComponent implements OnDestroy {
         super(injector);
     }
 
-    canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    canDeactivate(): boolean | Promise<boolean> | Observable<boolean>{
         // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
         if (!this.isSubmitting)
             return true;
