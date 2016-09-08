@@ -113,6 +113,7 @@ export class LogService {
 @Injectable()
 export class TranslationService {
     translationFile = {
+        "menu": "תפריט",
         "noya schleien": "נויה שליין",
         "marimba & percussion": "מרימבה וכלי הקשה",
         "home": "בית",
@@ -135,12 +136,15 @@ export class TranslationService {
     public TranlateItem(value: string): string {
         if (!value) return;
         var lang = this.cacheManager.GetFromCache('lang', model.Language.Hebrew);
-        if (lang == 0) {
-            return this.translationFile[value.toLowerCase()];
-
-
+        if (lang == 0)//hewbrew
+        {
+            let translateItem = this.translationFile[value.toLowerCase()];
+            if (!translateItem)
+                return value;
+            return translateItem;
         }
-        if (lang == 1) {
+        if (lang == 1)//english
+        {
             return value;
         }
     }

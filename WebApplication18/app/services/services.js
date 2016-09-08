@@ -123,6 +123,7 @@ var TranslationService = (function () {
     function TranslationService(cacheManager) {
         this.cacheManager = cacheManager;
         this.translationFile = {
+            "menu": "תפריט",
             "noya schleien": "נויה שליין",
             "marimba & percussion": "מרימבה וכלי הקשה",
             "home": "בית",
@@ -145,7 +146,10 @@ var TranslationService = (function () {
             return;
         var lang = this.cacheManager.GetFromCache('lang', model.Language.Hebrew);
         if (lang == 0) {
-            return this.translationFile[value.toLowerCase()];
+            var translateItem = this.translationFile[value.toLowerCase()];
+            if (!translateItem)
+                return value;
+            return translateItem;
         }
         if (lang == 1) {
             return value;

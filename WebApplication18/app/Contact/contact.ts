@@ -22,8 +22,6 @@ export class Contact extends BaseComponent implements OnDestroy {
 
     constructor(private dataservice: services.DataService, private dialogService: services.DialogService, private dialogeService: services.DialogService, public router: Router, private injector: Injector) {
         super(injector);
-
-
     }
 
     canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {

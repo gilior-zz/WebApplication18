@@ -23,6 +23,9 @@ var Home = (function (_super) {
         this.router = router;
         this.injector = injector;
     }
+    Home.prototype.ngAfterViewInit = function () {
+        console.debug(this.pageName);
+    };
     Home = __decorate([
         core_1.Component({
             templateUrl: "./home.html",

@@ -1,9 +1,10 @@
-﻿import {Component, OnInit, AfterViewInit} from "@angular/core"
+﻿import {Component, OnInit, AfterViewInit, Injector} from "@angular/core"
 
 import * as services from "./services/services"
 import * as dal from "./dal/models"
 
 import {Router} from '@angular/router'
+import {BaseComponent} from './common/base.component'
 
 
 
@@ -17,16 +18,16 @@ import {Router} from '@angular/router'
 })
 
 
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent extends BaseComponent implements OnInit, AfterViewInit {
     currentPathName: string;
     menuItems: dal.MenuItem[];
     currentView: string;
     headerImage: string;
-    constructor(private dataService: services.DataService, private CacheManager: services.CacheManager, private router: Router) {
-      
+    constructor(private dataService: services.DataService, private CacheManager: services.CacheManager, private router: Router, private injector: Injector) {
+        super(injector);       
     }
     public UpdateImage(imageUrl: string) {
-        //console.log(imageUrl);
+
     }
     goToContact() {
         this.router.navigate(['/contact']);
@@ -46,7 +47,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
 
- 
+
 
 
 

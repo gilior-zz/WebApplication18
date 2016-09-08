@@ -38,7 +38,7 @@ export class Videos extends BaseComponent implements OnInit, AfterViewInit {
         };
 
         this.youmaxObj = new youmax(options);
-        setTimeout(() => { $(".gc-bubbleDefault").parent().remove(); console.debug('after remove')}, 10000);
+        setTimeout(() => { $(".gc-bubbleDefault").parent().remove(); console.debug('after remove') }, 10000);
     }
     ngOnInit() {
 
