@@ -44,12 +44,10 @@ var Videos = (function (_super) {
             hideHeader: true
         };
         this.youmaxObj = new youmax(options);
-        this.timer = setInterval(function () { _this.clearStupidGPlus(); }, 1000);
+        this.timer = setInterval(function () { _this.clearStupidGPlus(); }, 2000);
     };
     Videos.prototype.clearStupidGPlus = function () {
-        if (!$(".gc-bubbleDefault").length) {
-            clearInterval(this.timer);
-        }
+        //console.debug($(".gc-bubbleDefault").length.toString());
         $(".gc-bubbleDefault").parent().remove();
     };
     Videos.prototype.ngOnInit = function () {
