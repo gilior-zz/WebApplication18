@@ -3,14 +3,14 @@
 declare namespace protractor {
     //region Wrapped webdriver Items
 
-    class ActionSequence extends webdriver.ActionSequence {}
-    class Builder extends webdriver.Builder {}
-    class Capabilities extends webdriver.Capabilities {}
-    class Command extends webdriver.Command {}
-    class EventEmitter extends webdriver.EventEmitter {}
-    class Session extends webdriver.Session {}
-    class WebDriver extends webdriver.WebDriver {}
-    class WebElement extends webdriver.WebElement {}
+    class ActionSequence extends webdriver.ActionSequence { }
+    class Builder extends webdriver.Builder { }
+    class Capabilities extends webdriver.Capabilities { }
+    class Command extends webdriver.Command { }
+    class EventEmitter extends webdriver.EventEmitter { }
+    class Session extends webdriver.Session { }
+    class WebDriver extends webdriver.WebDriver { }
+    class WebElement extends webdriver.WebElement { }
     class WebElementPromise extends webdriver.WebElementPromise { }
 
     var Browser: webdriver.IBrowser;
@@ -20,7 +20,7 @@ declare namespace protractor {
     var Key: webdriver.IKey;
 
     namespace error {
-        class Error extends webdriver.error.Error {}
+        class Error extends webdriver.error.Error { }
         var ErrorCode: webdriver.error.IErrorCode;
     }
 
@@ -563,7 +563,7 @@ declare namespace protractor {
          * whether the text is present in the element's value.
          */
         function textToBePresentInElementValue<T>(
-          element: ElementFinder, text: string
+            element: ElementFinder, text: string
         ): webdriver.until.Condition<T>;
 
         /**
@@ -658,13 +658,13 @@ declare namespace protractor {
     interface Element {
         (locator: webdriver.Locator): ElementFinder;
 
-         /**
-          * ElementArrayFinder is used for operations on an array of elements (as opposed
-          * to a single element).
-          *
-          * @param {webdriver.Locator} locator An element locator.
-          * @return {ElementArrayFinder}
-          */
+        /**
+         * ElementArrayFinder is used for operations on an array of elements (as opposed
+         * to a single element).
+         *
+         * @param {webdriver.Locator} locator An element locator.
+         * @return {ElementArrayFinder}
+         */
         all(locator: webdriver.Locator): ElementArrayFinder;
     }
 

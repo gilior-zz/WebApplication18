@@ -39,12 +39,12 @@ export class Videos extends BaseComponent implements OnInit, AfterViewInit {
         };
 
         this.youmaxObj = new youmax(options);
-        this.timer = setInterval(() => { this.clearStupidGPlus() }, 2000);
+        this.timer = setInterval(() => { this.clearStupidGPlus() }, 1000);
 
 
     }
     clearStupidGPlus() {
-        //console.debug($(".gc-bubbleDefault").length.toString());
+        console.debug("in clearStupidGPlus");
         $(".gc-bubbleDefault").parent().remove();
     }
 
