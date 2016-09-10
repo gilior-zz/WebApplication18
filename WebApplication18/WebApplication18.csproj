@@ -1040,8 +1040,12 @@
     <Content Include="Content\Swiper\swiper.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="lib\Reflect.js" />
+    <Content Include="lib\shim.min.js" />
     <Content Include="lib\swipe.js" />
     <Content Include="lib\swiper.js" />
+    <Content Include="lib\system.src.js" />
+    <Content Include="lib\zone.min.js" />
     <Content Include="packages.config" />
     <Content Include="Content\site.scss" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
