@@ -13,6 +13,7 @@ export class BaseComponent implements OnInit {
         this.pageName = url;
         let tranlatedItem = translationService.TranlateItem(url);
         titleService.setTitle(tranlatedItem);
+        $(".pageName").text(tranlatedItem);
     }
     ngOnInit() {
 

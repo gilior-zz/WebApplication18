@@ -11,6 +11,7 @@ var BaseComponent = (function () {
         this.pageName = url;
         var tranlatedItem = translationService.TranlateItem(url);
         titleService.setTitle(tranlatedItem);
+        $(".pageName").text(tranlatedItem);
     }
     BaseComponent.prototype.ngOnInit = function () {
     };
