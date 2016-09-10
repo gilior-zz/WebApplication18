@@ -24,6 +24,7 @@ var Videos = (function (_super) {
         this.injector = injector;
     }
     Videos.prototype.ngAfterViewInit = function () {
+        var _this = this;
         var options = {
             apiKey: "AIzaSyCveFKo8nQBAsJtrTyotXVx2wxqg5rHDBY",
             clientId: "32210824715-6kkbgjdro3468agc4e66erp7llv3kf8n.apps.googleusercontent.com",
@@ -43,7 +44,13 @@ var Videos = (function (_super) {
             hideHeader: true
         };
         this.youmaxObj = new youmax(options);
-        setTimeout(function () { $(".gc-bubbleDefault").parent().remove(); console.debug('after remove'); }, 10000);
+        this.timer = setInterval(function () { _this.clearStupidGPlus(); }, 1000);
+    };
+    Videos.prototype.clearStupidGPlus = function () {
+        if (!$(".gc-bubbleDefault").length) {
+            clearInterval(this.timer);
+        }
+        $(".gc-bubbleDefault").parent().remove();
     };
     Videos.prototype.ngOnInit = function () {
     };

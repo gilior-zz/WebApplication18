@@ -21,7 +21,8 @@
         <div class="navbar-collapse collapse">
             <ul class="menu-ul nav nav-pills nav-justified ">
                 <li *ngFor="let menuItem of menuItems">
-                    <a data-toggle="collapse" data-target=".navbar-collapse" routerLinkActive="active-menu-item" class="menu-font  menu-anchor" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
+                    <a data-toggle="collapse" data-target=".navbar-collapse" routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-md hidden-lg hidden-sm" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
+                    <a routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-xs" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
                 </li>
             </ul>
         </div>

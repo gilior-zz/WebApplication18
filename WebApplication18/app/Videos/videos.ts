@@ -12,6 +12,7 @@ declare var youmax: any;
 export class Videos extends BaseComponent implements OnInit, AfterViewInit {
     youmaxObj: any;
     ImageURL: string;
+    timer: NodeJS.Timer;
     constructor(public router: Router, private injector: Injector) {
         super(injector);
     }
@@ -38,8 +39,14 @@ export class Videos extends BaseComponent implements OnInit, AfterViewInit {
         };
 
         this.youmaxObj = new youmax(options);
-        setTimeout(() => { $(".gc-bubbleDefault").parent().remove(); console.debug('after remove') }, 10000);
+        this.timer = setInterval(() => { this.clearStupidGPlus() }, 1000);
+
+
     }
+    clearStupidGPlus() {
+        if (!$(".gc-bubbleDefault").length) { clearInterval(this.timer); } $(".gc-bubbleDefault").parent().remove()
+    }
+
     ngOnInit() {
 
     }
