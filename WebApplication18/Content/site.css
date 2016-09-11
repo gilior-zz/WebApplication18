@@ -11,7 +11,7 @@ html {
   min-height: 100%; }
 
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Varela Round', sans-serif !important;
   margin: 0 0 150px !important;
   /* bottom = footer height */
   /*background-image: url('Sources/back_1.jpg') !important;*/
@@ -64,7 +64,7 @@ body {
     border: 1px solid #84bbf3;
     display: inline-block;
     color: #ffffff;
-    font-family: Arial;
+    /*font-family: Arial;*/
     /*font-size: 15px;*/
     font-weight: bold;
     font-style: normal;
@@ -291,7 +291,6 @@ footer {
   align-items: center !important; }
 
 .menu-font {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: white !important;
   font-weight: 900 !important; }
 
