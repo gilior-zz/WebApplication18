@@ -306,7 +306,7 @@ footer {
   background-color: rgba(21, 88, 135, 0.760784); }
 
 .white-font {
-  color: white; }
+  color: white !important; }
 
 .left-to-right {
   direction: ltr; }
