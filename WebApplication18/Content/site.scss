@@ -116,7 +116,11 @@ body {
         font-size: 3vw;
     }
 
-    font-family: 'Varela Round', sans-serif !important;
+    font-family: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 28px !important;
+    color: #546E7A !important;
     margin: 0 0 150px !important; /* bottom = footer height */
     /*background-image: url('Sources/back_1.jpg') !important;*/
     background-color: rgba(132, 200, 248, 0.40) !important;
@@ -417,7 +421,6 @@ footer {
 }
 
 .menu-font {
-
     color: white !important;
     font-weight: 900 !important;
 }
