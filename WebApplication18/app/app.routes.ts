@@ -1,4 +1,5 @@
-﻿import { Routes, RouterModule } from '@angular/router';
+﻿import { NgModule }     from '@angular/core';
+import { RouterModule } from '@angular/router';
 import {Home} from "./Home/home"
 import {Biography} from "./Biography/biography"
 import {Links} from "./Links/links"
@@ -9,28 +10,30 @@ import {Videos} from "./Videos/videos"
 import {HeaderImage} from "./HeaderImage/header.image"
 import {CanDeactivateGuard} from  './common/can-deactivate-guard.service';
 
+@NgModule({
+    imports: [
+        RouterModule.forRoot([
+            { path: "home", component: Home },
+            { path: "biography", component: Biography },
+            { path: "pictures", component: Pictures },
+            { path: "videos", component: Videos },
+            { path: "programs", component: Programs },
+            { path: "links", component: Links },
+            { path: "contact", component: Contact, canDeactivate: [CanDeactivateGuard], },
+            { path: '', redirectTo: 'home', pathMatch: 'full' }
+        ], { useHash: true })
+    ],
+    exports: [
+        RouterModule
+    ],
+    providers: [
+        CanDeactivateGuard
+    ]
+})
+export class AppRoutingModule { }
 
-const appRoutes: Routes = [
-    {
-        path: "home",
-        component: Home,
 
-    },
-    { path: "biography", component: Biography },
-    { path: "pictures", component: Pictures },
-    { path: "videos", component: Videos },
-    { path: "programs", component: Programs },
-    { path: "links", component: Links },
-    { path: "contact", component: Contact, canDeactivate: [CanDeactivateGuard], },
-    {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-    }
-];
 
-export const appRoutingProviders: any[] = [
-    CanDeactivateGuard
-];
 
-export const routing = RouterModule.forRoot(appRoutes, { useHash: true })
+
+

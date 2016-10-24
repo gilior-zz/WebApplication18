@@ -3,8 +3,7 @@ import { HttpModule } from '@angular/http';
 import {FormsModule} from '@angular/forms'
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
-import { routing,
-    appRoutingProviders } from './app.routes';
+import {AppRoutingModule} from './app.routes'
 import {Home} from "./Home/home"
 import {Calendar} from './Home/calendar'
 import {Updates} from './Home/updates'
@@ -26,10 +25,10 @@ import {BaseComponent} from './common/base.component'
         BrowserModule,
         HttpModule,
         FormsModule,
-        routing
+        AppRoutingModule
     ],
 
-    providers: [appRoutingProviders, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
+    providers: [services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

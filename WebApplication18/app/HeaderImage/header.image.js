@@ -13,7 +13,6 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var services = require('../services/services');
 var dal = require('../dal/models');
-var pipes = require('../pipes/pipes');
 var HeaderImage = (function () {
     //ImageURL: string;
     //ImageURL: SafeUrl;
@@ -47,9 +46,8 @@ var HeaderImage = (function () {
             selector: 'header-image',
             templateUrl: './header.image.html',
             moduleId: module.id,
-            pipes: [pipes.TranslatePipe]
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.LogService, platform_browser_1.DomSanitizationService, router_1.Router])
+        __metadata('design:paramtypes', [services.DataService, services.LogService, platform_browser_1.DomSanitizer, router_1.Router])
     ], HeaderImage);
     return HeaderImage;
 }());

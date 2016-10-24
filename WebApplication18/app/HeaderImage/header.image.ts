@@ -1,23 +1,23 @@
 ﻿import {Component, OnInit, ViewEncapsulation, Input } from '@angular/core'
-import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
 import {Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
-import * as pipes from '../pipes/pipes'
+
 
 @Component({
     selector: 'header-image',
     templateUrl: './header.image.html',
     moduleId: module.id,
 
-    pipes: [pipes.TranslatePipe]
+   
 })
 
 export class HeaderImage implements OnInit {
 
     //ImageURL: string;
     //ImageURL: SafeUrl;
-    constructor(private dataService: services.DataService, private logService: services.LogService, public sanitizer: DomSanitizationService, public router: Router) {
+    constructor(private dataService: services.DataService, private logService: services.LogService, public sanitizer: DomSanitizer, public router: Router) {
 
     }
     active: boolean = true;

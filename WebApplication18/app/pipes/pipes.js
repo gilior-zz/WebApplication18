@@ -67,7 +67,7 @@ var SafeResourcePipe = (function () {
         core_1.Pipe({
             name: 'safeResource',
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizationService])
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizer])
     ], SafeResourcePipe);
     return SafeResourcePipe;
 }());

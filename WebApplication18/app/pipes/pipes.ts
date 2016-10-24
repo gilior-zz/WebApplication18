@@ -1,5 +1,5 @@
 ﻿import {Pipe, PipeTransform, OnInit} from '@angular/core'
-import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle, SafeHtml} from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle, SafeHtml} from '@angular/platform-browser';
 import * as services from '../services/services'
 import * as dal from '../dal/models'
 @Pipe({
@@ -55,7 +55,7 @@ export class TranslatePipe implements PipeTransform {
 export class SafeResourcePipe implements PipeTransform {
 
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService) {
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizer) {
 
     }
     transform(value: string): SafeHtml {

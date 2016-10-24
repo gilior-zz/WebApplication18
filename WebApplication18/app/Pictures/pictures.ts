@@ -2,7 +2,7 @@
 import * as dal from '../dal/models'
 import * as services from '../services/services'
 
-import { DomSanitizationService, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
 import {BaseComponent} from '../common/base.component'
 import {Router} from '@angular/router'
 
@@ -15,7 +15,7 @@ declare var Swiper: any;
 })
 
 export class Pictures extends BaseComponent implements OnInit, AfterViewInit, OnDestroy {
-   
+
     mainImagePath: SafeStyle;
     images: dal.ImageGalleryItem[];
     imagesToolBarPathes: string[];
@@ -121,8 +121,8 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizationService, public router: Router, private injector: Injector) {
-          super(injector);
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizer, public router: Router, private injector: Injector) {
+        super(injector);
         this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`Content/Sources/loading.gif`);;
 
         this.example1SwipeOptions = {
@@ -148,7 +148,7 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
                 this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
 
             },
-            (err: dal.DataError) => {  }
+            (err: dal.DataError) => { }
         );
 
 
@@ -157,7 +157,7 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
             (res: dal.ImageGalleryResponse) => {
                 this.images = res.Images;
             },
-            (err: dal.DataError) => {  }
+            (err: dal.DataError) => { }
         );
     }
 }

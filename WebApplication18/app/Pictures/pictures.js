@@ -138,7 +138,7 @@ var Pictures = (function (_super) {
             templateUrl: "./pictures.html",
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizationService, router_1.Router, core_1.Injector])
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, platform_browser_1.DomSanitizer, router_1.Router, core_1.Injector])
     ], Pictures);
     return Pictures;
 }(base_component_1.BaseComponent));
