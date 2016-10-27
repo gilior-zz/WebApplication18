@@ -97,6 +97,12 @@
     <Content Include="app\Home\home.html" />
     <Content Include="app\Home\press.html" />
     <Content Include="app\Home\updates.html" />
+    <Content Include="app\kids-art\kids-art.component.css">
+      <DependentUpon>kids-art.component.scss</DependentUpon>
+    </Content>
+    <Content Include="app\kids-art\kids-art.component.min.css">
+      <DependentUpon>kids-art.component.css</DependentUpon>
+    </Content>
     <Content Include="app\Links\links.html" />
     <Content Include="app\Pictures\1.jpg" />
     <Content Include="app\Pictures\10.jpg" />
@@ -106,6 +112,7 @@
     <Content Include="app\Pictures\pictures.html" />
     <Content Include="app\Programs\programs.html" />
     <Content Include="app\Videos\videos.html" />
+    <Content Include="app\kids-art\kids-art.component.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1060,6 +1067,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="app\kids-art\kids-art.component.scss" />
+    <Content Include="app\Home\home.scss" />
     <None Include="Properties\PublishProfiles\daddy.pubxml" />
     <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
@@ -1072,6 +1081,7 @@
     <Content Include="Scripts\carousel-rtl.js" />
     <Content Include="Scripts\collapse.js" />
     <Content Include="Scripts\dropdown.js" />
+    <Content Include="Scripts\fixed-button-footer.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Scripts\modal.js" />
@@ -1158,6 +1168,7 @@
     <TypeScriptCompile Include="app\Programs\programs.ts" />
     <TypeScriptCompile Include="app\services\services.ts" />
     <TypeScriptCompile Include="app\Videos\videos.ts" />
+    <TypeScriptCompile Include="app\kids-art\kids-art.component.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>

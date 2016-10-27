@@ -8,24 +8,7 @@ import * as dal from '../dal/models'
 })
 
 export class TranslatePipe implements PipeTransform {
-    translationFile = {
-        "Noya Schleien": "נויה שליין",
-        "Marimba & Percussion": "מרימבה וכלי הקשה",
-        "Home": "בית",
-        "Biography": "ביוגרפיה",
-        "Pictures": "תמונות",
-        "Videos": "וידאו",
-        "Programs": "תכניות",
-        "Links": "קישורים",
-        "Contact": "יצירת קשר",
-        "Hey Noya, I would like to get some details about your concerts. Please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
-        "Name": "שם",
-        "Email": "אי-מייל",
-        "Content": "תוכן",
-        "Order Concert": "הזמנת קונצרט"
-
-
-    };
+ 
 
     constructor(private translationService: services.TranslationService, private cacheManager: services.CacheManager) {
 

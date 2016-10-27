@@ -15,22 +15,6 @@ var TranslatePipe = (function () {
     function TranslatePipe(translationService, cacheManager) {
         this.translationService = translationService;
         this.cacheManager = cacheManager;
-        this.translationFile = {
-            "Noya Schleien": "נויה שליין",
-            "Marimba & Percussion": "מרימבה וכלי הקשה",
-            "Home": "בית",
-            "Biography": "ביוגרפיה",
-            "Pictures": "תמונות",
-            "Videos": "וידאו",
-            "Programs": "תכניות",
-            "Links": "קישורים",
-            "Contact": "יצירת קשר",
-            "Hey Noya, I would like to get some details about your concerts. Please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
-            "Name": "שם",
-            "Email": "אי-מייל",
-            "Content": "תוכן",
-            "Order Concert": "הזמנת קונצרט"
-        };
     }
     TranslatePipe.prototype.transform = function (value) {
         //console.log(value);

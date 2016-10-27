@@ -14,13 +14,14 @@ import {Contact} from "./Contact/contact"
 import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
+import {KidsArt} from './kids-art/kids-art.component'
 import {HeaderImage} from "./HeaderImage/header.image"
 import * as pipes from './pipes/pipes'
 import * as services from "./services/services"
 import {BaseComponent} from './common/base.component'
 
 @NgModule({
-    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, pipes.TranslatePipe, Calendar, Press, Press, pipes.SafeResourcePipe],
+    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, pipes.TranslatePipe, Calendar, Press, Press, pipes.SafeResourcePipe, KidsArt],
     imports: [
         BrowserModule,
         HttpModule,

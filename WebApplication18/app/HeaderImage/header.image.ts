@@ -10,7 +10,7 @@ import * as dal from '../dal/models'
     templateUrl: './header.image.html',
     moduleId: module.id,
 
-   
+
 })
 
 export class HeaderImage implements OnInit {
@@ -23,8 +23,8 @@ export class HeaderImage implements OnInit {
     active: boolean = true;
     ImageURL: string;
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        this.active = false;
-        setTimeout(this.active = true, 0);
+        //this.active = false;
+        //setTimeout(this.active = true, 0);
         return true;
     }
 

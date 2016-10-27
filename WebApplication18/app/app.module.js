@@ -23,6 +23,7 @@ var contact_1 = require("./Contact/contact");
 var programs_1 = require("./Programs/programs");
 var pictures_1 = require("./Pictures/pictures");
 var videos_1 = require("./Videos/videos");
+var kids_art_component_1 = require('./kids-art/kids-art.component');
 var header_image_1 = require("./HeaderImage/header.image");
 var pipes = require('./pipes/pipes');
 var services = require("./services/services");
@@ -31,7 +32,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent, home_1.Home, biography_1.Biography, links_1.Links, contact_1.Contact, programs_1.Programs, pictures_1.Pictures, videos_1.Videos, header_image_1.HeaderImage, pipes.TranslatePipe, calendar_1.Calendar, press_1.Press, press_1.Press, pipes.SafeResourcePipe],
+            declarations: [app_component_1.AppComponent, home_1.Home, biography_1.Biography, links_1.Links, contact_1.Contact, programs_1.Programs, pictures_1.Pictures, videos_1.Videos, header_image_1.HeaderImage, pipes.TranslatePipe, calendar_1.Calendar, press_1.Press, press_1.Press, pipes.SafeResourcePipe, kids_art_component_1.KidsArt],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,

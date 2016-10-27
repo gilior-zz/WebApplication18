@@ -2,5 +2,10 @@
   {
     "outputFile": "Content/site.css",
     "inputFile": "Content/site.scss"
+  },
+
+  {
+    "outputFile": "app/kids-art/kids-art.component.css",
+    "inputFile": "app/kids-art/kids-art.component.scss"
   }
 ]

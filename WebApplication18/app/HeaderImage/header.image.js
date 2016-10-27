@@ -24,8 +24,8 @@ var HeaderImage = (function () {
         this.active = true;
     }
     HeaderImage.prototype.canActivate = function (route, state) {
-        this.active = false;
-        setTimeout(this.active = true, 0);
+        //this.active = false;
+        //setTimeout(this.active = true, 0);
         return true;
     };
     HeaderImage.prototype.ngOnInit = function () {

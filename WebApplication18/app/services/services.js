@@ -138,7 +138,9 @@ var TranslationService = (function () {
             "email": "אי-מייל",
             "content": "תוכן",
             "order concert": "הזמנת קונצרט",
-            "": ""
+            "products": "חנות מוצרים",
+            "kids art": "עולם הילדים",
+            "coming soon...": "בקרוב..."
         };
     }
     TranslationService.prototype.TranlateItem = function (value) {

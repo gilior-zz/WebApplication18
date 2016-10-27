@@ -76,7 +76,7 @@ body {
         border-bottom-left-radius: 0px;
         text-indent: 0;
         border: 1px solid #84bbf3;
-        display: inline-block;
+        /*display: inline-block;*/
         color: #ffffff;
         /*font-family: Arial;*/
         /*font-size: 15px;*/
@@ -88,7 +88,7 @@ body {
         text-decoration: none;
         text-align: center;
         text-shadow: 1px 1px 0px #528ecc;
-        margin-right: 5px;
+        /*margin-right: 5px;*/
     }
 
     .my-navbar {
@@ -113,7 +113,7 @@ body {
 
     .rotator {
         color: rgb(205, 233, 252);
-        font-size: 3vw;
+        font-size: 3vw !important;
     }
 
     font-family: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif !important;
@@ -347,6 +347,10 @@ body {
     font-size: x-large;
 }
 
+.container-fluid-margin {
+    margin: 0 15px 0 15px !important;
+}
+
 footer {
     position: absolute;
     left: 0;
@@ -424,6 +428,8 @@ footer {
     color: white !important;
     font-weight: 900 !important;
 }
+
+
 
 .thumbnail {
     /*width: 100px;*/

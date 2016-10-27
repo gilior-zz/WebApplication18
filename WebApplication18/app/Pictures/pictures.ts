@@ -121,7 +121,7 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
         return this.cacheManager.GetFromCache('currentImageID', -1) == img.ID;
     }
 
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, public sanitizer: DomSanitizer, public router: Router, private injector: Injector) {
+    constructor(public sanitizer: DomSanitizer, private dataService: services.DataService, private cacheManager: services.CacheManager, public router: Router, private injector: Injector) {
         super(injector);
         this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`Content/Sources/loading.gif`);;
 

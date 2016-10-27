@@ -1,38 +1,57 @@
 ﻿<div class="container-fluid">
     <header-image [pageName]="'home'"></header-image>
-    <div dir="ltr" class="btn-group-sm">
-        <a (click)="changeToEnglish()" class="langLinks">Eng</a>
-        <a (click)="changeToHebrew()" class="langLinks">עבר</a>
-    </div>
-    <div class="navbar navbar-default my-navbar" style="">
+    <div class="row container-fluid-margin">
 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span style="font-weight: 900; color: white">{{'Menu'|translate}}</span>
-            </button>
-            <h4 class="navMenu hidden-lg hidden-md hidden-sm mobliePath">
-                <span class="white-font">{{'Noya Schleien'|translate}}</span>
-                <span class="white-font">|</span>
-                <span class="pageName white-font">{{pageName}}</span>
+        <div [class.text-left]="isHebrew" [class.text-right]="!isHebrew">
+            <div class="btn-group-sm">
+                <button type="button" class="langLinks" (click)="changeToEnglish()">Eng</button>
+                <button type="button" class="langLinks" (click)="changeToHebrew()">עבר</button>
+                <button type="button" class="btn btn-danger visible-xs-inline" (click)="goToKidsArt()">{{kidsArtMessage|translate}}</button>
 
-            </h4>
-
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="menu-ul nav nav-pills nav-justified ">
-                <li *ngFor="let menuItem of menuItems">
-                    <a data-toggle="collapse" data-target=".navbar-collapse" routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-md hidden-lg hidden-sm" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
-                    <a routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-xs" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
-                </li>
-            </ul>
+            </div>
         </div>
 
     </div>
-
 
 
 
 </div>
+
+
+
+
+<div class="navbar navbar-default my-navbar" style="">
+
+
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span style="font-weight: 900; color: white">{{'Menu'|translate}}</span>
+        </button>
+        <h4 class="navMenu hidden-lg hidden-md hidden-sm mobliePath">
+            <span class="white-font">{{'Noya Schleien'|translate}}</span>
+            <span class="white-font">|</span>
+            <span class="pageName white-font">{{pageName}}</span>
+
+        </h4>
+
+    </div>
+    <div class="navbar-collapse collapse">
+
+        <ul class="menu-ul nav nav-pills nav-justified ">
+            <li *ngFor="let menuItem of menuItems">
+                <a data-toggle="collapse" data-target=".navbar-collapse" routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-md hidden-lg hidden-sm" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
+                <a routerLinkActive="active-menu-item" class="menu-font  menu-anchor hidden-xs" [routerLink]="[menuItem.Name|lowercase]">{{menuItem.Text}}</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
 
 <div class="container-fluid">
     <router-outlet></router-outlet>
@@ -40,7 +59,8 @@
 </div>
 
 
-<footer>
+
+<footer id="footer">
     <div class="container-fluid">
         <div class="row footer-row text-center">
             <div class="col-xs-12 col-sm-3">
@@ -72,3 +92,12 @@
 
 
 </footer>
+
+<kids-art></kids-art>
+
+
+
+
+
+
+

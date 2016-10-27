@@ -1,0 +1,98 @@
+﻿import { Component, OnInit, HostListener}   from '@angular/core';
+import {Router} from '@angular/router'
+import {CacheManager}  from '../services/services'
+import {Language} from "../dal/models"
+@Component({
+    selector: 'kids-art',
+    moduleId: module.id,
+    templateUrl: 'kids-art.component.html',
+    styleUrls: ['./kids-art.component.css']
+})
+
+export class KidsArt implements OnInit {
+    position: string;
+    bottom: string;
+    left: string;
+    right: string;
+    isAbsolute: boolean;
+    isFixed: boolean;
+
+
+    constructor(private cacheManager: CacheManager, private router: Router) {
+
+    }
+
+    goToKidsArt() { }
+
+    ngOnInit() {
+        //this.float=
+    }
+    kidsArtMessage: string = 'Kids Art';
+    @HostListener('mouseenter') onMouseEnter() {
+        this.kidsArtMessage = 'Coming Soon...';
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        this.kidsArtMessage = 'Kids Art';
+    }
+
+    @HostListener('document:scroll') onscroll() {
+        this.resetStyleVariables();
+
+        if ($('.fixed-button').offset().top + $('.fixed-button').height()
+            >= $('#footer').offset().top) {
+
+            this.position = `absolute`;
+            this.bottom = `${$('#footer').height()}px`;
+            this.isAbsolute = true;
+
+            //console.log(this.position);
+            //console.log(this.bottom);
+            //$('.fixed-button').css('position', 'absolute');
+            //$('.fixed-button').css('bottom', `${$('#footer').height()}px`);
+        }
+
+        if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
+            this.position = `fixed`;
+            this.bottom = '0px';
+            this.isFixed = true;
+            //$('.fixed-button').css('position', 'fixed'); // restore when you scroll up
+            //$('.fixed-button').css('bottom', `0`);
+        }
+        this.setClasses();
+    }
+
+    resetStyleVariables(): void {
+        this.isAbsolute = false;
+        this.isFixed = false;
+        //this.isHebrew = false;
+        //this.isEnglish = false;
+    }
+
+    setClasses() {
+        //console.log(this.isFixed)
+        //console.log(this.isAbsolute)
+        let classes = {
+            //'non-footer-mode': this.isFixed,
+            //'footer-mode': !this.isAbsolute,
+            'hebrew-mode': this.isHebrew,
+            'english-mode': !this.isHebrew,
+        };
+
+        return classes;
+    }
+
+
+    get float(): string {
+        if (this.isHebrew) return 'left';
+        return 'right';
+    }
+
+
+    get isEnglish(): boolean { return !this.isHebrew; }
+
+    get isHebrew(): boolean {
+        let l = this.cacheManager.GetFromCache('lang', Language.Hebrew) == Language.Hebrew;
+        return l;
+    }
+}

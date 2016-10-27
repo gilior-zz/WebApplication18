@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, AfterViewInit, Injector} from "@angular/core"
+﻿import {Component, OnInit, AfterViewInit, Injector, HostListener} from "@angular/core"
 
 import * as services from "./services/services"
 import * as dal from "./dal/models"
@@ -23,8 +23,8 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     menuItems: dal.MenuItem[];
     currentView: string;
     headerImage: string;
-    constructor(private dataService: services.DataService, private CacheManager: services.CacheManager, private router: Router, private injector: Injector) {
-        super(injector);       
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private router: Router, private injector: Injector) {
+        super(injector);
     }
     public UpdateImage(imageUrl: string) {
 
@@ -33,12 +33,31 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
         this.router.navigate(['/contact']);
     }
 
+    goToKidsArt() {
+
+    }
+
+    get isHebrew(): boolean {
+        let l = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew) == dal .Language.Hebrew;
+        return l;
+    }
+    kidsArtMessage: string = 'Kids Art';
+    @HostListener('mouseenter') onMouseEnter() {
+        this.kidsArtMessage = 'Coming Soon...';
+    }
+
+    @HostListener('mouseleave') onMouseLeave() {
+        this.kidsArtMessage = 'Kids Art';
+    }
+
+
+
     changeToEnglish() {
-        this.CacheManager.StoreInCache("lang", dal.Language.English);
+        this.cacheManager.StoreInCache("lang", dal.Language.English);
         document.location.reload();
     }
     changeToHebrew() {
-        this.CacheManager.StoreInCache("lang", dal.Language.Hebrew);
+        this.cacheManager.StoreInCache("lang", dal.Language.Hebrew);
         document.location.reload();
     }
 

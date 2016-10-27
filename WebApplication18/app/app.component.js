@@ -21,24 +21,41 @@ var base_component_1 = require('./common/base.component');
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js' 
 var AppComponent = (function (_super) {
     __extends(AppComponent, _super);
-    function AppComponent(dataService, CacheManager, router, injector) {
+    function AppComponent(dataService, cacheManager, router, injector) {
         _super.call(this, injector);
         this.dataService = dataService;
-        this.CacheManager = CacheManager;
+        this.cacheManager = cacheManager;
         this.router = router;
         this.injector = injector;
+        this.kidsArtMessage = 'Kids Art';
     }
     AppComponent.prototype.UpdateImage = function (imageUrl) {
     };
     AppComponent.prototype.goToContact = function () {
         this.router.navigate(['/contact']);
     };
+    AppComponent.prototype.goToKidsArt = function () {
+    };
+    Object.defineProperty(AppComponent.prototype, "isHebrew", {
+        get: function () {
+            var l = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew) == dal.Language.Hebrew;
+            return l;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppComponent.prototype.onMouseEnter = function () {
+        this.kidsArtMessage = 'Coming Soon...';
+    };
+    AppComponent.prototype.onMouseLeave = function () {
+        this.kidsArtMessage = 'Kids Art';
+    };
     AppComponent.prototype.changeToEnglish = function () {
-        this.CacheManager.StoreInCache("lang", dal.Language.English);
+        this.cacheManager.StoreInCache("lang", dal.Language.English);
         document.location.reload();
     };
     AppComponent.prototype.changeToHebrew = function () {
-        this.CacheManager.StoreInCache("lang", dal.Language.Hebrew);
+        this.cacheManager.StoreInCache("lang", dal.Language.Hebrew);
         document.location.reload();
     };
     AppComponent.prototype.ngAfterViewInit = function () {
@@ -51,6 +68,18 @@ var AppComponent = (function (_super) {
             _this.menuItems = dataresponse.MenuItems;
         }, function (error) { return console.error(error); });
     };
+    __decorate([
+        core_1.HostListener('mouseenter'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], AppComponent.prototype, "onMouseEnter", null);
+    __decorate([
+        core_1.HostListener('mouseleave'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], AppComponent.prototype, "onMouseLeave", null);
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",

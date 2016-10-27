@@ -128,7 +128,10 @@ export class TranslationService {
         "email": "אי-מייל",
         "content": "תוכן",
         "order concert": "הזמנת קונצרט",
-        "": ""
+        "products": "חנות מוצרים",
+        "kids art": "עולם הילדים",
+        "coming soon...": "בקרוב..."
+
 
     };
     constructor(private cacheManager: CacheManager) {
