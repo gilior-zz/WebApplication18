@@ -138,7 +138,7 @@ export class TranslationService {
         "toddlers lamps": "מנורות לקטנטנים",
         "toddlers bags": "תיקים לקטנטנים",
         "toddlers cushions": "כריות לקטנטנים",
-
+        "to store": "לחנות"
     };
     constructor(private cacheManager: CacheManager) {
     }

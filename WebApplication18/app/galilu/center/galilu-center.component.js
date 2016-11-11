@@ -15,7 +15,8 @@ var GaliluCenterComponent = (function () {
     GaliluCenterComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            templateUrl: './galilu-center.component.html'
+            templateUrl: './galilu-center.component.html',
+            styleUrls: ['./galilu-center.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], GaliluCenterComponent);

@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var galilu_center_component_1 = require('./center/galilu-center.component');
-var galilu_home_component_1 = require('./home/galilu-home.component');
-var galilu_pallet_component_1 = require('./pallet/galilu-pallet.component');
+var center_component_1 = require('./center/center.component');
+var home_component_1 = require('./home/home.component');
+var pallet_component_1 = require('./pallet/pallet.component');
+var bags_component_1 = require('./bags/bags.component');
+var cushions_component_1 = require('./cushions/cushions.component');
+var lamps_component_1 = require('./lamps/lamps.component');
+var books_component_1 = require('./books/books.component');
 var GaliluRoutingModule = (function () {
     function GaliluRoutingModule() {
     }
@@ -22,7 +26,7 @@ var GaliluRoutingModule = (function () {
                 router_1.RouterModule.forChild([
                     {
                         path: 'galilu',
-                        component: galilu_home_component_1.GaliluHomeComponent,
+                        component: home_component_1.HomeComponent,
                         children: [
                             {
                                 path: '',
@@ -30,12 +34,28 @@ var GaliluRoutingModule = (function () {
                             },
                             {
                                 path: 'center',
-                                component: galilu_center_component_1.GaliluCenterComponent
+                                component: center_component_1.CenterComponent
                             },
                             {
                                 path: 'pallet',
-                                component: galilu_pallet_component_1.GaliluPalletComponent
-                            }
+                                component: pallet_component_1.PalletComponent
+                            },
+                            {
+                                path: 'books',
+                                component: books_component_1.BooksComponent
+                            },
+                            {
+                                path: 'cushions',
+                                component: cushions_component_1.CushionsComponent
+                            },
+                            {
+                                path: 'lamps',
+                                component: lamps_component_1.LampsComponent
+                            },
+                            {
+                                path: 'bags',
+                                component: bags_component_1.BagsComponent
+                            },
                         ]
                     }
                 ])

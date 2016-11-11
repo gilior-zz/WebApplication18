@@ -51,7 +51,7 @@ var AppComponent = (function (_super) {
     });
     Object.defineProperty(AppComponent.prototype, "galiluMessage", {
         get: function () {
-            return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu';
+            return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store';
         },
         enumerable: true,
         configurable: true

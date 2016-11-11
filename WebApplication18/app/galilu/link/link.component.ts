@@ -6,8 +6,8 @@ import {pageNameService} from '../../services/page-name.service'
 @Component({
     selector: 'galilu-link',
     moduleId: module.id,
-    templateUrl: 'galilu-link.component.html',
-    styleUrls: ['./galilu-link.component.css']
+    templateUrl: 'link.component.html',
+    styleUrls: ['./link.component.css']
 })
 
 export class GaliluLink implements OnInit {
@@ -33,7 +33,7 @@ export class GaliluLink implements OnInit {
     ngOnInit() {
         //this.float=
     }
-    get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu' }
+    get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store' }
 
     //@HostListener('mouseenter') onMouseEnter() {
     //    this.kidsArtMessage = 'Coming Soon...';

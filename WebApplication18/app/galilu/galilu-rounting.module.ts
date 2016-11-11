@@ -1,14 +1,18 @@
 ﻿import { NgModule }     from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {GaliluCenterComponent} from './center/galilu-center.component'
-import {GaliluHomeComponent} from './home/galilu-home.component'
-import {GaliluPalletComponent} from './pallet/galilu-pallet.component'
+import {CenterComponent} from './center/center.component'
+import {HomeComponent} from './home/home.component'
+import {PalletComponent} from './pallet/pallet.component'
+import {BagsComponent} from './bags/bags.component'
+import {CushionsComponent} from './cushions/cushions.component'
+import {LampsComponent} from './lamps/lamps.component'
+import {BooksComponent} from './books/books.component'
 @NgModule({
     imports: [
         RouterModule.forChild([
             {
                 path: 'galilu',
-                component: GaliluHomeComponent,
+                component: HomeComponent,
                 children: [
                     {
                         path: '',
@@ -16,12 +20,28 @@ import {GaliluPalletComponent} from './pallet/galilu-pallet.component'
                     },
                     {
                         path: 'center',
-                        component: GaliluCenterComponent
+                        component: CenterComponent
                     },
                     {
                         path: 'pallet',
-                        component: GaliluPalletComponent
-                    }
+                        component: PalletComponent
+                    },
+                    {
+                        path: 'books',
+                        component: BooksComponent
+                    },
+                    {
+                        path: 'cushions',
+                        component: CushionsComponent
+                    },
+                    {
+                        path: 'lamps',
+                        component: LampsComponent
+                    },
+                    {
+                        path: 'bags',
+                        component: BagsComponent
+                    },
                 ]
 
             }

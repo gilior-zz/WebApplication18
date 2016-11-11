@@ -1,17 +1,25 @@
 ﻿import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 
-import {GaliluCenterComponent} from './center/galilu-center.component'
-import {GaliluHomeComponent} from './home/galilu-home.component'
-import {GaliluPalletComponent} from './pallet/galilu-pallet.component'
+import {CenterComponent} from './center/center.component'
+import {HomeComponent} from './home/home.component'
 import {GaliluRoutingModule} from './galilu-rounting.module'
+import {TranslatePipe}  from "../pipes/pipes"
+import {PalletComponent} from './pallet/pallet.component'
+import {BagsComponent} from './bags/bags.component'
+import {CushionsComponent} from './cushions/cushions.component'
+import {LampsComponent} from './lamps/lamps.component'
+import {BooksComponent} from './books/books.component'
 
 @NgModule({
     imports: [
         CommonModule,
-        GaliluRoutingModule
+        GaliluRoutingModule,
+
     ],
-    declarations: [GaliluCenterComponent, GaliluCenterComponent, GaliluPalletComponent,GaliluHomeComponent]
+    declarations: [TranslatePipe, CenterComponent, CenterComponent, PalletComponent, HomeComponent, BagsComponent, CushionsComponent, LampsComponent, BooksComponent],
+    exports: [TranslatePipe]
+
 })
 
 export class GaliluModule { }

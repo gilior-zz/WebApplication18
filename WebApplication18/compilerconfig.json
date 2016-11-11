@@ -26,5 +26,41 @@
   {
     "outputFile": "app/app.component.css",
     "inputFile": "app/app.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/center/galilu-center.component.css",
+    "inputFile": "app/galilu/center/galilu-center.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/books/books.component.css",
+    "inputFile": "app/galilu/books/books.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/center/center.component.css",
+    "inputFile": "app/galilu/center/center.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/cushions/cushions.component.css",
+    "inputFile": "app/galilu/cushions/cushions.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/home/home.component.css",
+    "inputFile": "app/galilu/home/home.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/lamps/lamps.component.css",
+    "inputFile": "app/galilu/lamps/lamps.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/link/link.component.css",
+    "inputFile": "app/galilu/link/link.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/pallet/pallet.component.css",
+    "inputFile": "app/galilu/pallet/pallet.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/bags/bags.component.css",
+    "inputFile": "app/galilu/bags/bags.component.scss"
   }
 ]

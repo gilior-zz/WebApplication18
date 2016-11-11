@@ -29,7 +29,7 @@ var GaliluLink = (function () {
         //this.float=
     };
     Object.defineProperty(GaliluLink.prototype, "galiluMessage", {
-        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu'; },
+        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store'; },
         enumerable: true,
         configurable: true
     });

@@ -48,7 +48,7 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     }
     get galiluMessage(): string {
 
-        return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu'
+        return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store'
     }
     //@HostListener('mouseenter') onMouseEnter() {
     //    this.kidsArtMessage = 'Coming Soon...';

@@ -10,10 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var galilu_center_component_1 = require('./center/galilu-center.component');
-var galilu_home_component_1 = require('./home/galilu-home.component');
-var galilu_pallet_component_1 = require('./pallet/galilu-pallet.component');
+var center_component_1 = require('./center/center.component');
+var home_component_1 = require('./home/home.component');
 var galilu_rounting_module_1 = require('./galilu-rounting.module');
+var pipes_1 = require("../pipes/pipes");
+var pallet_component_1 = require('./pallet/pallet.component');
+var bags_component_1 = require('./bags/bags.component');
+var cushions_component_1 = require('./cushions/cushions.component');
+var lamps_component_1 = require('./lamps/lamps.component');
+var books_component_1 = require('./books/books.component');
 var GaliluModule = (function () {
     function GaliluModule() {
     }
@@ -21,9 +26,10 @@ var GaliluModule = (function () {
         core_1.NgModule({
             imports: [
                 common_1.CommonModule,
-                galilu_rounting_module_1.GaliluRoutingModule
+                galilu_rounting_module_1.GaliluRoutingModule,
             ],
-            declarations: [galilu_center_component_1.GaliluCenterComponent, galilu_center_component_1.GaliluCenterComponent, galilu_pallet_component_1.GaliluPalletComponent, galilu_home_component_1.GaliluHomeComponent]
+            declarations: [pipes_1.TranslatePipe, center_component_1.CenterComponent, center_component_1.CenterComponent, pallet_component_1.PalletComponent, home_component_1.HomeComponent, bags_component_1.BagsComponent, cushions_component_1.CushionsComponent, lamps_component_1.LampsComponent, books_component_1.BooksComponent],
+            exports: [pipes_1.TranslatePipe]
         }), 
         __metadata('design:paramtypes', [])
     ], GaliluModule);
