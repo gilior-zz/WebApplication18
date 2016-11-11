@@ -23,23 +23,26 @@ var contact_1 = require("./Contact/contact");
 var programs_1 = require("./Programs/programs");
 var pictures_1 = require("./Pictures/pictures");
 var videos_1 = require("./Videos/videos");
-var kids_art_component_1 = require('./kids-art/kids-art.component');
+var galilu_link_component_1 = require('./galilu/link/galilu-link.component');
 var header_image_1 = require("./HeaderImage/header.image");
 var pipes = require('./pipes/pipes');
 var services = require("./services/services");
+var galilu_module_1 = require('./galilu/galilu-module');
+var page_name_service_1 = require('./services/page-name.service');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent, home_1.Home, biography_1.Biography, links_1.Links, contact_1.Contact, programs_1.Programs, pictures_1.Pictures, videos_1.Videos, header_image_1.HeaderImage, pipes.TranslatePipe, calendar_1.Calendar, press_1.Press, press_1.Press, pipes.SafeResourcePipe, kids_art_component_1.KidsArt],
+            declarations: [app_component_1.AppComponent, home_1.Home, biography_1.Biography, links_1.Links, contact_1.Contact, programs_1.Programs, pictures_1.Pictures, videos_1.Videos, header_image_1.HeaderImage, pipes.TranslatePipe, calendar_1.Calendar, press_1.Press, press_1.Press, pipes.SafeResourcePipe, galilu_link_component_1.GaliluLink],
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
                 forms_1.FormsModule,
-                app_routes_1.AppRoutingModule
+                app_routes_1.AppRoutingModule,
+                galilu_module_1.GaliluModule
             ],
-            providers: [services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, platform_browser_1.Title],
+            providers: [page_name_service_1.pageNameService, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, platform_browser_1.Title],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

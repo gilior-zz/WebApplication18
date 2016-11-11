@@ -1,4 +1,9 @@
 "use strict";
+(function (Mode) {
+    Mode[Mode["Store"] = 0] = "Store";
+    Mode[Mode["Noya"] = 1] = "Noya";
+})(exports.Mode || (exports.Mode = {}));
+var Mode = exports.Mode;
 (function (Language) {
     Language[Language["Hebrew"] = 0] = "Hebrew";
     Language[Language["English"] = 1] = "English";

@@ -130,8 +130,14 @@ export class TranslationService {
         "order concert": "הזמנת קונצרט",
         "products": "חנות מוצרים",
         "kids art": "עולם הילדים",
-        "coming soon...": "בקרוב..."
-
+        "coming soon...": "בקרוב...",
+        "galilu": "גלילו",
+        "custom designed products for toddlers": "מוצרים לקטנטנים בעיצוב אישי",
+        "toddlers activity pallet": "משטח פעילות לקטנטנים",
+        "toddlers activity books": "ספרי פעילות לקטנטנים",
+        "toddlers lamps": "מנורות לקטנטנים",
+        "toddlers bags": "תיקים לקטנטנים",
+        "toddlers cushions": "כריות לקטנטנים",
 
     };
     constructor(private cacheManager: CacheManager) {

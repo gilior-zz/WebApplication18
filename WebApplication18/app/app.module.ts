@@ -14,22 +14,24 @@ import {Contact} from "./Contact/contact"
 import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
-import {KidsArt} from './kids-art/kids-art.component'
+import {GaliluLink} from './galilu/link/galilu-link.component'
 import {HeaderImage} from "./HeaderImage/header.image"
 import * as pipes from './pipes/pipes'
 import * as services from "./services/services"
 import {BaseComponent} from './common/base.component'
-
+import {GaliluModule} from './galilu/galilu-module'
+import {pageNameService} from './services/page-name.service'
 @NgModule({
-    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, pipes.TranslatePipe, Calendar, Press, Press, pipes.SafeResourcePipe, KidsArt],
+    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, pipes.TranslatePipe, Calendar, Press, Press, pipes.SafeResourcePipe, GaliluLink],
     imports: [
         BrowserModule,
         HttpModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        GaliluModule
     ],
 
-    providers: [services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
+    providers: [pageNameService, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
     bootstrap: [AppComponent],
 })
 export class AppModule { }

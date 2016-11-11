@@ -3,6 +3,8 @@
     text: string
 }
 
+export enum Mode { Store, Noya }
+
 export enum Language {
     Hebrew, English
 }

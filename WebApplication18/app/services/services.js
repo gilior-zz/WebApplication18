@@ -140,7 +140,9 @@ var TranslationService = (function () {
             "order concert": "הזמנת קונצרט",
             "products": "חנות מוצרים",
             "kids art": "עולם הילדים",
-            "coming soon...": "בקרוב..."
+            "coming soon...": "בקרוב...",
+            "galilu": "גלילו",
+            "custom designed products for toddlers": "מוצרים לקטנטנים בעיצוב אישי"
         };
     }
     TranslationService.prototype.TranlateItem = function (value) {

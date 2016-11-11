@@ -14,7 +14,7 @@ export class Home extends BaseComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        console.debug(this.pageName);
+        //console.debug(this.pageName);
     }
     //public pageName
     //ngOnInit() {

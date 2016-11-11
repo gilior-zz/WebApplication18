@@ -1,9 +1,9 @@
 ﻿import {Component, OnInit, ViewEncapsulation, Input } from '@angular/core'
 import { DomSanitizer, SafeUrl, SafeResourceUrl, SafeScript, SafeStyle} from '@angular/platform-browser';
-import {Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router'
+import {Router, NavigationEnd, CanActivate, ActivatedRoute, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router'
 import * as services from '../services/services'
 import * as dal from '../dal/models'
-
+import {pageNameService} from '../services/page-name.service'
 
 @Component({
     selector: 'header-image',
@@ -17,7 +17,7 @@ export class HeaderImage implements OnInit {
 
     //ImageURL: string;
     //ImageURL: SafeUrl;
-    constructor(private dataService: services.DataService, private logService: services.LogService, public sanitizer: DomSanitizer, public router: Router) {
+    constructor(private pn: pageNameService, private dataService: services.DataService, private logService: services.LogService, public sanitizer: DomSanitizer, public router: Router) {
 
     }
     active: boolean = true;
@@ -27,22 +27,26 @@ export class HeaderImage implements OnInit {
         //setTimeout(this.active = true, 0);
         return true;
     }
+    get Title(): string { return this.pn.currentPageName.includes('galilu') ? 'Galilu' : 'Noya Schleien'; }
+    get Subject(): string { return this.pn.currentPageName.includes('galilu') ? 'Custom designed products for toddlers' : 'Marimba & Percussion'; }
 
-
-
+    mainImage: string = 'http://res.cloudinary.com/lior/image/upload/v1468953847/home_pic.jpg';
+    kidsImage: string = 'http://uploads.webflow.com/541ff57a83d9857b247047a4/541ffb6cf5feb623699d9f91_kidsrow1.png';
+    safeMainImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.mainImage}')`);
+    safeKidsImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.kidsImage}')`);
     @Input() pageName: string;
-    safeImage: SafeStyle;
+    get safeImage(): SafeStyle { return this.pn.currentPageName.includes('galilu') ? this.safeKidsImage : this.safeMainImage; }
     ngOnInit() {
-        this.logService.writeToLog('in ngOnInit');
+        //this.logService.writeToLog('in ngOnInit');
 
-        var req: dal.MenuImageRequest = { Language: dal.Language.Hebrew, PathName: this.pageName };
+        //var req: dal.MenuImageRequest = { Language: dal.Language.Hebrew, PathName: this.pageName };
 
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(
-            (res: dal.MenuImageResponse) => {
-                this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
-                this.safeImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.ImageURL}')`);
+        //this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(
+        //    (res: dal.MenuImageResponse) => {
+        //        this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
+        //        this.safeImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.ImageURL}')`);
 
-            })
+        //    })
     }
 
 

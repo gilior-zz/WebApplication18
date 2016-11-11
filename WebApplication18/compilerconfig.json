@@ -3,9 +3,28 @@
     "outputFile": "Content/site.css",
     "inputFile": "Content/site.scss"
   },
-
   {
     "outputFile": "app/kids-art/kids-art.component.css",
     "inputFile": "app/kids-art/kids-art.component.scss"
+  },
+  {
+    "outputFile": "app/kids-art/kids-art-link.component.css",
+    "inputFile": "app/kids-art/kids-art-link.component.scss"
+  },
+  {
+    "outputFile": "app/kids-art/kids-art-home.component.css",
+    "inputFile": "app/kids-art/kids-art-home.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/home/galilu-home.component.css",
+    "inputFile": "app/galilu/home/galilu-home.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/link/galilu-link.component.css",
+    "inputFile": "app/galilu/link/galilu-link.component.scss"
+  },
+  {
+    "outputFile": "app/app.component.css",
+    "inputFile": "app/app.component.scss"
   }
 ]

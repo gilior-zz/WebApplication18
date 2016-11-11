@@ -12,30 +12,50 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var services = require('../services/services');
-var dal = require('../dal/models');
+var page_name_service_1 = require('../services/page-name.service');
 var HeaderImage = (function () {
     //ImageURL: string;
     //ImageURL: SafeUrl;
-    function HeaderImage(dataService, logService, sanitizer, router) {
+    function HeaderImage(pn, dataService, logService, sanitizer, router) {
+        this.pn = pn;
         this.dataService = dataService;
         this.logService = logService;
         this.sanitizer = sanitizer;
         this.router = router;
         this.active = true;
+        this.mainImage = 'http://res.cloudinary.com/lior/image/upload/v1468953847/home_pic.jpg';
+        this.kidsImage = 'http://uploads.webflow.com/541ff57a83d9857b247047a4/541ffb6cf5feb623699d9f91_kidsrow1.png';
+        this.safeMainImage = this.sanitizer.bypassSecurityTrustStyle("url('" + this.mainImage + "')");
+        this.safeKidsImage = this.sanitizer.bypassSecurityTrustStyle("url('" + this.kidsImage + "')");
     }
     HeaderImage.prototype.canActivate = function (route, state) {
         //this.active = false;
         //setTimeout(this.active = true, 0);
         return true;
     };
+    Object.defineProperty(HeaderImage.prototype, "Title", {
+        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Galilu' : 'Noya Schleien'; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HeaderImage.prototype, "Subject", {
+        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Custom designed products for toddlers' : 'Marimba & Percussion'; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HeaderImage.prototype, "safeImage", {
+        get: function () { return this.pn.currentPageName.includes('galilu') ? this.safeKidsImage : this.safeMainImage; },
+        enumerable: true,
+        configurable: true
+    });
     HeaderImage.prototype.ngOnInit = function () {
-        var _this = this;
-        this.logService.writeToLog('in ngOnInit');
-        var req = { Language: dal.Language.Hebrew, PathName: this.pageName };
-        this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(function (res) {
-            _this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
-            _this.safeImage = _this.sanitizer.bypassSecurityTrustStyle("url('" + _this.ImageURL + "')");
-        });
+        //this.logService.writeToLog('in ngOnInit');
+        //var req: dal.MenuImageRequest = { Language: dal.Language.Hebrew, PathName: this.pageName };
+        //this.dataService.ConnectToApiData(req, 'api/Data/GetImageForMenuItem').subscribe(
+        //    (res: dal.MenuImageResponse) => {
+        //        this.ImageURL = res.ImageURL; //console.log(this.ImageURL) }
+        //        this.safeImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.ImageURL}')`);
+        //    })
     };
     __decorate([
         core_1.Input(), 
@@ -47,7 +67,7 @@ var HeaderImage = (function () {
             templateUrl: './header.image.html',
             moduleId: module.id,
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.LogService, platform_browser_1.DomSanitizer, router_1.Router])
+        __metadata('design:paramtypes', [page_name_service_1.pageNameService, services.DataService, services.LogService, platform_browser_1.DomSanitizer, router_1.Router])
     ], HeaderImage);
     return HeaderImage;
 }());

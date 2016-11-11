@@ -18,23 +18,28 @@ var services = require("./services/services");
 var dal = require("./dal/models");
 var router_1 = require('@angular/router');
 var base_component_1 = require('./common/base.component');
+var page_name_service_1 = require('./services/page-name.service');
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js' 
 var AppComponent = (function (_super) {
     __extends(AppComponent, _super);
-    function AppComponent(dataService, cacheManager, router, injector) {
+    function AppComponent(dataService, cacheManager, router, injector, pn) {
         _super.call(this, injector);
         this.dataService = dataService;
         this.cacheManager = cacheManager;
         this.router = router;
         this.injector = injector;
-        this.kidsArtMessage = 'Kids Art';
+        this.pn = pn;
     }
     AppComponent.prototype.UpdateImage = function (imageUrl) {
     };
     AppComponent.prototype.goToContact = function () {
         this.router.navigate(['/contact']);
     };
-    AppComponent.prototype.goToKidsArt = function () {
+    AppComponent.prototype.changeMode = function () {
+        if (this.pn.currentPageName.includes('galilu'))
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['galilu']);
     };
     Object.defineProperty(AppComponent.prototype, "isHebrew", {
         get: function () {
@@ -44,12 +49,27 @@ var AppComponent = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    AppComponent.prototype.onMouseEnter = function () {
-        this.kidsArtMessage = 'Coming Soon...';
-    };
-    AppComponent.prototype.onMouseLeave = function () {
-        this.kidsArtMessage = 'Kids Art';
-    };
+    Object.defineProperty(AppComponent.prototype, "galiluMessage", {
+        get: function () {
+            return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "displayMenu", {
+        //@HostListener('mouseenter') onMouseEnter() {
+        //    this.kidsArtMessage = 'Coming Soon...';
+        //}
+        //@HostListener('mouseleave') onMouseLeave() {
+        //    this.kidsArtMessage = 'Kids Art';
+        //}
+        get: function () {
+            console.log('in displayMenu');
+            return !this.pn.currentPageName.includes('galilu');
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppComponent.prototype.changeToEnglish = function () {
         this.cacheManager.StoreInCache("lang", dal.Language.English);
         document.location.reload();
@@ -68,25 +88,14 @@ var AppComponent = (function (_super) {
             _this.menuItems = dataresponse.MenuItems;
         }, function (error) { return console.error(error); });
     };
-    __decorate([
-        core_1.HostListener('mouseenter'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], AppComponent.prototype, "onMouseEnter", null);
-    __decorate([
-        core_1.HostListener('mouseleave'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], AppComponent.prototype, "onMouseLeave", null);
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",
             templateUrl: "./app.component.html",
+            styleUrls: ['./app.component.css'],
             moduleId: module.id
         }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, router_1.Router, core_1.Injector])
+        __metadata('design:paramtypes', [services.DataService, services.CacheManager, router_1.Router, core_1.Injector, page_name_service_1.pageNameService])
     ], AppComponent);
     return AppComponent;
 }(base_component_1.BaseComponent));

@@ -3,9 +3,9 @@
 import * as services from "./services/services"
 import * as dal from "./dal/models"
 
-import {Router} from '@angular/router'
+import {Router, NavigationEnd} from '@angular/router'
 import {BaseComponent} from './common/base.component'
-
+import {pageNameService} from './services/page-name.service'
 
 
 
@@ -14,6 +14,7 @@ import {BaseComponent} from './common/base.component'
 @Component({
     selector: "my-app",
     templateUrl: "./app.component.html",
+    styleUrls: ['./app.component.css'],
     moduleId: module.id
 })
 
@@ -23,8 +24,9 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     menuItems: dal.MenuItem[];
     currentView: string;
     headerImage: string;
-    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private router: Router, private injector: Injector) {
+    constructor(private dataService: services.DataService, private cacheManager: services.CacheManager, private router: Router, private injector: Injector, private pn: pageNameService) {
         super(injector);
+
     }
     public UpdateImage(imageUrl: string) {
 
@@ -33,25 +35,34 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
         this.router.navigate(['/contact']);
     }
 
-    goToKidsArt() {
-
+    changeMode() {
+        if (this.pn.currentPageName.includes('galilu'))
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['galilu']);
     }
 
     get isHebrew(): boolean {
-        let l = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew) == dal .Language.Hebrew;
+        let l = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew) == dal.Language.Hebrew;
         return l;
     }
-    kidsArtMessage: string = 'Kids Art';
-    @HostListener('mouseenter') onMouseEnter() {
-        this.kidsArtMessage = 'Coming Soon...';
+    get galiluMessage(): string {
+
+        return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu'
     }
+    //@HostListener('mouseenter') onMouseEnter() {
+    //    this.kidsArtMessage = 'Coming Soon...';
+    //}
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.kidsArtMessage = 'Kids Art';
+    //@HostListener('mouseleave') onMouseLeave() {
+    //    this.kidsArtMessage = 'Kids Art';
+    //}
+
+
+    get displayMenu(): boolean {
+        console.log('in displayMenu');
+        return !this.pn.currentPageName.includes('galilu')
     }
-
-
-
     changeToEnglish() {
         this.cacheManager.StoreInCache("lang", dal.Language.English);
         document.location.reload();

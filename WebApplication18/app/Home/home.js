@@ -24,7 +24,7 @@ var Home = (function (_super) {
         this.injector = injector;
     }
     Home.prototype.ngAfterViewInit = function () {
-        console.debug(this.pageName);
+        //console.debug(this.pageName);
     };
     Home = __decorate([
         core_1.Component({

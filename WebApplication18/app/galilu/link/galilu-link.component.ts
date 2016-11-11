@@ -1,15 +1,16 @@
 ﻿import { Component, OnInit, HostListener}   from '@angular/core';
 import {Router} from '@angular/router'
-import {CacheManager}  from '../services/services'
-import {Language} from "../dal/models"
+import {CacheManager}  from '../../services/services'
+import {Language} from "../../dal/models"
+import {pageNameService} from '../../services/page-name.service'
 @Component({
-    selector: 'kids-art',
+    selector: 'galilu-link',
     moduleId: module.id,
-    templateUrl: 'kids-art.component.html',
-    styleUrls: ['./kids-art.component.css']
+    templateUrl: 'galilu-link.component.html',
+    styleUrls: ['./galilu-link.component.css']
 })
 
-export class KidsArt implements OnInit {
+export class GaliluLink implements OnInit {
     position: string;
     bottom: string;
     left: string;
@@ -18,23 +19,29 @@ export class KidsArt implements OnInit {
     isFixed: boolean;
 
 
-    constructor(private cacheManager: CacheManager, private router: Router) {
+    constructor(private cacheManager: CacheManager, private router: Router, private pn: pageNameService) {
 
     }
 
-    goToKidsArt() { }
+    changeMode() {
+        if (this.pn.currentPageName.includes('galilu'))
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['galilu']);
+    }
 
     ngOnInit() {
         //this.float=
     }
-    kidsArtMessage: string = 'Kids Art';
-    @HostListener('mouseenter') onMouseEnter() {
-        this.kidsArtMessage = 'Coming Soon...';
-    }
+    get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'Galilu' }
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.kidsArtMessage = 'Kids Art';
-    }
+    //@HostListener('mouseenter') onMouseEnter() {
+    //    this.kidsArtMessage = 'Coming Soon...';
+    //}
+
+    //@HostListener('mouseleave') onMouseLeave() {
+    //    this.kidsArtMessage = 'Kids Art';
+    //}
 
     @HostListener('document:scroll') onscroll() {
         this.resetStyleVariables();

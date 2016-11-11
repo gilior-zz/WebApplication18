@@ -4,9 +4,9 @@
 
         <div [class.text-left]="isHebrew" [class.text-right]="!isHebrew">
             <div class="btn-group-sm">
+                <button type="button" class="btn btn-danger galilu-link" (click)="changeMode()">{{galiluMessage|translate}}</button>
                 <button type="button" class="langLinks" (click)="changeToEnglish()">Eng</button>
                 <button type="button" class="langLinks" (click)="changeToHebrew()">עבר</button>
-                <button type="button" class="btn btn-danger visible-xs-inline" (click)="goToKidsArt()">{{kidsArtMessage|translate}}</button>
 
             </div>
         </div>
@@ -20,7 +20,7 @@
 
 
 
-<div class="navbar navbar-default my-navbar" style="">
+<div class="navbar navbar-default my-navbar" *ngIf="displayMenu" style="">
 
 
 
@@ -93,7 +93,7 @@
 
 </footer>
 
-<kids-art></kids-art>
+<galilu-link></galilu-link>
 
 
 
