@@ -25,10 +25,10 @@ var AppRoutingModule = (function () {
         core_1.NgModule({
             imports: [
                 router_1.RouterModule.forRoot([
-                    //{
-                    //    path: 'kids-art',
-                    //    loadChildren: 'app/kids-art/kids-art-module.component#KidsArtModule',
-                    //},
+                    {
+                        path: 'galilu',
+                        loadChildren: 'app/galilu/galilu.module#GaliluModule',
+                    },
                     { path: "home", component: home_1.Home },
                     { path: "biography", component: biography_1.Biography },
                     { path: "pictures", component: pictures_1.Pictures },

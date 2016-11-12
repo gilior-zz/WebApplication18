@@ -131,6 +131,12 @@
     <Content Include="app\galilu\cushions\cushions.component.min.css">
       <DependentUpon>cushions.component.css</DependentUpon>
     </Content>
+    <Content Include="app\galilu\helper-directives\product-page-caption.component.css">
+      <DependentUpon>product-page-caption.component.scss</DependentUpon>
+    </Content>
+    <Content Include="app\galilu\helper-directives\product-page-caption.component.min.css">
+      <DependentUpon>product-page-caption.component.css</DependentUpon>
+    </Content>
     <Content Include="app\galilu\home\galilu-home.component.css">
       <DependentUpon>home.component.scss</DependentUpon>
     </Content>
@@ -168,6 +174,7 @@
     <Content Include="app\galilu\pallet\pallet.component.min.css">
       <DependentUpon>pallet.component.css</DependentUpon>
     </Content>
+    <Content Include="app\galilu\helper-directives\product-page-caption.component.html" />
     <Content Include="app\HeaderImage\header.image.html" />
     <Content Include="app\Home\calendar.html" />
     <Content Include="app\Home\home.html" />
@@ -1162,6 +1169,7 @@
     <Content Include="app\galilu\cushions\cushions.component.scss" />
     <Content Include="app\galilu\books\books.component.scss" />
     <Content Include="app\galilu\bags\bags.component.scss" />
+    <Content Include="app\galilu\helper-directives\product-page-caption.component.scss" />
     <None Include="Properties\PublishProfiles\daddy.pubxml" />
     <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
@@ -1253,6 +1261,7 @@
     <TypeScriptCompile Include="app\galilu\books\books.component.ts" />
     <TypeScriptCompile Include="app\galilu\cushions\cushions.component.ts" />
     <TypeScriptCompile Include="app\galilu\lamps\lamps.component.ts" />
+    <TypeScriptCompile Include="app\galilu\helper-directives\product-page-caption.component.ts" />
     <TypeScriptCompile Include="app\HeaderImage\header.image.ts" />
     <TypeScriptCompile Include="app\Home\calendar.ts" />
     <TypeScriptCompile Include="app\Home\home.ts" />
@@ -1260,7 +1269,7 @@
     <TypeScriptCompile Include="app\Home\updates.ts" />
     <TypeScriptCompile Include="app\galilu\center\center.component.ts" />
     <TypeScriptCompile Include="app\galilu\home\home.component.ts" />
-    <TypeScriptCompile Include="app\galilu\galilu-module.ts" />
+    <TypeScriptCompile Include="app\galilu\galilu.module.ts" />
     <TypeScriptCompile Include="app\galilu\pallet\pallet.component.ts" />
     <TypeScriptCompile Include="app\galilu\galilu-rounting.module.ts" />
     <TypeScriptCompile Include="app\Links\links.ts" />
@@ -1271,6 +1280,7 @@
     <TypeScriptCompile Include="app\pipes\pipes.ts" />
     <TypeScriptCompile Include="app\Programs\programs.ts" />
     <TypeScriptCompile Include="app\services\services.ts" />
+    <TypeScriptCompile Include="app\shared.module.ts" />
     <TypeScriptCompile Include="app\Videos\videos.ts" />
     <TypeScriptCompile Include="app\galilu\link\link.component.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />

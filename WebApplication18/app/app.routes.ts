@@ -13,10 +13,10 @@ import {CanDeactivateGuard} from  './common/can-deactivate-guard.service';
 @NgModule({
     imports: [
         RouterModule.forRoot([
-            //{
-            //    path: 'kids-art',
-            //    loadChildren: 'app/kids-art/kids-art-module.component#KidsArtModule',
-            //},
+            {
+                path: 'galilu',
+                loadChildren: 'app/galilu/galilu.module#GaliluModule',
+            },
             { path: "home", component: Home },
             { path: "biography", component: Biography },
             { path: "pictures", component: Pictures },

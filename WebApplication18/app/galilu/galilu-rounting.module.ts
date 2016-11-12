@@ -11,6 +11,11 @@ import {BooksComponent} from './books/books.component'
     imports: [
         RouterModule.forChild([
             {
+                path: '',
+                redirectTo: 'galilu',
+                pathMatch: 'full'
+            },
+            {
                 path: 'galilu',
                 component: HomeComponent,
                 children: [

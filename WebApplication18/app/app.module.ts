@@ -11,6 +11,7 @@ import {Press} from './Home/press'
 import {Biography} from "./Biography/biography"
 import {Links} from "./Links/links"
 import {Contact} from "./Contact/contact"
+import {SharedModule} from './shared.module'
 import {Programs} from "./Programs/programs"
 import {Pictures} from "./Pictures/pictures"
 import {Videos} from "./Videos/videos"
@@ -19,7 +20,7 @@ import {HeaderImage} from "./HeaderImage/header.image"
 import * as pipes from './pipes/pipes'
 import * as services from "./services/services"
 import {BaseComponent} from './common/base.component'
-import {GaliluModule} from './galilu/galilu-module'
+//import {GaliluModule} from './galilu/galilu-module'
 import {pageNameService} from './services/page-name.service'
 @NgModule({
     declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, Calendar, Press, Press, pipes.SafeResourcePipe, GaliluLink],
@@ -28,7 +29,8 @@ import {pageNameService} from './services/page-name.service'
         HttpModule,
         FormsModule,
         AppRoutingModule,
-        GaliluModule
+        SharedModule
+        //GaliluModule
     ],
  
     providers: [pageNameService, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],

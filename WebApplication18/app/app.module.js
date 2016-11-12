@@ -20,6 +20,7 @@ var press_1 = require('./Home/press');
 var biography_1 = require("./Biography/biography");
 var links_1 = require("./Links/links");
 var contact_1 = require("./Contact/contact");
+var shared_module_1 = require('./shared.module');
 var programs_1 = require("./Programs/programs");
 var pictures_1 = require("./Pictures/pictures");
 var videos_1 = require("./Videos/videos");
@@ -27,7 +28,7 @@ var link_component_1 = require('./galilu/link/link.component');
 var header_image_1 = require("./HeaderImage/header.image");
 var pipes = require('./pipes/pipes');
 var services = require("./services/services");
-var galilu_module_1 = require('./galilu/galilu-module');
+//import {GaliluModule} from './galilu/galilu-module'
 var page_name_service_1 = require('./services/page-name.service');
 var AppModule = (function () {
     function AppModule() {
@@ -40,7 +41,7 @@ var AppModule = (function () {
                 http_1.HttpModule,
                 forms_1.FormsModule,
                 app_routes_1.AppRoutingModule,
-                galilu_module_1.GaliluModule
+                shared_module_1.SharedModule
             ],
             providers: [page_name_service_1.pageNameService, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, platform_browser_1.Title],
             bootstrap: [app_component_1.AppComponent],

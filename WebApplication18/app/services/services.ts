@@ -138,7 +138,8 @@ export class TranslationService {
         "toddlers lamps": "מנורות לקטנטנים",
         "toddlers bags": "תיקים לקטנטנים",
         "toddlers cushions": "כריות לקטנטנים",
-        "to store": "לחנות"
+        "to store": "לחנות",
+        "back to previous page":"חזרה לעמוד קודם"
     };
     constructor(private cacheManager: CacheManager) {
     }

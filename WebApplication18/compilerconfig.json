@@ -62,5 +62,9 @@
   {
     "outputFile": "app/galilu/bags/bags.component.css",
     "inputFile": "app/galilu/bags/bags.component.scss"
+  },
+  {
+    "outputFile": "app/galilu/helper-directives/product-page-caption.component.css",
+    "inputFile": "app/galilu/helper-directives/product-page-caption.component.scss"
   }
 ]
