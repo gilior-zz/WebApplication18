@@ -24,7 +24,7 @@ var HeaderImage = (function () {
         this.router = router;
         this.active = true;
         this.mainImage = 'http://res.cloudinary.com/lior/image/upload/v1468953847/home_pic.jpg';
-        this.kidsImage = 'http://uploads.webflow.com/541ff57a83d9857b247047a4/541ffb6cf5feb623699d9f91_kidsrow1.png';
+        this.kidsImage = 'http://res.cloudinary.com/lior/image/upload/v1478964869/galilu-home-image.png';
         this.safeMainImage = this.sanitizer.bypassSecurityTrustStyle("url('" + this.mainImage + "')");
         this.safeKidsImage = this.sanitizer.bypassSecurityTrustStyle("url('" + this.kidsImage + "')");
     }

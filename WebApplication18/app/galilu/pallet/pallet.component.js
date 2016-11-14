@@ -12,6 +12,15 @@ var core_1 = require('@angular/core');
 var PalletComponent = (function () {
     function PalletComponent() {
     }
+    PalletComponent.prototype.ngOnInit = function () {
+        this.images = [];
+        for (var i = 1; i < 7; i++)
+            this.images.push({ ID: i, Selected: false });
+    };
+    PalletComponent.prototype.isSelected = function (id) { return this.images.find(function (i) { return i.ID == id; }).Selected; };
+    PalletComponent.prototype.onClick = function (id) {
+        this.images.find(function (i) { return i.ID == id; }).Selected = !this.images.find(function (i) { return i.ID == id; }).Selected;
+    };
     PalletComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

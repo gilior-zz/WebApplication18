@@ -1,12 +1,13 @@
 ﻿import { NgModule }            from '@angular/core';
 import { CommonModule }        from '@angular/common';
+import { FormsModule }        from '@angular/forms';
 
 import {TranslatePipe}  from "./pipes/pipes"
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule,FormsModule],
     declarations: [TranslatePipe],
-    exports: [TranslatePipe]
+    exports: [TranslatePipe,FormsModule]
 })
 export class SharedModule { }
 

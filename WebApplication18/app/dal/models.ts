@@ -3,6 +3,8 @@
     text: string
 }
 
+
+
 export enum Mode { Store, Noya }
 
 export enum Language {
@@ -29,11 +31,12 @@ export enum DataAmount {
 
 export interface ImageGalleryItem {
     ID: number;
-    ImagePath: string
-    ImageURL: string
-    ImageID: string
-    Visible: boolean
-    Order: number;
+    ImagePath?: string
+    ImageURL?: string
+    ImageID?: string
+    Visible?: boolean
+    Order?: number;
+    Selected?: boolean;
 }
 
 

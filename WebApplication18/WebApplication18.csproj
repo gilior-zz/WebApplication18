@@ -118,6 +118,7 @@
     <Content Include="app\galilu\center\center.component.min.css">
       <DependentUpon>center.component.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\galilu\galilu-home-image.png" />
     <Content Include="app\galilu\center\galilu-center.component.css">
       <DependentUpon>center.component.scss</DependentUpon>
     </Content>

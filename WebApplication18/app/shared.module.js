@@ -10,15 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var forms_1 = require('@angular/forms');
 var pipes_1 = require("./pipes/pipes");
 var SharedModule = (function () {
     function SharedModule() {
     }
     SharedModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule],
+            imports: [common_1.CommonModule, forms_1.FormsModule],
             declarations: [pipes_1.TranslatePipe],
-            exports: [pipes_1.TranslatePipe]
+            exports: [pipes_1.TranslatePipe, forms_1.FormsModule]
         }), 
         __metadata('design:paramtypes', [])
     ], SharedModule);

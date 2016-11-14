@@ -26,11 +26,6 @@ var GaliluRoutingModule = (function () {
                 router_1.RouterModule.forChild([
                     {
                         path: '',
-                        redirectTo: 'galilu',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'galilu',
                         component: home_component_1.HomeComponent,
                         children: [
                             {

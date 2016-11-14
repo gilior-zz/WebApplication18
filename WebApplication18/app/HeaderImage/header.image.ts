@@ -31,7 +31,7 @@ export class HeaderImage implements OnInit {
     get Subject(): string { return this.pn.currentPageName.includes('galilu') ? 'Custom designed products for toddlers' : 'Marimba & Percussion'; }
 
     mainImage: string = 'http://res.cloudinary.com/lior/image/upload/v1468953847/home_pic.jpg';
-    kidsImage: string = 'http://uploads.webflow.com/541ff57a83d9857b247047a4/541ffb6cf5feb623699d9f91_kidsrow1.png';
+    kidsImage: string = 'http://res.cloudinary.com/lior/image/upload/v1478964869/galilu-home-image.png';
     safeMainImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.mainImage}')`);
     safeKidsImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.kidsImage}')`);
     @Input() pageName: string;

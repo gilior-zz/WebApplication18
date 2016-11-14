@@ -1,6 +1,6 @@
 ﻿import {NgModule} from '@angular/core'
 import { HttpModule } from '@angular/http';
-import {FormsModule} from '@angular/forms'
+
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import {AppRoutingModule} from './app.routes'
@@ -27,12 +27,12 @@ import {pageNameService} from './services/page-name.service'
     imports: [
         BrowserModule,
         HttpModule,
-        FormsModule,
+
         AppRoutingModule,
         SharedModule
         //GaliluModule
     ],
- 
+
     providers: [pageNameService, services.CacheManager, services.DataService, services.DialogService, services.LogService, services.TranslationService, Title],
     bootstrap: [AppComponent],
 })

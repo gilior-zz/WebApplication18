@@ -139,7 +139,10 @@ export class TranslationService {
         "toddlers bags": "תיקים לקטנטנים",
         "toddlers cushions": "כריות לקטנטנים",
         "to store": "לחנות",
-        "back to previous page":"חזרה לעמוד קודם"
+        "back to previous page": "חזרה לעמוד קודם",
+        "must select at leat 4 items (click om item to select/deselect item)": "יש לבחור לפחות 4 פריטים",
+        "click on item to select/deselect item":"יש ללחוץ על פריט כדי לבחור / לבטל את בחירתו"
+
     };
     constructor(private cacheManager: CacheManager) {
     }
