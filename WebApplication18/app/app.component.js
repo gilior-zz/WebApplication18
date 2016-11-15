@@ -29,6 +29,11 @@ var AppComponent = (function (_super) {
         this.router = router;
         this.injector = injector;
         this.pn = pn;
+        //get galiluMessage(): string {
+        //    return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store'
+        //}
+        //set galiluMessage(value: string) { }
+        this.galiluMessage = "To store";
     }
     AppComponent.prototype.UpdateImage = function (imageUrl) {
     };
@@ -36,10 +41,10 @@ var AppComponent = (function (_super) {
         this.router.navigate(['/contact']);
     };
     AppComponent.prototype.changeMode = function () {
-        if (this.pn.currentPageName.includes('galilu'))
-            this.router.navigate(['/home']);
-        else
-            this.router.navigate(['galilu']);
+        //if (this.pn.currentPageName.includes('galilu'))
+        //    this.router.navigate(['/home']);
+        //else
+        //    this.router.navigate(['galilu']);
     };
     Object.defineProperty(AppComponent.prototype, "isHebrew", {
         get: function () {
@@ -49,20 +54,13 @@ var AppComponent = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(AppComponent.prototype, "galiluMessage", {
-        get: function () {
-            return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store';
-        },
-        enumerable: true,
-        configurable: true
-    });
+    AppComponent.prototype.onMouseEnter = function () {
+        this.galiluMessage = 'Coming Soon...';
+    };
+    AppComponent.prototype.onMouseLeave = function () {
+        this.galiluMessage = 'To store';
+    };
     Object.defineProperty(AppComponent.prototype, "displayMenu", {
-        //@HostListener('mouseenter') onMouseEnter() {
-        //    this.kidsArtMessage = 'Coming Soon...';
-        //}
-        //@HostListener('mouseleave') onMouseLeave() {
-        //    this.kidsArtMessage = 'Kids Art';
-        //}
         get: function () {
             console.log('in displayMenu');
             return !this.pn.currentPageName.includes('galilu');
@@ -88,6 +86,18 @@ var AppComponent = (function (_super) {
             _this.menuItems = dataresponse.MenuItems;
         }, function (error) { return console.error(error); });
     };
+    __decorate([
+        core_1.HostListener('mouseenter'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], AppComponent.prototype, "onMouseEnter", null);
+    __decorate([
+        core_1.HostListener('mouseleave'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], AppComponent.prototype, "onMouseLeave", null);
     AppComponent = __decorate([
         core_1.Component({
             selector: "my-app",

@@ -18,27 +18,24 @@ var GaliluLink = (function () {
         this.cacheManager = cacheManager;
         this.router = router;
         this.pn = pn;
+        //get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store' }
+        this.galiluMessage = "To store";
     }
     GaliluLink.prototype.changeMode = function () {
-        if (this.pn.currentPageName.includes('galilu'))
-            this.router.navigate(['/home']);
-        else
-            this.router.navigate(['galilu']);
+        //if (this.pn.currentPageName.includes('galilu'))
+        //    this.router.navigate(['/home']);
+        //else
+        //    this.router.navigate(['galilu']);
     };
     GaliluLink.prototype.ngOnInit = function () {
         //this.float=
     };
-    Object.defineProperty(GaliluLink.prototype, "galiluMessage", {
-        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store'; },
-        enumerable: true,
-        configurable: true
-    });
-    //@HostListener('mouseenter') onMouseEnter() {
-    //    this.kidsArtMessage = 'Coming Soon...';
-    //}
-    //@HostListener('mouseleave') onMouseLeave() {
-    //    this.kidsArtMessage = 'Kids Art';
-    //}
+    GaliluLink.prototype.onMouseEnter = function () {
+        this.galiluMessage = 'Coming Soon...';
+    };
+    GaliluLink.prototype.onMouseLeave = function () {
+        this.galiluMessage = 'To store';
+    };
     GaliluLink.prototype.onscroll = function () {
         this.resetStyleVariables();
         if ($('.fixed-button').offset().top + $('.fixed-button').height()
@@ -93,6 +90,18 @@ var GaliluLink = (function () {
         enumerable: true,
         configurable: true
     });
+    __decorate([
+        core_1.HostListener('mouseenter'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], GaliluLink.prototype, "onMouseEnter", null);
+    __decorate([
+        core_1.HostListener('mouseleave'), 
+        __metadata('design:type', Function), 
+        __metadata('design:paramtypes', []), 
+        __metadata('design:returntype', void 0)
+    ], GaliluLink.prototype, "onMouseLeave", null);
     __decorate([
         core_1.HostListener('document:scroll'), 
         __metadata('design:type', Function), 

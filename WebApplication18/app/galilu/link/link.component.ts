@@ -24,24 +24,25 @@ export class GaliluLink implements OnInit {
     }
 
     changeMode() {
-        if (this.pn.currentPageName.includes('galilu'))
-            this.router.navigate(['/home']);
-        else
-            this.router.navigate(['galilu']);
+        //if (this.pn.currentPageName.includes('galilu'))
+        //    this.router.navigate(['/home']);
+        //else
+        //    this.router.navigate(['galilu']);
     }
 
     ngOnInit() {
         //this.float=
     }
-    get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store' }
+    //get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store' }
 
-    //@HostListener('mouseenter') onMouseEnter() {
-    //    this.kidsArtMessage = 'Coming Soon...';
-    //}
+    galiluMessage: string = "To store";
+    @HostListener('mouseenter') onMouseEnter() {
+        this.galiluMessage = 'Coming Soon...';
+    }
 
-    //@HostListener('mouseleave') onMouseLeave() {
-    //    this.kidsArtMessage = 'Kids Art';
-    //}
+    @HostListener('mouseleave') onMouseLeave() {
+        this.galiluMessage = 'To store';
+    }
 
     @HostListener('document:scroll') onscroll() {
         this.resetStyleVariables();
