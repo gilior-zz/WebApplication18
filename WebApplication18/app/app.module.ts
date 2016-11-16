@@ -23,7 +23,7 @@ import {BaseComponent} from './common/base.component'
 //import {GaliluModule} from './galilu/galilu-module'
 import {pageNameService} from './services/page-name.service'
 @NgModule({
-    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, Calendar, Press, Press, pipes.SafeResourcePipe, GaliluLink],
+    declarations: [AppComponent, Home, Biography, Links, Contact, Programs, Pictures, Videos, HeaderImage, Calendar, Press, Press, Updates, pipes.SafeResourcePipe, GaliluLink],
     imports: [
         BrowserModule,
         HttpModule,

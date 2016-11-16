@@ -66,5 +66,9 @@
   {
     "outputFile": "app/galilu/helper-directives/product-page-caption.component.css",
     "inputFile": "app/galilu/helper-directives/product-page-caption.component.scss"
+  },
+  {
+    "outputFile": "app/Videos/videos.css",
+    "inputFile": "app/Videos/videos.scss"
   }
 ]

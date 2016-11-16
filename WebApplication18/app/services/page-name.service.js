@@ -1,20 +1,10 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var Subject_1 = require('rxjs/Subject');
-var pageNameService = (function () {
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
+export var pageNameService = (function () {
     function pageNameService(router) {
         this.router = router;
-        this.pageNameSubject = new Subject_1.Subject();
+        this.pageNameSubject = new Subject();
         this.pageNameEvent$ = this.pageNameSubject.asObservable();
         //this.router.events.subscribe(event => {
         //    if (event instanceof NavigationEnd) {
@@ -34,15 +24,26 @@ var pageNameService = (function () {
         this.pageNameSubject.next();
     };
     Object.defineProperty(pageNameService.prototype, "currentPageName", {
+        get: function () {
+            var urlItems = this.router.routerState.snapshot.url.split("/");
+            var lastItem = urlItems[urlItems.length - 1];
+            return lastItem;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(pageNameService.prototype, "currentUrl", {
         get: function () { return this.router.routerState.snapshot.url; },
         enumerable: true,
         configurable: true
     });
-    pageNameService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [router_1.Router])
-    ], pageNameService);
+    pageNameService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    pageNameService.ctorParameters = [
+        { type: Router, },
+    ];
     return pageNameService;
 }());
-exports.pageNameService = pageNameService;
 //# sourceMappingURL=page-name.service.js.map

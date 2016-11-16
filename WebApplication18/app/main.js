@@ -1,8 +1,6 @@
-"use strict";
-var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-var core_1 = require('@angular/core');
-require('rxjs/Rx');
-var app_module_1 = require('./app.module');
-core_1.enableProdMode();
-platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
+//import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+//import {enableProdMode} from '@angular/core';
+import { platformBrowser } from '@angular/platform-browser';
+import { AppModuleNgFactory } from '../aot/app/app.module.ngfactory';
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
 //# sourceMappingURL=main.js.map

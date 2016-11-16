@@ -47,7 +47,7 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
     }
 
     onKeyUp(event: KeyboardEvent) {
-        //console.log(event.keyCode);
+      
         var nextData: dal.NextData = event.keyCode == 39 ? dal.NextData.Next : dal.NextData.Prev;
         this.LoadRequestedImage(nextData);
     }
@@ -144,7 +144,7 @@ export class Pictures extends BaseComponent implements OnInit, AfterViewInit, On
             (res: dal.ImageGalleryResponse) => {
                 this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle(`url('${res.Image.ImageURL
                     }')`);
-                //console.log(this.mainImagePath);
+                
                 this.cacheManager.StoreInCache('currentImageID', res.Image.ID);
 
             },

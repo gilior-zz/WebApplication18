@@ -1,18 +1,10 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var model = require('../dal/models');
-var Observable_1 = require('rxjs/Observable');
-var CacheManager = (function () {
+import { Injectable } from '@angular/core';
+import { Headers, RequestOptions, Http } from '@angular/http';
+import * as model from '../dal/models';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+export var CacheManager = (function () {
     function CacheManager() {
     }
     CacheManager.prototype.StoreInCache = function (key, value) {
@@ -31,14 +23,14 @@ var CacheManager = (function () {
     CacheManager.prototype.ClearCache = function () {
         sessionStorage.clear();
     };
-    CacheManager = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
-    ], CacheManager);
+    CacheManager.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    CacheManager.ctorParameters = [];
     return CacheManager;
 }());
-exports.CacheManager = CacheManager;
-var DataService = (function () {
+export var DataService = (function () {
     function DataService(http, CacheManager) {
         this.http = http;
         this.CacheManager = CacheManager;
@@ -68,8 +60,8 @@ var DataService = (function () {
         var lang = this.CacheManager.GetFromCache('lang', model.Language.Hebrew);
         request.Language = lang;
         var body = JSON.stringify({ request: request });
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
+        var headers = new Headers({ 'Content-Type': 'application/json' });
+        var options = new RequestOptions({ headers: headers });
         return this.http.post(url, body, options)
             .map(function (res) { return res.json(); })
             .catch(this.handleError);
@@ -80,21 +72,24 @@ var DataService = (function () {
         var errMsg = (error.message) ? error.message :
             error.status ? error.status + " - " + error.statusText : 'Server error';
         console.error(errMsg); // log to console instead
-        return Observable_1.Observable.throw(errMsg);
+        return Observable.throw(errMsg);
     };
-    DataService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, CacheManager])
-    ], DataService);
+    DataService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    DataService.ctorParameters = [
+        { type: Http, },
+        { type: CacheManager, },
+    ];
     return DataService;
 }());
-exports.DataService = DataService;
 /**
  * Async modal dialog service
  * DialogService makes this app easier to test by faking this service.
  * TODO: better modal implemenation that doesn't use window.confirm
  */
-var DialogService = (function () {
+export var DialogService = (function () {
     function DialogService() {
     }
     /**
@@ -109,8 +104,7 @@ var DialogService = (function () {
     ;
     return DialogService;
 }());
-exports.DialogService = DialogService;
-var LogService = (function () {
+export var LogService = (function () {
     function LogService() {
     }
     LogService.prototype.writeToLog = function (msg) {
@@ -118,8 +112,7 @@ var LogService = (function () {
     };
     return LogService;
 }());
-exports.LogService = LogService;
-var TranslationService = (function () {
+export var TranslationService = (function () {
     function TranslationService(cacheManager) {
         this.cacheManager = cacheManager;
         this.translationFile = {
@@ -168,11 +161,13 @@ var TranslationService = (function () {
             return value;
         }
     };
-    TranslationService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [CacheManager])
-    ], TranslationService);
+    TranslationService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    TranslationService.ctorParameters = [
+        { type: CacheManager, },
+    ];
     return TranslationService;
 }());
-exports.TranslationService = TranslationService;
 //# sourceMappingURL=services.js.map

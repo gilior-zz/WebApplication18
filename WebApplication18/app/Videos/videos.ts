@@ -6,6 +6,7 @@ declare var youmax: any;
 @Component({
     templateUrl: "./videos.html",
     moduleId: module.id,
+    styleUrls: ['./videos.css']
 
 })
 
@@ -45,7 +46,7 @@ export class Videos extends BaseComponent implements OnInit, AfterViewInit {
     }
     clearStupidGPlus() {
         console.debug("in clearStupidGPlus");
-        $(".gc-bubbleDefault").parent().remove();
+        //$("   ").parent().remove();
     }
 
     ngOnInit() {

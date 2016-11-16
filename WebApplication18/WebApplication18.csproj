@@ -118,6 +118,12 @@
     <Content Include="app\galilu\center\center.component.min.css">
       <DependentUpon>center.component.css</DependentUpon>
     </Content>
+    <Content Include="app\Videos\videos.css">
+      <DependentUpon>videos.scss</DependentUpon>
+    </Content>
+    <Content Include="app\Videos\videos.min.css">
+      <DependentUpon>videos.css</DependentUpon>
+    </Content>
     <Content Include="Content\Images\galilu\galilu-home-image.png" />
     <Content Include="app\galilu\center\galilu-center.component.css">
       <DependentUpon>center.component.scss</DependentUpon>
@@ -1171,9 +1177,11 @@
     <Content Include="app\galilu\books\books.component.scss" />
     <Content Include="app\galilu\bags\bags.component.scss" />
     <Content Include="app\galilu\helper-directives\product-page-caption.component.scss" />
+    <Content Include="app\Videos\videos.scss" />
     <None Include="Properties\PublishProfiles\daddy.pubxml" />
     <None Include="Properties\PublishProfiles\noyaschleien.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
+    <Content Include="rollup-config.js" />
     <Content Include="Scripts\affix.js" />
     <Content Include="Scripts\alert.js" />
     <Content Include="Scripts\bootstrap-rtl.js" />
@@ -1223,6 +1231,7 @@
     <Content Include="Scripts\jquery-2.0.0.min.map" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
+    <Content Include="tsconfig-aot.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,16 +1,17 @@
 ﻿import {Injectable} from '@angular/core'
 import { Headers, RequestOptions, Http, Response} from '@angular/http';
 import * as model from '../dal/models'
-import {Observable}     from 'rxjs/Observable';
-
+import { Observable }     from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class CacheManager {
     constructor() { }
     public StoreInCache(key: string, value: any): void {
         sessionStorage.setItem(key, value);
     }
-    public GetFromCache<T>(key: string, defaultValue: T = null): T {
-        var retVal = <T>sessionStorage.getItem(key);
+    public GetFromCache(key: string, defaultValue: any = null): any {
+        var retVal = sessionStorage.getItem(key);
         if (!retVal && defaultValue != null)
             retVal = defaultValue;
         return retVal;
@@ -141,7 +142,7 @@ export class TranslationService {
         "to store": "לחנות",
         "back to previous page": "חזרה לעמוד קודם",
         "must select at leat 4 items (click om item to select/deselect item)": "יש לבחור לפחות 4 פריטים",
-        "click on item to select/deselect item":"יש ללחוץ על פריט כדי לבחור / לבטל את בחירתו"
+        "click on item to select/deselect item": "יש ללחוץ על פריט כדי לבחור / לבטל את בחירתו"
 
     };
     constructor(private cacheManager: CacheManager) {

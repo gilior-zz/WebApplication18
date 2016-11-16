@@ -1,19 +1,9 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var router_1 = require('@angular/router');
-var services = require('../services/services');
-var page_name_service_1 = require('../services/page-name.service');
-var HeaderImage = (function () {
+import { Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import * as services from '../services/services';
+import { pageNameService } from '../services/page-name.service';
+export var HeaderImage = (function () {
     //ImageURL: string;
     //ImageURL: SafeUrl;
     function HeaderImage(pn, dataService, logService, sanitizer, router) {
@@ -34,17 +24,17 @@ var HeaderImage = (function () {
         return true;
     };
     Object.defineProperty(HeaderImage.prototype, "Title", {
-        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Galilu' : 'Noya Schleien'; },
+        get: function () { return this.pn.currentUrl.includes('galilu') ? 'Galilu' : 'Noya Schleien'; },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(HeaderImage.prototype, "Subject", {
-        get: function () { return this.pn.currentPageName.includes('galilu') ? 'Custom designed products for toddlers' : 'Marimba & Percussion'; },
+        get: function () { return this.pn.currentUrl.includes('galilu') ? 'Custom designed products for toddlers' : 'Marimba & Percussion'; },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(HeaderImage.prototype, "safeImage", {
-        get: function () { return this.pn.currentPageName.includes('galilu') ? this.safeKidsImage : this.safeMainImage; },
+        get: function () { return this.pn.currentUrl.includes('galilu') ? this.safeKidsImage : this.safeMainImage; },
         enumerable: true,
         configurable: true
     });
@@ -57,19 +47,24 @@ var HeaderImage = (function () {
         //        this.safeImage = this.sanitizer.bypassSecurityTrustStyle(`url('${this.ImageURL}')`);
         //    })
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', String)
-    ], HeaderImage.prototype, "pageName", void 0);
-    HeaderImage = __decorate([
-        core_1.Component({
-            selector: 'header-image',
-            templateUrl: './header.image.html',
-            moduleId: module.id,
-        }), 
-        __metadata('design:paramtypes', [page_name_service_1.pageNameService, services.DataService, services.LogService, platform_browser_1.DomSanitizer, router_1.Router])
-    ], HeaderImage);
+    HeaderImage.decorators = [
+        { type: Component, args: [{
+                    selector: 'header-image',
+                    templateUrl: './header.image.html',
+                    moduleId: module.id,
+                },] },
+    ];
+    /** @nocollapse */
+    HeaderImage.ctorParameters = [
+        { type: pageNameService, },
+        { type: services.DataService, },
+        { type: services.LogService, },
+        { type: DomSanitizer, },
+        { type: Router, },
+    ];
+    HeaderImage.propDecorators = {
+        'pageName': [{ type: Input },],
+    };
     return HeaderImage;
 }());
-exports.HeaderImage = HeaderImage;
 //# sourceMappingURL=header.image.js.map

@@ -62,10 +62,10 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
         this.galiluMessage = 'To store';
     }
 
-
+    get pageName(): string { return this.pn.currentPageName; }
     get displayMenu(): boolean {
-        console.log('in displayMenu');
-        return !this.pn.currentPageName.includes('galilu')
+
+        return !this.pn.currentUrl.includes('galilu')
     }
     changeToEnglish() {
         this.cacheManager.StoreInCache("lang", dal.Language.English);

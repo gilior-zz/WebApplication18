@@ -1,6 +1,6 @@
 ﻿import {Component, OnInit} from '@angular/core'
-import * as dal from '../dal/models'
-import * as services from '../services/services'
+import {Update, DataRequest, UpdatesRsponse, Language} from '../dal/models'
+import {DataService} from '../services/services'
 @Component({
     selector: 'noya-updates',
     templateUrl: './updates.html',
@@ -8,13 +8,13 @@ import * as services from '../services/services'
 })
 
 export class Updates implements OnInit {
-    updates: dal.Update[];
-    constructor(private dataService: services.DataService) { }
+    updates: Update[];
+    constructor(private dataService: DataService) { }
     ngOnInit() {
-        var req: dal.DataRequest = { Language: dal.Language.Hebrew }
+        var req: DataRequest = { Language: Language.Hebrew }
         this.dataService.ConnectToApiData(req, 'api/Data/GetUpdates').subscribe(
-            (res: dal.UpdatesRsponse) => this.updates = res.Updates
-         
+            (res: UpdatesRsponse) => this.updates = res.Updates
+
         )
     }
 }

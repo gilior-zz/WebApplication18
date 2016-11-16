@@ -14,7 +14,7 @@ export class TranslatePipe implements PipeTransform {
 
     }
     transform(value: string): string {
-        //console.log(value);
+       
         let res = this.translationService.TranlateItem(value);
         return res;
         //var lang = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew);
@@ -42,7 +42,7 @@ export class SafeResourcePipe implements PipeTransform {
 
     }
     transform(value: string): SafeHtml {
-        //console.log(value);
+       
 
         return this.sanitizer.bypassSecurityTrustHtml(value);
 

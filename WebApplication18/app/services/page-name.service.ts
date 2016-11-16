@@ -30,6 +30,13 @@ export class pageNameService {
         this.pageNameSubject.next();
     }
 
-    get currentPageName() { return this.router.routerState.snapshot.url }
+    get currentPageName(): string {
+        let urlItems = this.router.routerState.snapshot.url.split("/");
+        let lastItem = urlItems[urlItems.length - 1];
+       
+        return lastItem;
+    }
+
+    get currentUrl() { return this.router.routerState.snapshot.url }
 
 }

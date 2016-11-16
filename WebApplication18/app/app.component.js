@@ -1,26 +1,16 @@
-"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var core_1 = require("@angular/core");
-var services = require("./services/services");
-var dal = require("./dal/models");
-var router_1 = require('@angular/router');
-var base_component_1 = require('./common/base.component');
-var page_name_service_1 = require('./services/page-name.service');
+import { Component, Injector, HostListener } from "@angular/core";
+import * as services from "./services/services";
+import * as dal from "./dal/models";
+import { Router } from '@angular/router';
+import { BaseComponent } from './common/base.component';
+import { pageNameService } from './services/page-name.service';
 //import * as blabla from './youmax/js/source_unpacked/jquery.youmax.js' 
-var AppComponent = (function (_super) {
+export var AppComponent = (function (_super) {
     __extends(AppComponent, _super);
     function AppComponent(dataService, cacheManager, router, injector, pn) {
         _super.call(this, injector);
@@ -60,10 +50,14 @@ var AppComponent = (function (_super) {
     AppComponent.prototype.onMouseLeave = function () {
         this.galiluMessage = 'To store';
     };
+    Object.defineProperty(AppComponent.prototype, "pageName", {
+        get: function () { return this.pn.currentPageName; },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(AppComponent.prototype, "displayMenu", {
         get: function () {
-            console.log('in displayMenu');
-            return !this.pn.currentPageName.includes('galilu');
+            return !this.pn.currentUrl.includes('galilu');
         },
         enumerable: true,
         configurable: true
@@ -86,28 +80,26 @@ var AppComponent = (function (_super) {
             _this.menuItems = dataresponse.MenuItems;
         }, function (error) { return console.error(error); });
     };
-    __decorate([
-        core_1.HostListener('mouseenter'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], AppComponent.prototype, "onMouseEnter", null);
-    __decorate([
-        core_1.HostListener('mouseleave'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], AppComponent.prototype, "onMouseLeave", null);
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: "my-app",
-            templateUrl: "./app.component.html",
-            styleUrls: ['./app.component.css'],
-            moduleId: module.id
-        }), 
-        __metadata('design:paramtypes', [services.DataService, services.CacheManager, router_1.Router, core_1.Injector, page_name_service_1.pageNameService])
-    ], AppComponent);
+    AppComponent.decorators = [
+        { type: Component, args: [{
+                    selector: "my-app",
+                    templateUrl: "./app.component.html",
+                    styleUrls: ['./app.component.css'],
+                    moduleId: module.id
+                },] },
+    ];
+    /** @nocollapse */
+    AppComponent.ctorParameters = [
+        { type: services.DataService, },
+        { type: services.CacheManager, },
+        { type: Router, },
+        { type: Injector, },
+        { type: pageNameService, },
+    ];
+    AppComponent.propDecorators = {
+        'onMouseEnter': [{ type: HostListener, args: ['mouseenter',] },],
+        'onMouseLeave': [{ type: HostListener, args: ['mouseleave',] },],
+    };
     return AppComponent;
-}(base_component_1.BaseComponent));
-exports.AppComponent = AppComponent;
+}(BaseComponent));
 //# sourceMappingURL=app.component.js.map
