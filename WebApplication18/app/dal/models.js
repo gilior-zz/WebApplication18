@@ -1,22 +1,23 @@
-export var Mode;
+"use strict";
 (function (Mode) {
     Mode[Mode["Store"] = 0] = "Store";
     Mode[Mode["Noya"] = 1] = "Noya";
-})(Mode || (Mode = {}));
-export var Language;
+})(exports.Mode || (exports.Mode = {}));
+var Mode = exports.Mode;
 (function (Language) {
     Language[Language["Hebrew"] = 0] = "Hebrew";
     Language[Language["English"] = 1] = "English";
-})(Language || (Language = {}));
-export var DataAmount;
+})(exports.Language || (exports.Language = {}));
+var Language = exports.Language;
 (function (DataAmount) {
     DataAmount[DataAmount["All"] = 0] = "All";
     DataAmount[DataAmount["Single"] = 1] = "Single";
-})(DataAmount || (DataAmount = {}));
-export var NextData;
+})(exports.DataAmount || (exports.DataAmount = {}));
+var DataAmount = exports.DataAmount;
 (function (NextData) {
     NextData[NextData["Next"] = 0] = "Next";
     NextData[NextData["Prev"] = 1] = "Prev";
     NextData[NextData["Currnet"] = 2] = "Currnet";
-})(NextData || (NextData = {}));
+})(exports.NextData || (exports.NextData = {}));
+var NextData = exports.NextData;
 //# sourceMappingURL=models.js.map

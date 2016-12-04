@@ -164,6 +164,11 @@ namespace WebApplication18.Dal
         public MenuItem[] MenuItems { get; set; }
     }
 
+    public class TraverseItemResponse : DataRespone
+    {
+        public TraverseItem[] TraverseItems { get; set; }
+    }
+
     public struct Link
     {
 
@@ -207,6 +212,14 @@ namespace WebApplication18.Dal
 
     }
 
+    public class TraverseItem
+    {
+        public int ID { get; set; }
+        public string Text { get; set; }
+        public string Description { get; set; }
+        public string Title { get; set; }
+    }
+
     public class Message
     {
         public DateTime Date { get; set; }
@@ -220,6 +233,7 @@ namespace WebApplication18.Dal
         public Message Message { get; set; }
 
     }
+
 
     public struct MenuItem
     {

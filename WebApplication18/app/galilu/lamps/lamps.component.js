@@ -12,6 +12,15 @@ var core_1 = require('@angular/core');
 var LampsComponent = (function () {
     function LampsComponent() {
     }
+    LampsComponent.prototype.ngOnInit = function () {
+        this.images = [];
+        for (var i = 1; i < 4; i++)
+            this.images.push({ ID: i, Selected: false });
+    };
+    LampsComponent.prototype.isSelected = function (id) { return this.images.find(function (i) { return i.ID == id; }).Selected; };
+    LampsComponent.prototype.onClick = function (id) {
+        this.images.find(function (i) { return i.ID == id; }).Selected = !this.images.find(function (i) { return i.ID == id; }).Selected;
+    };
     LampsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

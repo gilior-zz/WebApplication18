@@ -36,35 +36,31 @@ export class AppComponent extends BaseComponent implements OnInit, AfterViewInit
     }
 
     changeMode() {
-        //if (this.pn.currentPageName.includes('galilu'))
-        //    this.router.navigate(['/home']);
-        //else
-        //    this.router.navigate(['galilu']);
+        if (this.pn.currentUrl.includes('galilu'))
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['galilu']);
     }
 
     get isHebrew(): boolean {
         let l = this.cacheManager.GetFromCache('lang', dal.Language.Hebrew) == dal.Language.Hebrew;
         return l;
     }
-    //get galiluMessage(): string {
+    get galiluMessage(): string {
 
-    //    return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store'
+        return this.pn.currentUrl.includes('galilu') ? 'Noya Schleien' : 'To store'
+    }
+    //@HostListener('mouseenter') onMouseEnter() {
+    //    this.kidsArtMessage = 'Coming Soon...';
     //}
-    //set galiluMessage(value: string) { }
 
-    galiluMessage: string = "To store";
+    //@HostListener('mouseleave') onMouseLeave() {
+    //    this.kidsArtMessage = 'Kids Art';
+    //}
 
-    @HostListener('mouseenter') onMouseEnter() {
-        this.galiluMessage = 'Coming Soon...';
-    }
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.galiluMessage = 'To store';
-    }
-
-    get pageName(): string { return this.pn.currentPageName; }
     get displayMenu(): boolean {
-
+        //console.log('in displayMenu');
         return !this.pn.currentUrl.includes('galilu')
     }
     changeToEnglish() {

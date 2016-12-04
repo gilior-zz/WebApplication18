@@ -5,6 +5,7 @@ label {
   cursor: pointer; }
 
 img {
+  height: 300px;
   border: none;
   transition-property: border;
   transition-duration: 0.5s; }

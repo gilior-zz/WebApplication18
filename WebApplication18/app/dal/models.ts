@@ -3,7 +3,9 @@
     text: string
 }
 
-
+export interface TraverseItem {
+    Text: string; Description: string; Title: string; ID: number;
+}
 
 export enum Mode { Store, Noya }
 
@@ -14,6 +16,8 @@ export enum Language {
 export interface DataRequest {
     Language: Language;
 }
+
+
 
 export interface UpdatesRsponse extends DataResponse {
     Updates: Update[];
@@ -48,6 +52,12 @@ export interface ImageGalleryResponse extends DataResponse {
 export interface PressResponse extends DataResponse {
     PressItems: PressItem[];
 }
+
+export interface TraverseItemResponse extends DataResponse {
+    TraverseItems: TraverseItem[];
+}
+
+
 export interface PressItem {
     ID: number;
     Text: string;

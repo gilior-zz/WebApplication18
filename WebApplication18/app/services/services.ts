@@ -125,7 +125,7 @@ export class TranslationService {
         "links": "קישורים",
         "contact": "יצירת קשר",
         "hey noya, i would like to get some details about your concerts. please contact me": "שלום נויה, אנא צרי עמי קשר על מנת לקבל פרטים אודות קונצרט",
-        "name": "שם",
+
         "email": "אי-מייל",
         "content": "תוכן",
         "order concert": "הזמנת קונצרט",
@@ -142,7 +142,14 @@ export class TranslationService {
         "to store": "לחנות",
         "back to previous page": "חזרה לעמוד קודם",
         "must select at leat 4 items (click om item to select/deselect item)": "יש לבחור לפחות 4 פריטים",
-        "click on item to select/deselect item": "יש ללחוץ על פריט כדי לבחור / לבטל את בחירתו"
+        "click on item to select/deselect item": "יש ללחוץ על פריט כדי לבחור / לבטל את בחירתו",
+        "message": "הודעה",
+        "name": "שם",
+        "message is required": "יש להזין הודעה",
+        "submit": "שליחה",
+        "name is required": "יש להזין שם",
+        "email is required": "יש להזין אימייל",
+        "content is required": "יש להזין תוכן"
 
     };
     constructor(private cacheManager: CacheManager) {

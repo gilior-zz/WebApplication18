@@ -4,7 +4,7 @@ import * as services from '../services/services'
 @Component({
     selector: 'noya-calendar',
     templateUrl: './calendar.html',
-     moduleId: module.id
+    moduleId: module.id
 })
 export class Calendar implements OnInit {
     dataDate: Date;

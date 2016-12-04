@@ -16,6 +16,45 @@ namespace WebApplication18.apicontrolers
 {
     public class DataController : ApiController
     {
+
+        [AcceptVerbs("Post")]
+        public TraverseItemResponse GetTraverseItems(dynamic request)
+        {
+            var dataRequest = this.ConvertStupidArgumentToNormalRequset<DataRequest>(request) as DataRequest;
+            SqlConnection connection = initializeConnection();
+            var res = new TraverseItemResponse();
+            var traverseItems = new List<TraverseItem>();
+            try
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("TraverseItemsSelect", connection);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                var txt = dataRequest.Language == Language.English ? "Text_English" : "Text_Hebrew";
+                //cmd.Parameters.AddWithValue("@lang", txt);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        TraverseItem traverseItem = new TraverseItem()
+                        {
+                            Description = dataRequest.Language == Language.English ? reader["Description_Eng"].ToString() : reader["Description_Heb"].ToString(),
+                            Text = dataRequest.Language == Language.English ? reader["Text_Eng"].ToString() : reader["Text_Heb"].ToString(),
+                            Title = dataRequest.Language == Language.English ? reader["Title_Eng"].ToString() : reader["Title_Heb"].ToString(),
+                            ID = Convert.ToInt32(reader["ID"].ToString())
+                        };
+                        traverseItems.Add(traverseItem);
+                    }
+                }
+                res.TraverseItems = traverseItems.ToArray();
+                return res;
+            }
+
+
+            finally
+            {
+                connection.Close();
+            }
+        }
         [AcceptVerbs("Post")]
         public MenuResponse GetMenuItems(dynamic request)
         {

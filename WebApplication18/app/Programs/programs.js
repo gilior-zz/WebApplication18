@@ -1,14 +1,24 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-import { Component, Injector } from '@angular/core';
-import { BaseComponent } from '../common/base.component';
-import { Router } from '@angular/router';
-import * as services from '../services/services';
-import * as dal from '../dal/models';
-export var Programs = (function (_super) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var base_component_1 = require('../common/base.component');
+var router_1 = require('@angular/router');
+var services = require('../services/services');
+var dal = require('../dal/models');
+var Programs = (function (_super) {
     __extends(Programs, _super);
     function Programs(dataService, router, injector) {
         _super.call(this, injector);
@@ -21,18 +31,14 @@ export var Programs = (function (_super) {
         var req = { Language: dal.Language.Hebrew };
         this.dataService.ConnectToApiData(req, 'api/Data/GetPrograms').subscribe(function (res) { _this.programs = res.Programs; }, function (err) { console.error('error in Programs in ngOnInit: ' + err.ErrorText); }, function () { });
     };
-    Programs.decorators = [
-        { type: Component, args: [{
-                    templateUrl: "./programs.html",
-                    moduleId: module.id,
-                },] },
-    ];
-    /** @nocollapse */
-    Programs.ctorParameters = [
-        { type: services.DataService, },
-        { type: Router, },
-        { type: Injector, },
-    ];
+    Programs = __decorate([
+        core_1.Component({
+            templateUrl: "./programs.html",
+            moduleId: module.id,
+        }), 
+        __metadata('design:paramtypes', [services.DataService, router_1.Router, core_1.Injector])
+    ], Programs);
     return Programs;
-}(BaseComponent));
+}(base_component_1.BaseComponent));
+exports.Programs = Programs;
 //# sourceMappingURL=programs.js.map

@@ -1,15 +1,25 @@
+"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-import { Component, Output, EventEmitter, Injector } from '@angular/core';
-import * as dal from '../dal/models';
-import * as services from '../services/services';
-import { DomSanitizer } from '@angular/platform-browser';
-import { BaseComponent } from '../common/base.component';
-import { Router } from '@angular/router';
-export var Pictures = (function (_super) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var dal = require('../dal/models');
+var services = require('../services/services');
+var platform_browser_1 = require('@angular/platform-browser');
+var base_component_1 = require('../common/base.component');
+var router_1 = require('@angular/router');
+var Pictures = (function (_super) {
     __extends(Pictures, _super);
     function Pictures(sanitizer, dataService, cacheManager, router, injector) {
         _super.call(this, injector);
@@ -20,7 +30,7 @@ export var Pictures = (function (_super) {
         this.injector = injector;
         this.isHebrew = false;
         this.isEnglish = false;
-        this.headImageUpdate = new EventEmitter();
+        this.headImageUpdate = new core_1.EventEmitter();
         this.mainImagePath = this.mainImagePath = this.sanitizer.bypassSecurityTrustStyle("Content/Sources/loading.gif");
         ;
         this.example1SwipeOptions = {
@@ -117,23 +127,18 @@ export var Pictures = (function (_super) {
             _this.images = res.Images;
         }, function (err) { });
     };
-    Pictures.decorators = [
-        { type: Component, args: [{
-                    templateUrl: "./pictures.html",
-                    moduleId: module.id,
-                },] },
-    ];
-    /** @nocollapse */
-    Pictures.ctorParameters = [
-        { type: DomSanitizer, },
-        { type: services.DataService, },
-        { type: services.CacheManager, },
-        { type: Router, },
-        { type: Injector, },
-    ];
-    Pictures.propDecorators = {
-        'headImageUpdate': [{ type: Output },],
-    };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], Pictures.prototype, "headImageUpdate", void 0);
+    Pictures = __decorate([
+        core_1.Component({
+            templateUrl: "./pictures.html",
+            moduleId: module.id,
+        }), 
+        __metadata('design:paramtypes', [platform_browser_1.DomSanitizer, services.DataService, services.CacheManager, router_1.Router, core_1.Injector])
+    ], Pictures);
     return Pictures;
-}(BaseComponent));
+}(base_component_1.BaseComponent));
+exports.Pictures = Pictures;
 //# sourceMappingURL=pictures.js.map

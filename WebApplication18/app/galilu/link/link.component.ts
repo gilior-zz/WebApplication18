@@ -24,46 +24,49 @@ export class GaliluLink implements OnInit {
     }
 
     changeMode() {
-        //if (this.pn.currentPageName.includes('galilu'))
-        //    this.router.navigate(['/home']);
-        //else
-        //    this.router.navigate(['galilu']);
+        if (this.pn.currentUrl.includes('galilu'))
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['galilu']);
     }
 
     ngOnInit() {
         //this.float=
     }
-    //get galiluMessage(): string { return this.pn.currentPageName.includes('galilu') ? 'Noya Schleien' : 'To store' }
+    get galiluMessage(): string { return this.pn.currentUrl.includes('galilu') ? 'Noya Schleien' : 'To store' }
 
-    galiluMessage: string = "To store";
-    @HostListener('mouseenter') onMouseEnter() {
-        this.galiluMessage = 'Coming Soon...';
-    }
+    //@HostListener('mouseenter') onMouseEnter() {
+    //    this.kidsArtMessage = 'Coming Soon...';
+    //}
 
-    @HostListener('mouseleave') onMouseLeave() {
-        this.galiluMessage = 'To store';
-    }
+    //@HostListener('mouseleave') onMouseLeave() {
+    //    this.kidsArtMessage = 'Kids Art';
+    //}
 
     @HostListener('document:scroll') onscroll() {
-        //this.resetStyleVariables();
+        this.resetStyleVariables();
 
-        //if ($('.fixed-button').offset().top + $('.fixed-button').height()
-        //    >= $('#footer').offset().top) {
+        if ($('.fixed-button').offset().top + $('.fixed-button').height()
+            >= $('#footer').offset().top) {
 
-        //    this.position = `absolute`;
-        //    this.bottom = `${$('#footer').height()}px`;
-        //    this.isAbsolute = true;
+            this.position = `absolute`;
+            this.bottom = `${$('#footer').height()}px`;
+            this.isAbsolute = true;
 
-        
-        //}
+            //console.log(this.position);
+            //console.log(this.bottom);
+            //$('.fixed-button').css('position', 'absolute');
+            //$('.fixed-button').css('bottom', `${$('#footer').height()}px`);
+        }
 
-        //if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
-        //    this.position = `fixed`;
-        //    this.bottom = '0px';
-        //    this.isFixed = true;
-          
-        //}
-        //this.setClasses();
+        if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
+            this.position = `fixed`;
+            this.bottom = '0px';
+            this.isFixed = true;
+            //$('.fixed-button').css('position', 'fixed'); // restore when you scroll up
+            //$('.fixed-button').css('bottom', `0`);
+        }
+        this.setClasses();
     }
 
     resetStyleVariables(): void {
@@ -74,7 +77,8 @@ export class GaliluLink implements OnInit {
     }
 
     setClasses() {
-      
+        //console.log(this.isFixed)
+        //console.log(this.isAbsolute)
         let classes = {
             //'non-footer-mode': this.isFixed,
             //'footer-mode': !this.isAbsolute,
