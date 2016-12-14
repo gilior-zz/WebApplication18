@@ -9,6 +9,7 @@ import {DataService, CacheManager} from '../services/services'
     styleUrls: ['./traverse-item.component.css']
 })
 export class TraverseItemComponent implements OnInit {
+    isCollapsed: boolean;
     @Input() traverseItem: TraverseItem;
     person: Person = { Email: '', Name: '' };
     constructor(private dataService: DataService) { }

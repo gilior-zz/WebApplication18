@@ -43,31 +43,31 @@ export class GaliluLink implements OnInit {
     //    this.kidsArtMessage = 'Kids Art';
     //}
 
-    @HostListener('document:scroll') onscroll() {
-        this.resetStyleVariables();
+    //@HostListener('document:scroll') onscroll() {
+    //    this.resetStyleVariables();
 
-        if ($('.fixed-button').offset().top + $('.fixed-button').height()
-            >= $('#footer').offset().top) {
+    //    if ($('.fixed-button').offset().top + $('.fixed-button').height()
+    //        >= $('#footer').offset().top) {
 
-            this.position = `absolute`;
-            this.bottom = `${$('#footer').height()}px`;
-            this.isAbsolute = true;
+    //        this.position = `absolute`;
+    //        this.bottom = `${$('#footer').height()}px`;
+    //        this.isAbsolute = true;
 
-            //console.log(this.position);
-            //console.log(this.bottom);
-            //$('.fixed-button').css('position', 'absolute');
-            //$('.fixed-button').css('bottom', `${$('#footer').height()}px`);
-        }
+    //        //console.log(this.position);
+    //        //console.log(this.bottom);
+    //        //$('.fixed-button').css('position', 'absolute');
+    //        //$('.fixed-button').css('bottom', `${$('#footer').height()}px`);
+    //    }
 
-        if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
-            this.position = `fixed`;
-            this.bottom = '0px';
-            this.isFixed = true;
-            //$('.fixed-button').css('position', 'fixed'); // restore when you scroll up
-            //$('.fixed-button').css('bottom', `0`);
-        }
-        this.setClasses();
-    }
+    //    if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
+    //        this.position = `fixed`;
+    //        this.bottom = '0px';
+    //        this.isFixed = true;
+    //        //$('.fixed-button').css('position', 'fixed'); // restore when you scroll up
+    //        //$('.fixed-button').css('bottom', `0`);
+    //    }
+    //    this.setClasses();
+    //}
 
     resetStyleVariables(): void {
         this.isAbsolute = false;

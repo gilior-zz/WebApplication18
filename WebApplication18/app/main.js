@@ -1,8 +1,11 @@
+//import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+//import {enableProdMode} from '@angular/core';
 "use strict";
-var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-var core_1 = require('@angular/core');
-require('rxjs/Rx');
-var app_module_1 = require('./app.module');
-core_1.enableProdMode();
-platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
+////import 'rxjs/Rx';
+//import { AppModule }              from './app.module';
+//enableProdMode();
+//platformBrowserDynamic().bootstrapModule(AppModule);
+var platform_browser_1 = require('@angular/platform-browser');
+var app_module_ngfactory_1 = require('../aot/app/app.module.ngfactory');
+platform_browser_1.platformBrowser().bootstrapModuleFactory(app_module_ngfactory_1.AppModuleNgFactory);
 //# sourceMappingURL=main.js.map

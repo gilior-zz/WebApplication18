@@ -39,21 +39,27 @@ var GaliluLink = (function () {
     //@HostListener('mouseleave') onMouseLeave() {
     //    this.kidsArtMessage = 'Kids Art';
     //}
-    GaliluLink.prototype.onscroll = function () {
-        this.resetStyleVariables();
-        if ($('.fixed-button').offset().top + $('.fixed-button').height()
-            >= $('#footer').offset().top) {
-            this.position = "absolute";
-            this.bottom = $('#footer').height() + "px";
-            this.isAbsolute = true;
-        }
-        if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
-            this.position = "fixed";
-            this.bottom = '0px';
-            this.isFixed = true;
-        }
-        this.setClasses();
-    };
+    //@HostListener('document:scroll') onscroll() {
+    //    this.resetStyleVariables();
+    //    if ($('.fixed-button').offset().top + $('.fixed-button').height()
+    //        >= $('#footer').offset().top) {
+    //        this.position = `absolute`;
+    //        this.bottom = `${$('#footer').height()}px`;
+    //        this.isAbsolute = true;
+    //        //console.log(this.position);
+    //        //console.log(this.bottom);
+    //        //$('.fixed-button').css('position', 'absolute');
+    //        //$('.fixed-button').css('bottom', `${$('#footer').height()}px`);
+    //    }
+    //    if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
+    //        this.position = `fixed`;
+    //        this.bottom = '0px';
+    //        this.isFixed = true;
+    //        //$('.fixed-button').css('position', 'fixed'); // restore when you scroll up
+    //        //$('.fixed-button').css('bottom', `0`);
+    //    }
+    //    this.setClasses();
+    //}
     GaliluLink.prototype.resetStyleVariables = function () {
         this.isAbsolute = false;
         this.isFixed = false;
@@ -93,12 +99,6 @@ var GaliluLink = (function () {
         enumerable: true,
         configurable: true
     });
-    __decorate([
-        core_1.HostListener('document:scroll'), 
-        __metadata('design:type', Function), 
-        __metadata('design:paramtypes', []), 
-        __metadata('design:returntype', void 0)
-    ], GaliluLink.prototype, "onscroll", null);
     GaliluLink = __decorate([
         core_1.Component({
             selector: 'galilu-link',

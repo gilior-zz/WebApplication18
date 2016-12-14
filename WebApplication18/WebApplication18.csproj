@@ -1069,6 +1069,7 @@
     <Content Include="Content\Images\Gallery\7.jpg" />
     <Content Include="Content\Images\Gallery\8.jpg" />
     <Content Include="Content\Images\Gallery\9.jpg" />
+    <Content Include="Content\Images\Gallery\Workshops_for_children_during_Hanukkah.png" />
     <Content Include="Content\Images\Gallery_Compressed\1.jpg" />
     <Content Include="Content\Images\Gallery_Compressed\10.jpg" />
     <Content Include="Content\Images\Gallery_Compressed\11.jpg" />
@@ -1156,6 +1157,7 @@
     <Content Include="Content\Sources\loading.gif" />
     <Content Include="Content\Sources\loading_original.gif" />
     <Content Include="Content\Swiper\swiper.min.css" />
+    <Content Include="dist\build.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="lib\Reflect.js" />
